@@ -1,0 +1,45 @@
+* {
+	font-family: 'Rajdhani', sans-serif;
+	box-sizing: border-box;	
+}
+
+#header {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header:h1 {
+	text-align: center;
+}
+
+#button {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	float: center;	
+}
+
+/* want the welcome screen to fade in zoom 
+.welcome { 
+	transition: ease-in;
+}
+*/
+
+button:hover {
+	cursor: pointer;
+}
+
+.li {
+	color: #fff;
+}
+
+legend {
+	background-color: #000;
+	color: #fff;
+	padding: 10px 10px;
+}
+
+fieldset {
+	margin-bottom: 20px;
+}
