@@ -1,11 +1,31 @@
-'use strict';
+$(function() { //start first on starter page code when first load
+    $(".start").mousemove(function(event) {
+        event.preventDefault();
+        $("#startscreen").show();
+        $(".container").hide();
+    });
 
-//start first on starter page code when first load
-$(function() {
-    event.preventDefault(); //the function has to have event
-    window.onload = function() {
-        document.getElementById('#container').style.display = 'none';
-    };
+    //button clicked to start quiz...  
+
+    //     console.log('works');
+    // });
+    // $(".start").ready(function(event) { doesnt work
+    //     event.preventDefault(); //the function has to have event
+    //     $(".quiz").hide();
+
+});
+  
+    
+
+    
+
+
+
+    // ************************************
+    
+    // window.onload = function() { this doesnt work
+    //     document.getElementById('#container').style.display = 'none'; });
+    
     // $(".container").mousemove(function(event){
     //     $("#quiz").hide();
     //     $(".freedom-class").fadeIn("slow");
@@ -16,9 +36,6 @@ $(function() {
 
     //     console.log('works');
     // });
-
-    //button clicked to start quiz...
-});
     
 
 
