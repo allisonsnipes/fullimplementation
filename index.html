@@ -5,26 +5,26 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>Welcome Freedom</title>
-	<link href="main.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+	<link href="./main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 </head>
 
 <body>
 <!-- start page -->
-	<div class="start-page">
+	<div class="start" id="startscreen">
 		<header>
-			<h1> Welcome Freedom</h1>
+			<h1 class="freedom-class"> Welcome Freedom!</h1>
 		</header>
 
 		
-			<h2> Ivory J.</h2>
-			<p> A brief overview on press freedom and activists rights worldwide. This is to your general knowledge of the plight of press and activists barriers to freedom of speech, and the publics' block to knowledge.</p>
+		<h2> Ivory J.</h2>
+		<p> A brief overview on press freedom and activists rights worldwide. This is to your general knowledge of the plight of press and activists barriers to freedom of speech, and the publics' block to knowledge.</p>
 
 
-			<form action="ivoryj.black/quizapp" id="js-form-welcome-screen">
+		<form action="ivoryj.black/quizapp" id="js-form-welcome-screen"> 
 				<label for="user-entry"> Place your name to get started:</label>
 				<input type="text" name="user-entry" class="js-user-entry" placeholder="ie Jane Doe/John Doe...">
-				<button type="Submit" formaction="/action_page2">Start</button>
+				<button type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
 			</form>
 	</div>
 <!-- end start page -->
@@ -57,7 +57,8 @@
 								<div>
 									<input type="radio" name="countries" id="England">
 									<label for="England">England</label>
-								</div>
+                                </div>
+                                <button id="submit">Submit Quiz</button>
 					</fieldset>
 				</li>
 
@@ -84,7 +85,8 @@
 								<div>
 									<input type="radio" name="percentage" id="countries">
 									<label for="countries">It happens more or less developed counties, we do not have the data to back up these claims.</label>
-								</div>
+                                </div>
+                                <button id="submit">Submit Quiz</button>
 					</fieldset>
 				</li>
 
@@ -111,7 +113,8 @@
 							<div>
 								<input type="radio" name="worst" id="North Korea">
 								<label for="North Korea"> North Korea</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>
 				</li>
 
@@ -138,7 +141,8 @@
 							<div>
 								<input type="radio" name="ranking" id="45">
 								<label for="45">45</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>
 				</li>
 				
@@ -165,7 +169,8 @@
 							<div>
 								<input type="radio" name="russia" id="50">
 								<label for="50">50</label>
-							</div>				
+                            </div>
+                            <button id="submit">Submit Quiz</button>				
 					</fieldset>			
 				</li>
 
@@ -192,7 +197,8 @@
 							<div>
 								<input type="radio" name="Cyberbullying" id="trolling">
 								<label for="trolling">We all know trolling is a serious problem, but infringement is a too serious of a label to use.</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>	
 				</li>
 
@@ -219,7 +225,8 @@
 							<div>
 								<input type="radio" name="concern" id="exists">
 								<label for="exists">No quantifiable data exist on the subject more resources are needed.</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>			
 				</li>
 
@@ -246,7 +253,8 @@
 							<div>
 								<input type="radio" name="attack" id="allabove">
 								<label for="allabove">All of the above are forms of attacks on journalists.</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>			
 				</li>
 
@@ -273,7 +281,8 @@
 							<div>
 								<input type="radio" name="developed-count" id="fakenews">
 								<label for="fakenews">False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences.</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>			
 				</li>
 
@@ -300,7 +309,8 @@
 							<div>
 								<input type="radio" name="women" id="30%">
 								<label for="30%">30%</label>
-							</div>
+                            </div>
+                            <button id="submit">Submit Quiz</button>
 					</fieldset>	
 				</li>	
 			</ol>
@@ -309,16 +319,16 @@
 <!-- end questions -->
 
 <!-- feedback page -->
-	<div class="feedback-page" id="results">
+	<!-- <div class="feedback-page" id="results">
 		<article>
 			<h1>Congradulations, your finished!</h1>
-			<p> (Name) how did you do?</p> <!-- Insert name here -->
-		</article>
-	</div>
+			<p> (Name) how did you do?</p> Insert name here -->
+		<!-- </article> -->
+	<!-- </div> -->
 <!-- endfeedback page -->
 
 <!-- last page -->
-	<div class="support">
+	<!-- <div class="support">
 		<article>
 			<h1>Things you can do to support Freedom:</h1>
 				<ul>
@@ -327,7 +337,7 @@
 					<li>Spread the word</li>
 				</ul>
 		</article>
-	</div>
+	</div> -->
 <!-- end last page -->
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
