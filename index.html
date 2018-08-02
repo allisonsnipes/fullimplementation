@@ -4,32 +4,34 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Welcome Freedom</title>
+	<title>Welcome Freedom: Ivory J</title>
 	<link href="./main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 </head>
 
 <body>
-<!-- start page -->
+<!-- start page: introduction of the quiz concept-->
 	<div class="start" id="startscreen">
 		<header>
 			<h1 class="freedom-class"> Welcome Freedom!</h1>
 		</header>
-
-		
+    </div>
+        
+    <div class="substartscreen" id="substartscreenid">
 		<h2> Ivory J.</h2>
 		<p> A brief overview on press freedom and activists rights worldwide. This is to your general knowledge of the plight of press and activists barriers to freedom of speech, and the publics' block to knowledge.</p>
+    </div>
 
-
+    <div class="substartscreenform" id="substartscreenform">
 		<form action="ivoryj.black/quizapp" id="js-form-welcome-screen"> 
 				<label for="user-entry"> Place your name to get started:</label>
 				<input type="text" name="user-entry" class="js-user-entry" placeholder="ie Jane Doe/John Doe...">
-				<button type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
-			</form>
-	</div>
+				<button class="submitbutton" id="startsubmit"  type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
+        </form>
+    </div>
 <!-- end start page -->
 
-<!-- questions -->
+<!-- questions: quiz part design as a form-->
 	<div class="container" id="quiz">
 		<form class="general-form">
 			<ol class="list">
@@ -318,7 +320,7 @@
 	</div>
 <!-- end questions -->
 
-<!-- feedback page -->
+<!-- feedback page: if their ans. is right/wrong & the correct ans -->
 	<!-- <div class="feedback-page" id="results">
 		<article>
 			<h1>Congradulations, your finished!</h1>
@@ -327,7 +329,7 @@
 	<!-- </div> -->
 <!-- endfeedback page -->
 
-<!-- last page -->
+<!-- last page: how the user how did & restart the quiz-->
 	<!-- <div class="support">
 		<article>
 			<h1>Things you can do to support Freedom:</h1>
@@ -340,6 +342,6 @@
 	</div> -->
 <!-- end last page -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="./js/jquery-3.2.1.min.js/app.js"></script>
+    <script language="javascript" type="text/javascript" src="./app.js"></script>
 </body>
 </html>

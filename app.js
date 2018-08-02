@@ -1,19 +1,22 @@
-$(function() { //start first on starter page code when first load
+$(function() { 
+    //start first on starter page code when first load
     $(".start").mousemove(function(event) {
         event.preventDefault();
-        $("#startscreen").show();
+        $(".freedom-class").show();
+        $(".substartscreen").hide();
+        $(".substartscreenform").hide();
         $(".container").hide();
     });
 
-    //button clicked to start quiz...  
-
-    //     console.log('works');
-    // });
-    // $(".start").ready(function(event) { doesnt work
-    //     event.preventDefault(); //the function has to have event
-    //     $(".quiz").hide();
-
+    //button clicked to start quiz should fade in to one question at a time 
+    
+    // $(".").on("click", )
+    
+    console.log('works');
 });
+
+
+    
   
     
 
@@ -22,9 +25,6 @@ $(function() { //start first on starter page code when first load
 
 
     // ************************************
-    
-    // window.onload = function() { this doesnt work
-    //     document.getElementById('#container').style.display = 'none'; });
     
     // $(".container").mousemove(function(event){
     //     $("#quiz").hide();
