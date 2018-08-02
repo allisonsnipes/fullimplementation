@@ -35,15 +35,16 @@ $(function() {
 
     //write a function that takes the username and gives feedback
     $(".ques10").click(function() {
-        location.reload();
+        // = "Ok" + ivoryuser + "here is your feedback!"
     });
+
     //write a question that restart quiz
     $(".ques11").click(function() {
         location.reload();
     });
 
     $(".ques12").click(function(){
-
+        window.location.replace("http://github.com/allisonsnipes");
     });
 
     console.log('works');
