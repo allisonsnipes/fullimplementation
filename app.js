@@ -1,4 +1,5 @@
 'use strict';
+var ivoryuser = document.getElementById("newuser").value;
 
 $(function() { 
     //start first on starter page code when first load
@@ -15,27 +16,35 @@ $(function() {
     });
     
     //button clicked to start quiz should fade in to one question at a time 
-    $(".substartscreen").click(function() {
+    $(function startquizsub() {
         $(".substartscreen").show()
             .fadeIn(75);
         $(".start").hide();
         $(".substartscreenform").show()
             .fadeIn(100);
     });
-
     //button clicked to start quiz should fade in to one question at a time
     $(".submitbutton").click(function() {
         $(".start").hide();
         $(".substartscreen").hide();
         $(".substartscreenform").hide();
-        $(".start").show();
+        $(".q1").show();
     });
 
     //write a function that takes question one by one or whole screen? and quiz location question number
 
     //write a function that takes the username and gives feedback
-
+    $(".ques10").click(function() {
+        location.reload();
+    });
     //write a question that restart quiz
+    $(".ques11").click(function() {
+        location.reload();
+    });
+
+    $(".ques12").click(function(){
+
+    });
 
     console.log('works');
 });
@@ -55,21 +64,6 @@ $( "body" ).on( "click", "p", function() {
 
 
     // ************************************
-    
-    // $(".container").mousemove(function(event){
-    //     $("#quiz").hide();
-    //     $(".freedom-class").fadeIn("slow");
-        
-    //  $(".start").mousemove(function() {
-    //     $("#js-form-welcome-screen").show();
-    // });
-
-    //     console.log('works');
-    // });
-    
-
-
-
 
 // const quizContainer = document.getElementById('quiz');
 // const resultsContainer = document.getElementById('results');
