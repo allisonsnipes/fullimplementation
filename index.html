@@ -19,7 +19,7 @@
 			<hr>
         </div>
             
-        <div class="substartscreen" id="substartscreenid" onclick="startquizsub()">
+        <div class="substartscreen" id="substartscreenid">
             <h2> Ivory J.</h2>
             <p> A brief overview on press freedom and activists rights worldwide. This is to your general 
 				knowledge of the plight of press and activists barriers to freedom of speech, and the 
@@ -38,10 +38,10 @@
 <!-- end start page -->
 
 <!-- questions: quiz part design as a form-->
-	<div class="container" id="quiz">
-		<form class="hide showquiz">
+	<div class="quizwrapper" id="quiz">
+		<form class="showquiz hide">
 			<!-- used to group like items together in a form -->
-					<fieldset class="q1">
+					<fieldset class="quizquestions">
 						<legend>
 							Which country ranks number one in press freedom?
 						</legend>
@@ -65,18 +65,18 @@
 									<label for="England">England</label>
                                 </div>
                     </fieldset>
-            <button id="submit">Submit Quiz</button>
+            <button class="submitquiz">Submit Quiz</button>
 		</form>
 	</div>
 <!-- end questions -->
 
-<!-- feedback page: if their ans. is right/wrong & the correct ans -->
-	<!-- <div class="feedback-page" id="results">
-		<article>
-			<h1>Congradulations, your finished!</h1>
-			<p> (Name) how did you do?</p> Insert name here -->
-		<!-- </article> -->
-	<!-- </div> -->
+<!-- //feedback page: if their ans. is right/wrong & the correct ans  -->
+	<div class="feedbackwrapper">
+		<form class ="feedback hide">
+			<h1>Congrats, you're finished!</h1>
+			<p> (insert Name here) how did you do?</p> <!-- Insert name here -->
+		</form>
+	</div>
 <!-- endfeedback page -->
 
 <!-- last page: tell the user how they did & restart the quiz-->
@@ -92,6 +92,7 @@
         </fieldset>
 	</div> -->
 <!-- end last page -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./app.js"></script>
 </body>
