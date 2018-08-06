@@ -9,12 +9,12 @@ $(function() {
         event.preventDefault();
         $(".showquiz").show();
         $(".wrapper").hide();
-
+        $(".retakewrapper").hide();
     });
 
-    const quizContainer = document.getElementById('quiz');
+    const quizContainer = document.getElementById('.quizwrapper');
     const resultsContainer = document.getElementById('results');
-    const submitButton = document.getElementById('submit');
+    const submitButton = document.getElementById('.submitquiz');
 
     //display quiz questions
     const questions = [
@@ -117,6 +117,7 @@ $(function() {
             correctAnswer: "a"
         },
     ]
+
     //make data store like the shopping app
     $(".quizquestions").append(
        `<fieldset class="quizquestions">
@@ -143,28 +144,32 @@ $(function() {
 									<label for="England">England</label>
                                 </div>
                     </fieldset>
-            <button class="submitquiz">Submit Quiz</button>
+            <button class=".submitquiz">Submit Quiz</button>
 		</form>`
     );
 
     //for feedback page show and hide quiz page
     $(".submitquiz").on("click", function() {
+        event.preventDefault();
         $(".feedbackwrapper").show();
         $(".quizwrapper").hide();
+        $(".yesorno").hide();
+
     });
 
     //write a question that restart quiz
     $(".ques11").click(function() {
+        event.preventDefault();
         location.reload();
     });
 
     $(".ques12").click(function(){
+        event.preventDefault();
         window.location.replace("http://github.com/allisonsnipes");
     });
 
+    
     console.log('works');
-
-
 
 });
   
@@ -173,14 +178,4 @@ $(function() {
 // $( "body" ).on( "click", "p", function() {
 //   $( this ).after( "<p>Another paragraph! " + (++count) + "</p>" );
 // });
-// </script> }
-
-// *********
-
-
-
-// //show results when submit button is clicked
-// submitButton.addEventListener('click', showResults);
-
-
-//focus on SIMPLE action 
+// </script> 
