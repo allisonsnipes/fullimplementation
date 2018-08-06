@@ -1,64 +1,81 @@
 'use strict';
-var ivoryuser = document.getElementById("newuser").value;
 
 $(function() { 
-    //start first on starter page code when first load
-    $(".start").mousemove(function(event) {
+
+//to do list: check ans., restart quiz function, start quiz function, feedback function
+
+    $(".submitbutton").on("click", function(event) {
         event.preventDefault();
-        $(".freedom-class")
-            .stop()
-            .show()
-            .fadeIn(1000)
-            .fadeOut(1000)
-        $(".substartscreen").hide();
-        $(".substartscreenform").hide();
-        $(".container").hide();
-    });
-    
-    //button clicked to start quiz should fade in to one question at a time 
-    $(function startquizsub() {
-        $(".substartscreen").show()
-            .fadeIn(75);
-        $(".start").hide();
-        $(".substartscreenform").show()
-            .fadeIn(100);
-    });
-    //button clicked to start quiz should fade in to one question at a time
-    $(".submitbutton").click(function() {
-        $(".start").hide();
-        $(".substartscreen").hide();
-        $(".substartscreenform").hide();
-        $(".q1").show();
+        $(".showquiz").show();
+        $(".wrapper").hide();
+
     });
 
-    //write a function that takes question one by one or whole screen? and quiz location question number
+//make data store like the shopping app
 
-    //write a function that takes the username and gives feedback
-    $(".ques10").click(function() {
-        // = "Ok" + ivoryuser + "here is your feedback!"
-    });
 
-    //write a question that restart quiz
-    $(".ques11").click(function() {
-        location.reload();
-    });
 
-    $(".ques12").click(function(){
-        window.location.replace("http://github.com/allisonsnipes");
-    });
-
-    console.log('works');
 });
+
+    //========
+//     let ivoryuser;
+//     //start first on starter page code when first load
+//     $(".start").mousemove(function() {
+//         $(".freedom-class")
+//             .stop()
+//             .show()
+//             .fadeIn(1000)
+//             .fadeOut(1000)
+//         $(".substartscreen").hide();
+//         $(".substartscreenform").hide();
+//         $(".container").hide();
+//     });
+    
+//     //button clicked to start quiz should fade in to one question at a time 
+//     $(function startquizsub() {
+//         $(".substartscreen").show()
+//             .fadeIn(75);
+//         $(".start").hide();
+//         $(".substartscreenform").show()
+//             .fadeIn(100);
+//     });
+
+//     //button clicked to start quiz should fade in to one question at a time
+//     $(".submitbutton").click(function() {
+//         $(".start").hide();
+//         $(".substartscreen").hide();
+//         $(".substartscreenform").hide();
+//         $(".q1").show();
+//     });
+
+//     //write a function that takes question one by one or whole screen? and quiz location question number
+// //one fieldset, do .replace look at const store
+//     //write a function that takes the username and gives feedback
+//     $(".ques10").click(function() {
+//         // = "Ok" + ivoryuser + "here is your feedback!"
+//     });
+
+//     //write a question that restart quiz
+//     $(".ques11").click(function() {
+//         location.reload();
+//     });
+
+//     $(".ques12").click(function(){
+//         window.location.replace("http://github.com/allisonsnipes");
+//     });
+
+//     console.log('works');
+
 
 
     
   
-{/* <script>
+/*{ <script>
 var count = 0;
 $( "body" ).on( "click", "p", function() {
   $( this ).after( "<p>Another paragraph! " + (++count) + "</p>" );
 });
-</script> */}
+</script> }*/
 
     
 

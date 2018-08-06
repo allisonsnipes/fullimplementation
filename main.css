@@ -4,11 +4,23 @@
     font-family: 'Permanent Marker', cursive;
 }
 
+.hide {
+    display: none;
+}
+
+hr {
+    border:1px solid #000;
+}
+
 h1, h2, p, form {
     text-align: center;
     width: 50%;
     margin-left: auto;
     margin-right: auto; 
+}
+
+fieldset {
+    margin-bottom: 20px;
 }
 
 button {
@@ -24,10 +36,6 @@ input {
     margin-bottom: 15px;
 }
 
-button:hover {
-	cursor: pointer;
-}
-
 .li {
 	color: #fff;
 }
@@ -38,6 +46,3 @@ legend {
 	padding: 10px 10px;
 }
 
-fieldset {
-	margin-bottom: 20px;
-}

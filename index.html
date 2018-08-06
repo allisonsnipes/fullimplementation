@@ -11,33 +11,36 @@
 
 <body>
 <!-- start page: introduction of the quiz concept-->
-	<div class="start" id="startscreen">
-		<header>
-			<h1 class="freedom-class"> Welcome Freedom!</h1>
-		</header>
-    </div>
-        
-    <div class="substartscreen" id="substartscreenid" onclick="startquizsub()">
-		<h2> Ivory J.</h2>
-        <p> A brief overview on press freedom and activists rights worldwide. This is to your general knowledge of the plight of press and activists barriers to freedom of speech, and the publics' block to knowledge.</p>
-        <p> Click your mouse to continue...</p>
-    </div>
+    <div class="wrapper">   
+        <div class="start" id="startscreen">
+            <header>
+                <h1 class="freedom-class"> Welcome Freedom!</h1>
+			</header>
+			<hr>
+        </div>
+            
+        <div class="substartscreen" id="substartscreenid" onclick="startquizsub()">
+            <h2> Ivory J.</h2>
+            <p> A brief overview on press freedom and activists rights worldwide. This is to your general 
+				knowledge of the plight of press and activists barriers to freedom of speech, and the 
+				publics block to free knowledge and information.</p>
+            <p> Click START to continue, after entering your name...</p>
+        </div>
 
-    <div class="substartscreenform" id="substartscreenform">
-		<form action="ivoryj.black/quizapp" id="js-form-welcome-screen"> 
-				<label for="user-entry"> Place your name to get started:</label>
-				<input id="newuser" type="text" name="user-entry" class="js-user-entry" placeholder="ie Jane Doe/John Doe...">
-				<button class="submitbutton" id="startsubmit"  type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
-        </form>
-    </div>
+        <div class="substartscreenform" id="substartscreenform">
+            <form action="ivoryj.black/quizapp" id="js-form-welcome-screen"> 
+                    <label for="user-entry"> Place your name to get started:</label>
+                    <input id="newuser" type="text" name="user-entry" class="js-user-entry" placeholder="ie Jane Doe/John Doe...">
+                    <button class="submitbutton" id="startsubmit"  type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
+            </form>
+        </div>
+    </div> 
 <!-- end start page -->
 
 <!-- questions: quiz part design as a form-->
 	<div class="container" id="quiz">
-		<form class="general-form">
-			<ol class="list">
+		<form class="hide showquiz">
 			<!-- used to group like items together in a form -->
-				<li>
 					<fieldset class="q1">
 						<legend>
 							Which country ranks number one in press freedom?
@@ -61,262 +64,8 @@
 									<input type="radio" name="countries" id="England">
 									<label for="England">England</label>
                                 </div>
-                                <button id="submit">Submit Quiz</button>
-					</fieldset>
-				</li>
-
-				<li>
-					<fieldset class="q2">
-						<legend>
-								In this year alone, what percentage of women journalists receive harassment for the stories they cover?
-						</legend>
-								<div>
-									<input type="radio" name="percentage" id="2/3">
-									<label for="2/3">2/3</label>
-								</div>
-
-								<div>
-									<input type="radio" name="percentage" id="internationally">
-									<label for="internationally">Internationally, we do not have the figures to back up these claims.</label>
-								</div>
-
-								<div>
-									<input type="radio" name="percentage" id="1/3">
-									<label for="1/3">1/3</label>
-								</div>
-
-								<div>
-									<input type="radio" name="percentage" id="countries">
-									<label for="countries">It happens more or less developed counties, we do not have the data to back up these claims.</label>
-                                </div>
-                                <button id="submit">Submit Quiz</button>
-					</fieldset>
-				</li>
-
-				<li>
-					<fieldset class="q3">
-						<legend>
-							To date, which country has the world’s worst ranking of press freedom?
-						</legend>
-							<div>
-								<input type="radio" name="worst" id="Mexico">
-								<label for="Mexico"> Mexico</label>
-							</div>
-
-							<div>
-								<input type="radio" name="worst" id="Russia">
-								<label for="Russia"> Russia</label>
-							</div>
-
-							<div>
-								<input type="radio" name="worst" id="South Sudan">
-								<label for="South Sudan"> South Sudan</label>
-							</div>
-
-							<div>
-								<input type="radio" name="worst" id="North Korea">
-								<label for="North Korea"> North Korea</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>
-					</fieldset>
-				</li>
-
-				<li>
-					<fieldset class="q4">
-						<legend>
-							What is the ranking of the United States on the 2018 World Press Freedom Index
-						</legend>
-							<div>
-								<input type="radio" name="ranking" id="80">
-								<label for="80">80</label>
-							</div>
-
-							<div>
-								<input type="radio" name="ranking" id="1">
-								<label for="1">1</label>
-							</div>
-
-							<div>
-								<input type="radio" name="ranking" id="30">
-								<label for="30">30</label>
-							</div>
-							
-							<div>
-								<input type="radio" name="ranking" id="45">
-								<label for="45">45</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>
-					</fieldset>
-				</li>
-				
-				<li>
-					<fieldset class="q5">
-						<legend> 
-							What  is Russia’s ranking on the 2018 World Press Freedom Index?
-						</legend>
-							<div>
-								<input type="radio" name="russia" id="148">
-								<label for="148">148</label>
-							</div>
-							
-							<div>
-								<input type="radio" name="russia" id="80">
-								<label for="80">80</label>
-							</div>
-
-							<div>
-								<input type="radio" name="russia" id="100">
-								<label for="100">100</label>
-							</div>
-							
-							<div>
-								<input type="radio" name="russia" id="50">
-								<label for="50">50</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>				
-					</fieldset>			
-				</li>
-
-				<li>
-					<fieldset class="q6">
-						<legend>
-							Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.
-						</legend>
-							<div>
-								<input type="radio" name="Cyberbullying" id="no-harm">
-								<label for="no-harm">It is online, no real harm is done.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="Cyberbullying" id="truth">
-								<label for="truth">No, the internet is a big place—eventually we all find out about the truth.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="Cyberbullying" id="communicate">
-								<label for="communicate">The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="Cyberbullying" id="trolling">
-								<label for="trolling">We all know trolling is a serious problem, but infringement is a too serious of a label to use.</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>
-					</fieldset>	
-				</li>
-
-				<li>
-					<fieldset class="q7">
-						<legend>
-							Online harassment is less of a concern than physical attacks on journalists.
-						</legend>
-							<div>
-								<input type="radio" name="concern" id="long">
-								<label for="long">True, as long as the physical person is not harmed—cyberbullying is not an issue.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="concern" id="serious">
-								<label for="serious">False, online harassment is as serious of an offense as physical attacks.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="concern" id="largely">
-								<label for="largely">True, press freedom is largely limited and more of a concern offline.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="concern" id="exists">
-								<label for="exists">No quantifiable data exist on the subject more resources are needed.</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>
-					</fieldset>			
-				</li>
-
-				<li>
-					<fieldset class="q8">
-						<legend>
-							Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.
-						</legend>
-							<div>
-								<input type="radio" name="attack" id="disinfo">
-								<label for="disinfo">Disinformation: journalistic content on social networks is drowned in a flood of fake new and pro-government content.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="attack" id="amp">
-								<label for="amp">Amplification: the impact of pro-government content is artificially enhanced by commentators who are paid by the government to post messages on social networks or by bots (computer programs that automatically generate posts).</label>
-							</div>
-
-							<div>
-								<input type="radio" name="attack" id="intimid">
-								<label for="intimid">Intimidation: journalists are personally targeted, insulted and theatened, in order to discredit them and reduce them to silence.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="attack" id="allabove">
-								<label for="allabove">All of the above are forms of attacks on journalists.</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>
-					</fieldset>			
-				</li>
-
-				<li>
-					<fieldset class="q9">
-						<legend>
-							Press suppression is a third world or less developed country’s problem.
-						</legend>
-							<div>
-								<input type="radio" name="developed-count" id="less-dev">
-								<label for="less-dev">True, this is largely a less developed country problem.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="developed-count" id="concerns">
-								<label for="concerns">False, it concerns countries from both developed and least developed democracies and governments.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="developed-count" id="freedom-enforce">
-								<label for="freedom-enforce">True, young governments do not have the resources to enforce press freedom.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="developed-count" id="fakenews">
-								<label for="fakenews">False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences.</label>
-                            </div>
-                            <button id="submit">Submit Quiz</button>
-					</fieldset>			
-				</li>
-
-				<li>
-					<fieldset class="q10">
-						<legend>
-							This year alone, what percentage of women journalists were harassed offline?
-						</legend>
-							<div>
-								<input type="radio" name="women" id="25%">
-								<label for="">25%</label>
-							</div>
-
-							<div>
-								<input type="radio" name="women" id="no-data">
-								<label for="no-data">None, no data is available.</label>
-							</div>
-
-							<div>
-								<input type="radio" name="women" id="75%">
-								<label for="75%">75%</label>
-							</div>
-
-							<div>
-								<input type="radio" name="women" id="30%">
-								<label for="30%">30%</label>
-                            </div>
-                            <button class="ques10" id="submit">Submit Quiz</button>
-					</fieldset>	
-				</li>	
-            </ol>
+                    </fieldset>
+            <button id="submit">Submit Quiz</button>
 		</form>
 	</div>
 <!-- end questions -->
@@ -331,7 +80,7 @@
 <!-- endfeedback page -->
 
 <!-- last page: tell the user how they did & restart the quiz-->
-	<div class="yesorno">
+	<!-- <div class="yesorno">
 		 <fieldset>
             <legend>
                 Would you like to retake the quiz?
@@ -341,7 +90,7 @@
                     <button class="ques12" id="submit">No</button>
                 </div>
         </fieldset>
-	</div>
+	</div> -->
 <!-- end last page -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./app.js"></script>
