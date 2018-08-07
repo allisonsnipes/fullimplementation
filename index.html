@@ -10,61 +10,60 @@
 </head>
 
 <body>
-<!-- start page: introduction of the quiz concept-->
-    <div class="wrapper">   
-        <div class="start" id="startscreen">
-            <header>
-                <h1 class="freedom-class"> Welcome Freedom!</h1>
+<!-- start page: introduction of the quiz concept--> 
+	<div class="wrapper">   
+		<div class="start" id="startscreen">
+			<header>
+				<h1 class="freedom-class"> Welcome Freedom!</h1>
 			</header>
 			<hr>
-        </div>
-            
-        <div class="substartscreen" id="substartscreenid">
-            <h2> Ivory J.</h2>
-            <p> A brief overview on press freedom and activists rights worldwide. This is to your general 
+		</div>
+			
+		<div class="substartscreen" id="substartscreenid">
+			<h2> Ivory J.</h2>
+			<p> A brief overview on press freedom and activists rights worldwide. This is to your general 
 				knowledge of the plight of press and activists barriers to freedom of speech, and the 
 				publics block to free knowledge and information.</p>
-            <p> Click START to continue, after entering your name...</p>
-        </div>
+			<p> Click START to continue, after entering your name...</p>
+		</div>
 
-        <div class="substartscreenform" id="substartscreenform">
-            <form action="ivoryj.black/quizapp" id="js-form-welcome-screen"> 
-                    <label for="user-entry"> Place your name to get started:</label>
-                    <input id="newuser" type="text" name="user-entry" class="js-user-entry" placeholder="ie Jane Doe/John Doe...">
-                    <button class="submitbutton" id="startsubmit"  type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
-            </form>
-        </div>
-    </div> 
+		<div class="substartscreenform" id="substartscreenform">
+			<form action="ivoryj.black/quizapp" id="js-form-welcome-screen"> 
+				<label for="user-entry"> Place your name to get started:</label>
+				<input id="newuser" type="text" name="user-entry" class="js-user-entry" placeholder="ie Jane Doe/John Doe...">
+				<button class="submitbutton" id="startsubmit"  type="Submit">Start</button> <!--//delete this event prevent default, stay on the same page update DOM-->
+			</form>
+		</div>
+	</div> 
 <!-- end start page -->
 
-<!-- questions: quiz part design as a form-->
+<!-- questions: quiz part design as a form clean up here too--> 
+<!-- redo the js and css files too -->
 	<div class="quizwrapper" id="quiz">
 		<form class="showquiz hide">
-			<!-- used to group like items together in a form -->
-					<fieldset class="quizquestions">
-						<legend>
-							Which country ranks number one in press freedom?
-						</legend>
-								<div>
-									<input type="radio" name="countries" id="Norway">
-									<label for="Norway"> Norway</label>
-								</div>
+			<!-- used to group like items together in a form use text.()-->
+			<fieldset class="quizquestions">
+				<legend>
+					Which country ranks number one in press freedom?
+				</legend>
+					<div>
+						<input type="radio" name="countries" id="Norway">
+						<label for="Norway"> Norway</label>
+					</div>
+					<div>
+						<input type="radio" name="countries" id="USA">
+						<label for="USA">USA</label>
+					</div>
+					<div>
+						<input type="radio" name="countries" id="Switzerland">
+						<label for="Switzerland">Switzerland</label>
+					</div>	
 
-								<div>
-									<input type="radio" name="countries" id="USA">
-									<label for="USA">USA</label>
-								</div>
-
-								<div>
-									<input type="radio" name="countries" id="Switzerland">
-									<label for="Switzerland">Switzerland</label>
-								</div>	
-
-								<div>
-									<input type="radio" name="countries" id="England">
-									<label for="England">England</label>
-                                </div>
-                    </fieldset>
+					<div>
+						<input type="radio" name="countries" id="England">
+						<label for="England">England</label>
+					</div>
+			</fieldset>
             <button class="submitquiz">Submit Quiz</button>
 		</form>
 	</div>

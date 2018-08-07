@@ -118,8 +118,8 @@ $(function() {
         },
     ]
 
-    //make data store like the shopping app
-    $(".quizquestions").append(
+    //make data store like the shopping app --> see katie's examples
+    $(".quizquestions").text(
        `<fieldset class="quizquestions">
 						<legend>
 							Which country ranks number one in press freedom?
@@ -143,7 +143,7 @@ $(function() {
 									<input type="radio" name="countries" id="England">
 									<label for="England">England</label>
                                 </div>
-                    </fieldset>
+            </fieldset>
             <button class=".submitquiz">Submit Quiz</button>
 		</form>`
     );
@@ -154,7 +154,6 @@ $(function() {
         $(".feedbackwrapper").show();
         $(".quizwrapper").hide();
         $(".yesorno").hide();
-
     });
 
     //write a question that restart quiz
@@ -168,7 +167,7 @@ $(function() {
         window.location.replace("http://github.com/allisonsnipes");
     });
 
-    
+
     console.log('works');
 
 });
