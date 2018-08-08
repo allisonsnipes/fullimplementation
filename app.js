@@ -12,12 +12,18 @@ $(function() {
         $(".retakewrapper").hide();
     });
 
-    const quizContainer = document.getElementById('.quizwrapper');
-    const resultsContainer = document.getElementById('results');
-    const submitButton = document.getElementById('.submitquiz');
-
-    //display quiz questions
+    //initiziling questions and answers
     const questions = [
+        {
+            Question: "Which country ranks number one in press freedom?",
+            answers: {
+                a: "Norway",
+                b: "USA",
+                c: "Switzerland",
+                d: "England"
+                },
+                correctAnswer: "a"  
+        },
         {
             Question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
             answers: {
@@ -119,35 +125,17 @@ $(function() {
     ]
 
     //make data store like the shopping app --> see katie's examples
-    $(".quizquestions").text(
+    function generateQuestionsAnswers(question, correctAnswer) {
        `<fieldset class="quizquestions">
-						<legend>
-							Which country ranks number one in press freedom?
-						</legend>
-								<div>
-									<input type="radio" name="countries" id="Norway">
-									<label for="Norway"> Norway</label>
-								</div>
-
-								<div>
-									<input type="radio" name="countries" id="USA">
-									<label for="USA">USA</label>
-								</div>
-
-								<div>
-									<input type="radio" name="countries" id="Switzerland">
-									<label for="Switzerland">Switzerland</label>
-								</div>	
-
-								<div>
-									<input type="radio" name="countries" id="England">
-									<label for="England">England</label>
-                                </div>
-            </fieldset>
-            <button class=".submitquiz">Submit Quiz</button>
-		</form>`
-    );
-
+            <legend>
+                ${questions[0]}
+			</legend>
+				<div>
+				    ${answers[0]}
+				</div>
+        </fieldset>
+        <button class=".submitquiz">Submit Quiz</button>`;
+    }
     //for feedback page show and hide quiz page
     $(".submitquiz").on("click", function() {
         event.preventDefault();
@@ -178,3 +166,7 @@ $(function() {
 //   $( this ).after( "<p>Another paragraph! " + (++count) + "</p>" );
 // });
 // </script> 
+
+//const quizContainer = document.getElementById('.quizwrapper');
+// const resultsContainer = document.getElementById('results');
+// const submitButton = document.getElementById('.submitquiz');
