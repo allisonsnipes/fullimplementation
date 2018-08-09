@@ -25,15 +25,11 @@ fieldset {
 
 button {
     display: block;
-	width: 50%;
+	width: 20%;
 	margin-left: auto;
 	margin-right: auto;
     float: center;	
     background-color: #fff;
-}
-
-input {
-    margin-bottom: 15px;
 }
 
 .li {
