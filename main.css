@@ -9,10 +9,10 @@
 }
 
 hr {
-    border:1px solid #000;
+    border: 1px solid #000;
 }
 
-h1, h2, p, form {
+h1, h2, p, form, quiz {
     text-align: center;
     width: 50%;
     margin-left: auto;

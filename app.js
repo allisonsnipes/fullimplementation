@@ -11,6 +11,15 @@
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
 });
 
+//start quiz and hide start page 
+$(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
+    event.preventDefault();
+    $(".quiz").show();
+    // $(".wrapper").hide();
+    // $(".feedbackwrapper").hide();
+    // $(".retakewrapper").hide();
+});
+
 const questions = [ 
     {
         question: "Which country ranks number one in press freedom?",
@@ -160,11 +169,9 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 
 
-/* function comparing(userAnswerChoice) {
-    questions[0].question[0];
-  } */
- 
-//   comparing('d');
+// function comparing(userAnswerChoice) {
+//     questions[0].question[0];
+//      comparing('d');
  
 //each function is its own peice
     // var numCount = question.length;
@@ -174,14 +181,7 @@ function generateQuestion(questionIndex){ //what method code is this********
 
     //to do list: check ans., restart quiz function, start quiz function, feedback function
 
-//$(".start").on("click", function(event) { dont pass function names here because its going to think its a parameter automatically runs when user clicks
 
-    
-//start quiz and hide start page 
-    // $(".quiz").show();
-    // $(".wrapper").hide();
-    // $(".feedbackwrapper").hide();
-    // $(".retakewrapper").hide();
     
 
     // for (var k = question.length - 1; k >0; k--) {
