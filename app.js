@@ -135,6 +135,10 @@ const questions = [
 
 //make data store like the shopping app --> see katie's examples
 function generateQuestion(questionIndex){ //what method code is this********
+    const numCount = question.length;
+    const score = [];
+    const numCount = question.length;
+    
     return`
         <fieldset class="quizquestions">
             <legend>
@@ -166,18 +170,33 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 //to do function that needs to take in a parameter that is the users ans choice and 
 //needs to compare the users ans to the correcrt ans in data stories.
+function tallyCorrectAnswers(questions) {
+    return score.reduce(function(previousValue, currentValue, index, array) {
+        return previousValue + currentValue;
+    });
+}
+
+//getting the score
+function checkAnswer(answers) {
+    checkAnswer(userInput, [questionIndex].answers[0]}, questions);
+                $("#" + questions[questionIndex].question).hide();
+                $("#" + questions[questionIndex].question).next().show();
+                numCount--;
+}
+
+
 
 
 
 // function comparing(userAnswerChoice) {
 //     questions[0].question[0];
 //      comparing('d');
+}
+
+
+
  
 //each function is its own peice
-    // var numCount = question.length;
-    // var score = [];
-
-    // var numCount = question.length;
 
     //to do list: check ans., restart quiz function, start quiz function, feedback function
 
