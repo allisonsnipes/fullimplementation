@@ -168,30 +168,28 @@ function generateQuestion(questionIndex){ //what method code is this********
 }
 
 
-//to do function that needs to take in a parameter that is the users ans choice and 
-//needs to compare the users ans to the correcrt ans in data stories.
-function tallyCorrectAnswers(questions) {
-    return score.reduce(function(previousValue, currentValue, index, array) {
-        return previousValue + currentValue;
-    });
-}
-
-//getting the score
-function checkAnswer(answers) {
-    checkAnswer(userInput, [questionIndex].answers[0]}, questions);
-                $("#" + questions[questionIndex].question).hide();
-                $("#" + questions[questionIndex].question).next().show();
-                numCount--;
-}
+//to do: come up with a function that needs to take in a parameter that is the users ans choice,
+// and needs to compare the users ans to the correcrt ans in data stories. Remeber each question is its own piece
 
 
 
+//global variables for counters
+function compare(userAnswerChoice) {//not a one for one this is a parameter not a variable which the comp exspect
+    // if userAnswerChoice === answers[0].correctAnswer[0];
+    //   then 
+  
+    // console.log(questions[0].correctAnswer[0]); do not do this no need to index strings
+   }
+  
+  //  comparing('d');
+  
+  console.log('works');
+  compare(questions);
+   //goal compares functions, counters, feedback
+   //study guide
+   //go at the data like back of hand 
+   //whiteboarding
 
-
-// function comparing(userAnswerChoice) {
-//     questions[0].question[0];
-//      comparing('d');
-}
 
 
 
