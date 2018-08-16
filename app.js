@@ -7,22 +7,15 @@
 //review dot and bracket notation --> think about top down console.log(z[0].car) for nested data
 // javascript convention **** jquery is easier it is javascript its just a library
 // event.preventDefault(); //look at event as a parameter not as a function name
+//to do list: check ans., restart quiz function, start quiz function, feedback function
 
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
   console.log('running');
 });
 
-//start quiz and hide start page
-$(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
-    event.preventDefault();
-    console.log("runnning444");
-    $(".quiz").show();
-    $(".wrapper").hide();
-    $(".feedbackwrapper").hide();
-    $(".retakewrapper").hide();
-});
-
-const questions = [
+var score = 0,
+    currentQuestion = 0,
+    questions = [
     {
         question: "Which country ranks number one in press freedom?",
         answers: {
@@ -132,47 +125,66 @@ const questions = [
         },
         correctAnswer: "a"
     },
-]
+];
 
+//start quiz and hide start page
+$(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
+    event.preventDefault();
+    console.log("runnning start click");
+    $(".quiz").show();
+    $(".wrapper").hide();
+    $(".feedbackwrapper").hide();
+    $(".retakewrapper").hide();
+});
+
+$('.reset').click(function() {
+    event.preventDefault();
+    score = 0;
+    $(".wrapper").show();
+    $(".quiz").hide();
+});
+
+$('.exitquiz').click(function() {
+    event.preventDefault();
+    window.location.replace("http://thinkful.com");
+});
 
 //make data store like the shopping app --> see katie's examples
-function generateQuestion(questionIndex){ //what method code is this********
-    const numCount = question.length;
-    const score = [];
-    const numCount = question.length;
-
-    return`
+function generateQuestion(questionIndex) { 
+    `return
         <fieldset class="quizquestions">
             <legend>
-                ${questions[questionIndex].question} //where did questionIndex come from? auto []******
-            <legend>
+                ${questions[questionIndex].question}
+            </legend>
                 <div>
-                    <input type="radio" name="countries" id="${questions[questionIndex].answers.a}">
-                    <label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label> //out to bottom approach
+                    <input type="radio" id="${questions[questionIndex].answers.a}">
+                    <label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label>
                 </div>
                 <div>
-                    <input type="radio" name="countries" id="${questions[questionIndex].answers.b}">
+                    <input type="radio" id="${questions[questionIndex].answers.b}">
                     <label for="${questions[questionIndex].answers.b}"> ${questions[questionIndex].answers.b}</label>
                 </div>
                 <div>
-                    <input type="radio" name="countries" id="${questions[questionIndex].answers.c}">
+                    <input type="radio" id="${questions[questionIndex].answers.c}">
                     <label for="${questions[questionIndex].answers.c}"> ${questions[questionIndex].answers.c}</label>
                 </div>
                 <div>
-                    <input type="radio" name="countries" id="${questions[questionIndex].answers.d}">
+                    <input type="radio" id="${questions[questionIndex].answers.d}">
                     <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
                 </div>
         </fieldset>
-
         <button class=".submitquiz"> Submit Answer </button>
         <button class=".restartquiz"> Restart Quiz </button>
         <button class=".exitquiz"> Exit Quiz </button>`;
 }
 
-
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
-// and needs to compare the users ans to the correcrt ans in data stories. Remeber each question is its own piece
-$(".submitquiz").click(function() {
+// and needs to compare the users ans to the correcrt ans in data stories. Remember 
+//each question is its own piece
+
+var numCount = questions.length;
+
+$(".submitquiz").on('click', function() {
     var radioButtons = document.getElementsbyId();
     for (var i = 0; i < radioButtons.length; i++) {
         if (radioButtons[i].checked) return radioButtons[i].value;
@@ -180,58 +192,44 @@ $(".submitquiz").click(function() {
     return '';
 });
 
-var userAnswerChoice = radioButtons[i].value();
+var userAnswerChoice = radioButtons.value();
 
-//function compare(userAnswerChoice) {//not a one for one this is a parameter not a variable which the comp exspect
-    // if (userAnswerChoice == answers[0].correctAnswer[0];
-    //   then
+function compare(userAnswerChoice) {//not a one for one. this is a parameter (not a variable) the comput exspects a paramater
+    if (userAnswerChoice == answers[i].correctAnswer[i]) {
+        score ++;
+    } else {
+        score --;
+    }
+};
 
-    // console.log(questions[0].correctAnswer[0]); do not do this no need to index stringss
+function showFeedback() {
 
-  //  comparing('d');
+}
 
-
-  //compare(questions);
-
-
-
-
-   //goal compares functions, counters, feedback
-   //study guide
-   //go at the data like back of hand
-   //whiteboarding
+  compare(questions);
 
 
 
-
-
+//goal 8.16.2018: work on compares functions, counters, feedback
+//study guide
+//whiteboarding
+//go at the data like back of hand
 //each function is its own peice
 
-//to do list: check ans., restart quiz function, start quiz function, feedback function
 
 
 
+// for (var k = question.length - 1; k >0; k--) {
+//     event.preventDefault();
+//     $('#' + k).hide();
+// }
 
-    // for (var k = question.length - 1; k >0; k--) {
-    //     event.preventDefault();
-    //     $('#' + k).hide();
-    // }
+// function questionpopup(question) {
+//     (var i = 0; i < question.length; i++) {
+//}
 
-    // $('.reset').click(function() {
-    //     event.preventDefault();
-    //     location.reload();
-    // });
+// function radioButtons(ary, qNum) {
+//     var answers = [];
+//     for
 
-    // function questionpopup(question) {
-    //     (var i = 0; i < question.length; i++) {
-    //}
-
-    // function radioButtons(ary, qNum) {
-    //     var answers = [];
-    //     for
-
-    //     }
-
-
-console.log('works');
 // console.log(generateQuestion(0).toString());

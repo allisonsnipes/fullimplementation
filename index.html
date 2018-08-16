@@ -31,29 +31,32 @@
 
 <!-- questions: quiz part design, redo the js and css files too -->
 	<div class="quiz hide" id="quizwrapper">
-		<form class="showquiz" onclick="quizquestions">
+		<form class="showquiz" onclick="quizquests">
 			<!-- used to group like items together in a form use text.()-->
 			<fieldset class="quizquestions">
 				<legend>
-					${questions[questionIndex[i]].question} 
-				<legend>
+					<h1> Questions: </h1> 
+				</legend>
 					<div>
-						<input type="radio" id="${questions[questionIndex].answers.a}">
-						<label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label> //out to bottom approach
+						<input type="radio" id="quizquests">
+						<label for="choiceA"> </label> 
 					</div>
 					<div>
-						<input type="radio" id="${questions[questionIndex].answers.b}">
-						<label for="${questions[questionIndex].answers.b}"> ${questions[questionIndex].answers.b}</label>
+						<input type="radio" id="quizquests">
+						<label for="choiceB"> </label>
 					</div>
 					<div>
-						<input type="radio" id="${questions[questionIndex].answers.c}">
-						<label for="${questions[questionIndex].answers.c}"> ${questions[questionIndex].answers.c}</label>
+						<input type="radio" id="quizquests">
+						<label for="choiceC"> </label>
 					</div>
 					<div>
-						<input type="radio" id="${questions[questionIndex].answers.d}">
-						<label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
+						<input type="radio" id="quizquests">
+						<label for="choiceD"> </label>
 					</div>
-            <button class="submitquiz" type="button">Submit Quiz</button>
+			</fieldset>
+			<button class="submitquiz" type="button">Submit</button>
+        	<button class="reset"> Restart Quiz </button>
+        	<button class="exitquiz"> Exit Quiz </button>
 		</form>
 	</div>
 <!-- end questions -->
@@ -62,26 +65,10 @@
 	<div class="feedbackwrapper">
 		<form class ="feedback hide">
 			<h1>Congrats, you're finished!</h1>
-			<p> (insert Name here) how did you do?</p> <!-- Insert name here -->
+			<p> You scored:</p> <!-- Insert score -->
 		</form>
 	</div>
 <!-- endfeedback page -->
-
-<!-- last page: tell the user how they did & restart the quiz-->
-	<div class="retakewrapper hide">
-		<div class="yesorno">
-			<fieldset>
-				<legend>
-					Would you like to retake the quiz?
-				</legend>
-					<div>
-						<button class="ques11" id="submit">Yes</button>
-						<button class="ques12" id="submit">No</button>
-					</div>
-			</fieldset>
-		</div>
-	</div>
-<!-- end last page -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./app.js"></script>
