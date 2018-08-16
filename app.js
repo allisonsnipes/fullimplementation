@@ -15,7 +15,8 @@ $(document).ready(function() { //needs to be outside for global access of data o
 //start quiz and hide start page
 $(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
     event.preventDefault();
-    $(".showquiz").show();
+    console.log("runnning444");
+    $("#quizwrapper").show();
     // $(".wrapper").hide();
     // $(".feedbackwrapper").hide();
     // $(".retakewrapper").hide();
