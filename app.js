@@ -173,9 +173,9 @@ function generateQuestion(questionIndex) {
                     <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
                 </div>
         </fieldset>
-        <button class=".submitquiz"> Submit Answer </button>
-        <button class=".restartquiz"> Restart Quiz </button>
-        <button class=".exitquiz"> Exit Quiz </button>`;
+        <button class="submitquiz"> Submit Answer </button>
+        <button class="reset"> Restart Quiz </button>
+        <button class="exitquiz"> Exit Quiz </button>`;
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
