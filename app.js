@@ -5,8 +5,8 @@
 //start on hardcode 1st to see it is it the same
 //dont nest functions within functions
 //review dot and bracket notation --> think about top down console.log(z[0].car) for nested data
-// javascript convention **** jquery is easier it is javascript its just a library
-// event.preventDefault(); //look at event as a parameter not as a function name
+//javascript convention **** jquery is easier it is javascript its just a library
+//event.preventDefault(); //look at event as a parameter not as a function name
 //to do list: check ans., restart quiz function, start quiz function, feedback function
 
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
@@ -150,32 +150,41 @@ $('.exitquiz').click(function() {
 });
 
 //make data store like the shopping app --> see katie's examples
-function generateQuestion(questionIndex) { 
-    `return
-        <fieldset class="quizquestions">
-            <legend>
-                ${questions[questionIndex].question}
-            </legend>
-                <div>
-                    <input type="radio" id="${questions[questionIndex].answers.a}">
-                    <label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label>
-                </div>
-                <div>
-                    <input type="radio" id="${questions[questionIndex].answers.b}">
-                    <label for="${questions[questionIndex].answers.b}"> ${questions[questionIndex].answers.b}</label>
-                </div>
-                <div>
-                    <input type="radio" id="${questions[questionIndex].answers.c}">
-                    <label for="${questions[questionIndex].answers.c}"> ${questions[questionIndex].answers.c}</label>
-                </div>
-                <div>
-                    <input type="radio" id="${questions[questionIndex].answers.d}">
-                    <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
-                </div>
-        </fieldset>
-        <button class="submitquiz"> Submit Answer </button>
-        <button class="reset"> Restart Quiz </button>
-        <button class="exitquiz"> Exit Quiz </button>`;
+function generateQuestion(questionIndex) {
+    if (questionIndex < questions.length) {
+        return`<fieldset class="quizquestions">
+        <legend>
+            ${questions[questionIndex].question}
+        </legend>
+            <div>
+                <input type="radio" id="${questions[questionIndex].answers.a}">
+                <label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label>
+            </div>
+            <div>
+                <input type="radio" id="${questions[questionIndex].answers.b}">
+                <label for="${questions[questionIndex].answers.b}"> ${questions[questionIndex].answers.b}</label>
+            </div>
+            <div>
+                <input type="radio" id="${questions[questionIndex].answers.c}">
+                <label for="${questions[questionIndex].answers.c}"> ${questions[questionIndex].answers.c}</label>
+            </div>
+            <div>
+                <input type="radio" id="${questions[questionIndex].answers.d}">
+                <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
+            </div>
+    </fieldset>
+    <button class="submitquiz"> Submit Answer </button>
+    <button class="reset"> Restart Quiz </button>
+    <button class="exitquiz"> Exit Quiz </button>`;
+} else {
+    location.reload();
+}
+generateQuestion(questionIndex);
+
+//progress the quiz
+function quizprogression(){
+    questionIndex ++;
+    $(".quizquestions").text(questionIndex+1);
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
@@ -201,12 +210,15 @@ function compare(userAnswerChoice) {//not a one for one. this is a parameter (no
         score --;
     }
 };
+compare(questions);
 
 function showFeedback() {
-
+   percentage = score + 'out of' + numCount;
 }
 
-  compare(questions);
+showFeedback(percentage);
+
+
 
 
 
@@ -228,8 +240,3 @@ function showFeedback() {
 //     (var i = 0; i < question.length; i++) {
 //}
 
-// function radioButtons(ary, qNum) {
-//     var answers = [];
-//     for
-
-// console.log(generateQuestion(0).toString());
