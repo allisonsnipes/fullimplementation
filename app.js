@@ -9,18 +9,19 @@
 // event.preventDefault(); //look at event as a parameter not as a function name
 
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
+  console.log('running');
 });
 
-//start quiz and hide start page 
+//start quiz and hide start page
 $(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
     event.preventDefault();
-    $(".quiz").show();
+    $(".showquiz").show();
     // $(".wrapper").hide();
     // $(".feedbackwrapper").hide();
     // $(".retakewrapper").hide();
 });
 
-const questions = [ 
+const questions = [
     {
         question: "Which country ranks number one in press freedom?",
         answers: {
@@ -29,9 +30,9 @@ const questions = [
             c: "Switzerland",
             d: "England"
             },
-            correctAnswer: "a"  
+            correctAnswer: "a"
     },
-    
+
     {
         question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
         answers: {
@@ -64,7 +65,7 @@ const questions = [
         },
         correctAnswer: "d"
     },
-                    
+
     {
         question: "What is Russia’s ranking on the 2018 World Press Freedom Index?",
         answers: {
@@ -75,7 +76,7 @@ const questions = [
         },
         correctAnswer: "a"
     },
-                    
+
     {
         question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
         answers: {
@@ -86,7 +87,7 @@ const questions = [
         },
         correctAnswer: "c"
     },
-                
+
     {
         question: "Online harassment is less of a concern than physical attacks on journalists.",
         answers: {
@@ -97,7 +98,7 @@ const questions = [
         },
         correctAnswer: "b"
     },
-                
+
     {
         question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
         answers: {
@@ -108,7 +109,7 @@ const questions = [
         },
         correctAnswer: "d"
     },
-                
+
     {
         question: "Press suppression is a third world and/or less developed country’s problem.",
         answers: {
@@ -138,7 +139,7 @@ function generateQuestion(questionIndex){ //what method code is this********
     const numCount = question.length;
     const score = [];
     const numCount = question.length;
-    
+
     return`
         <fieldset class="quizquestions">
             <legend>
@@ -161,7 +162,7 @@ function generateQuestion(questionIndex){ //what method code is this********
                     <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
                 </div>
         </fieldset>
-            
+
         <button class=".submitquiz"> Submit Answer </button>
         <button class=".restartquiz"> Restart Quiz </button>
         <button class=".exitquiz"> Exit Quiz </button>`;
@@ -176,30 +177,29 @@ function generateQuestion(questionIndex){ //what method code is this********
 //global variables for counters
 //function compare(userAnswerChoice) {//not a one for one this is a parameter not a variable which the comp exspect
     // if userAnswerChoice === answers[0].correctAnswer[0];
-    //   then 
-  
-    // console.log(questions[0].correctAnswer[0]); do not do this no need to index strings
-   }
-  
+    //   then
+
+    // console.log(questions[0].correctAnswer[0]); do not do this no need to index stringss
+
   //  comparing('d');
-  
- 
+
+
   //compare(questions);
    //goal compares functions, counters, feedback
    //study guide
-   //go at the data like back of hand 
+   //go at the data like back of hand
    //whiteboarding
 
 
 
 
- 
+
 //each function is its own peice
 
     //to do list: check ans., restart quiz function, start quiz function, feedback function
 
 
-    
+
 
     // for (var k = question.length - 1; k >0; k--) {
     //     event.preventDefault();
@@ -224,6 +224,3 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 console.log('works');
 // console.log(generateQuestion(0).toString());
-
-
-
