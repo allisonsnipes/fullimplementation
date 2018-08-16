@@ -17,9 +17,9 @@ $(".start").on("click", function(event) { //dont pass function names here becaus
     event.preventDefault();
     console.log("runnning444");
     $(".quiz").show();
-    // $(".wrapper").hide();
-    // $(".feedbackwrapper").hide();
-    // $(".retakewrapper").hide();
+    $(".wrapper").hide();
+    $(".feedbackwrapper").hide();
+    $(".retakewrapper").hide();
 });
 
 const questions = [
@@ -172,12 +172,18 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
 // and needs to compare the users ans to the correcrt ans in data stories. Remeber each question is its own piece
+$(".submitquiz").click(function() {
+    var radioButtons = document.getElementsbyId();
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) return radioButtons[i].value;
+    }
+    return '';
+});
 
+var userAnswerChoice = radioButtons[i].value();
 
-
-//global variables for counters
 //function compare(userAnswerChoice) {//not a one for one this is a parameter not a variable which the comp exspect
-    // if userAnswerChoice === answers[0].correctAnswer[0];
+    // if (userAnswerChoice == answers[0].correctAnswer[0];
     //   then
 
     // console.log(questions[0].correctAnswer[0]); do not do this no need to index stringss
@@ -186,6 +192,10 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 
   //compare(questions);
+
+
+
+
    //goal compares functions, counters, feedback
    //study guide
    //go at the data like back of hand
