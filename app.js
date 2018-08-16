@@ -174,7 +174,7 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 
 //global variables for counters
-function compare(userAnswerChoice) {//not a one for one this is a parameter not a variable which the comp exspect
+//function compare(userAnswerChoice) {//not a one for one this is a parameter not a variable which the comp exspect
     // if userAnswerChoice === answers[0].correctAnswer[0];
     //   then 
   
@@ -183,8 +183,8 @@ function compare(userAnswerChoice) {//not a one for one this is a parameter not 
   
   //  comparing('d');
   
-  console.log('works');
-  compare(questions);
+ 
+  //compare(questions);
    //goal compares functions, counters, feedback
    //study guide
    //go at the data like back of hand 
@@ -223,7 +223,7 @@ function compare(userAnswerChoice) {//not a one for one this is a parameter not 
 
 
 console.log('works');
-console.log(generateQuestion(0).toString());
+// console.log(generateQuestion(0).toString());
 
 
 
