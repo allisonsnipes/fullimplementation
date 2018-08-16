@@ -35,26 +35,24 @@
 			<!-- used to group like items together in a form use text.()-->
 			<fieldset class="quizquestions">
 				<legend>
-					Which country ranks number one in press freedom?
-				</legend>
+					${questions[questionIndex].question} 
+				<legend>
 					<div>
-						<input type="radio" name="countries" id="Norway">
-						<label for="Norway"> Norway</label>
+						<input type="radio" name="countries" id="${questions[questionIndex].answers.a}">
+						<label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label> //out to bottom approach
 					</div>
 					<div>
-						<input type="radio" name="countries" id="USA">
-						<label for="USA">USA</label>
+						<input type="radio" name="countries" id="${questions[questionIndex].answers.b}">
+						<label for="${questions[questionIndex].answers.b}"> ${questions[questionIndex].answers.b}</label>
 					</div>
 					<div>
-						<input type="radio" name="countries" id="Switzerland">
-						<label for="Switzerland">Switzerland</label>
-					</div>	
-
-					<div>
-						<input type="radio" name="countries" id="England">
-						<label for="England">England</label>
+						<input type="radio" name="countries" id="${questions[questionIndex].answers.c}">
+						<label for="${questions[questionIndex].answers.c}"> ${questions[questionIndex].answers.c}</label>
 					</div>
-			</fieldset>
+					<div>
+						<input type="radio" name="countries" id="${questions[questionIndex].answers.d}">
+						<label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
+					</div>
             <button class="submitquiz">Submit Quiz</button>
 		</form>
 	</div>

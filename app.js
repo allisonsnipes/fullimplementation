@@ -16,7 +16,7 @@ $(document).ready(function() { //needs to be outside for global access of data o
 $(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
     event.preventDefault();
     console.log("runnning444");
-    $("#quizwrapper").show();
+    $(".quiz").show();
     // $(".wrapper").hide();
     // $(".feedbackwrapper").hide();
     // $(".retakewrapper").hide();
@@ -197,7 +197,7 @@ function generateQuestion(questionIndex){ //what method code is this********
 
 //each function is its own peice
 
-    //to do list: check ans., restart quiz function, start quiz function, feedback function
+//to do list: check ans., restart quiz function, start quiz function, feedback function
 
 
 
