@@ -9,68 +9,68 @@
 //event.preventDefault(); //look at event as a parameter not as a function name
 //to do list: check ans., restart quiz function, start quiz function, feedback function
 
+//always put function calls inside of the document ready same as preventdefault 
+//ok to call functions within a function
+//dont build w/in function
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
   console.log('running');
+  startQuiz();
+
 });
 
 var score = 0,
     currentQuestion = 0,
     questions = [
     {
-        question: "Which country ranks number one in press freedom?",
-        answers: {
-            a: "Norway",
-            b: "USA",
-            c: "Switzerland",
-            d: "England"
-            },
-            correctAnswer: "a"
-    },
-
-    {
-        question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
-        answers: {
-            a: "2/3",
-            b: "Internationally, we do not have the figures to back up these claims.",
-            c: "1/3",
-            d: "It happens more or less developed counties, we do not have the data to back up these claims."
-            },
-            correctAnswer: "a"
-    },
-
-    {
-        question: "To date, which country has the world’s worst ranking of press freedom?",
-        answers: {
-            a: "Mexico",
-            b: "Russia",
-            c: "South Sudan",
-            d: "North Korea"
-        },
-        correctAnswer: "d"
-    },
-
-    {
-        question: "What is the ranking of the United States on the 2018 World Press Freedom Index?",
-        answers: {
-            a: "80",
-            b: "1",
-            c: "30",
-            d: "40"
-        },
-        correctAnswer: "d"
-    },
-
-    {
-        question: "What is Russia’s ranking on the 2018 World Press Freedom Index?",
-        answers: {
-            a: "148",
-            b: "80",
-            c: "100",
-            d: "50"
+    question: "Which country ranks number one in press freedom?",
+    answers: {
+        a: "Norway",
+        b: "USA",
+        c: "Switzerland",
+        d: "England"
         },
         correctAnswer: "a"
     },
-
+    {
+    question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
+    answers: {
+        a: "2/3",
+        b: "Internationally, we do not have the figures to back up these claims.",
+        c: "1/3",
+        d: "It happens more or less developed counties, we do not have the data to back up these claims."
+        },
+        correctAnswer: "a"
+    },
+    {
+    question: "To date, which country has the world’s worst ranking of press freedom?",
+    answers: {
+        a: "Mexico",
+        b: "Russia",
+        c: "South Sudan",
+        d: "North Korea"
+    },
+    correctAnswer: "d"
+    },
+    {
+    question: "What is the ranking of the United States on the 2018 World Press Freedom Index?",
+    answers: {
+        a: "80",
+        b: "1",
+        c: "30",
+        d: "40"
+    },
+    correctAnswer: "d"
+    },
+    {
+    question: "What is Russia’s ranking on the 2018 World Press Freedom Index?",
+    answers: {
+        a: "148",
+        b: "80",
+        c: "100",
+        d: "50"
+    },
+    correctAnswer: "a"
+    },
     {
         question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
         answers: {
@@ -81,7 +81,6 @@ var score = 0,
         },
         correctAnswer: "c"
     },
-
     {
         question: "Online harassment is less of a concern than physical attacks on journalists.",
         answers: {
@@ -92,7 +91,6 @@ var score = 0,
         },
         correctAnswer: "b"
     },
-
     {
         question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
         answers: {
@@ -103,7 +101,6 @@ var score = 0,
         },
         correctAnswer: "d"
     },
-
     {
         question: "Press suppression is a third world and/or less developed country’s problem.",
         answers: {
@@ -114,7 +111,6 @@ var score = 0,
         },
         correctAnswer: "b"
     },
-
     {
         question: "This year alone, what percentage of women journalists were harassed offline?",
         answers: {
@@ -127,31 +123,39 @@ var score = 0,
     },
 ];
 
-//start quiz and hide start page
-$(".start").on("click", function(event) { //dont pass function names here because its going to think its a parameter automatically runs when user clicks
-    event.preventDefault();
-    console.log("runnning start click");
-    $(".quiz").show();
-    $(".wrapper").hide();
-    $(".feedbackwrapper").hide();
-    $(".retakewrapper").hide();
-});
+//start quiz and hide start page and other components
+function startQuiz() {
+    $(".start").on("click", function(event) { //dont pass function names here, its going to think its a parameter automatically runs when user clicks
+        event.preventDefault();
+        console.log("start click functioning");
+        $(".quiz").show();
+        $(".wrapper").hide();
+        $(".feedbackwrapper").hide();
+        $(".retakewrapper").hide();
+    });
+}
 
-$('.reset').click(function() {
-    event.preventDefault();
-    score = 0;
-    $(".wrapper").show();
-    $(".quiz").hide();
-});
+//reseting quiz on reset button click
+function resetQuiz() {
+    $('.reset').click(function() {
+        event.preventDefault();
+        console.log("reset button working");
+        score = 0;
+        $(".wrapper").show();
+        $(".quiz").hide();
+    });
+}
 
-$('.exitquiz').click(function() {
-    event.preventDefault();
-    window.location.replace("http://thinkful.com");
-});
+function exitQuizApp() {
+    $('.exitquiz').click(function() {
+        event.preventDefault();
+        window.location.replace("http://thinkful.com");
+    });
+}
 
 //make data store like the shopping app --> see katie's examples
 function generateQuestion(questionIndex) {
-    if (questionIndex < questions.length) {
+    // if (questionIndex < questions.length) {
         return`<fieldset class="quizquestions">
         <legend>
             ${questions[questionIndex].question}
@@ -176,13 +180,15 @@ function generateQuestion(questionIndex) {
     <button class="submitquiz"> Submit Answer </button>
     <button class="reset"> Restart Quiz </button>
     <button class="exitquiz"> Exit Quiz </button>`;
-} else {
-    location.reload();
 }
-generateQuestion(questionIndex);
+// } else {
+    // location.reload();
+    // }
+
+// generateQuestion(questionIndex);
 
 //progress the quiz
-function quizprogression(){
+function quizprogression() {
     questionIndex ++;
     $(".quizquestions").text(questionIndex+1);
 }
@@ -191,8 +197,7 @@ function quizprogression(){
 // and needs to compare the users ans to the correcrt ans in data stories. Remember 
 //each question is its own piece
 
-var numCount = questions.length;
-
+//rethink this part dont put return function with an if ******** focus on a single peice before moving on
 $(".submitquiz").on('click', function() {
     var radioButtons = document.getElementsbyId();
     for (var i = 0; i < radioButtons.length; i++) {
@@ -201,34 +206,30 @@ $(".submitquiz").on('click', function() {
     return '';
 });
 
-var userAnswerChoice = radioButtons.value();
 
-function compare(userAnswerChoice) {//not a one for one. this is a parameter (not a variable) the comput exspects a paramater
-    if (userAnswerChoice == answers[i].correctAnswer[i]) {
-        score ++;
-    } else {
-        score --;
-    }
-};
-compare(questions);
 
-function showFeedback() {
-   percentage = score + 'out of' + numCount;
-}
+// function showFeedback() {
+//    percentage = score + 'out of' + numCount;
+// }
 
-showFeedback(percentage);
+// showFeedback();
 
 
 
 
-
+//************
 //goal 8.16.2018: work on compares functions, counters, feedback
 //study guide
 //whiteboarding
 //go at the data like back of hand
 //each function is its own peice
 
-
+//goal 8.20.2018: fix code, compares functions, counters, feedback
+//study guide
+//each piece is doable break it down to simple functions and parts => will move faster most popular approach 
+//add incrementally then you can debug
+//avoid getting multiple bugs only do new stuff when working properly
+//be deliberate and method
 
 
 // for (var k = question.length - 1; k >0; k--) {
