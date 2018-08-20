@@ -21,7 +21,7 @@ $(document).ready(function() { //needs to be outside for global access of data o
   exitQuiz();
   generateQuestion();
   quizProgression();
-  comparinganswers();
+  comparingAnswers();
 });
 
 var score = 0,
@@ -191,32 +191,34 @@ function generateQuestion() {
 
 //progress the quiz
 function quizProgression() {
-    questionIndex ++;
-    $(".quizquestions").text(currentQuestion+1);
-};
+    $(".submitquiz").on("click", function(event){
+        event.preventDefault();
+        currentQuestion++;
+        $(".quizquestions").text(currentQuestion+1);
+    });
+}
 
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
 // and needs to compare the users ans to the correct ans in data stories. Remember 
 //each question is its own piece
 
-var anschoice = document.getElementsByName("anschoice").value;
 var choiceLetter;
-if (document.getElementById("r1").checked) {
-    choiceLetter = document.getElementById("r1").value;
-} else if (document.getElementById("r2").checked) {
-    choiceLetter = document.getElementById("r2").value;
-} else if (document.getElementById("r3").checked) {
-    choiceLetter = document.getElementById("r3").value;
-} else if (document.getElementById("r4").checked) {
-    choiceLetter = document.getElementById("r4").value;
-}
 
-//compares user input to the correct answer
 function comparingAnswers() {
+    if (document.getElementById("r1").checked) {
+        choiceLetter = document.getElementById("r1").value;
+    } else if (document.getElementById("r2").checked) {
+        choiceLetter = document.getElementById("r2").value;
+    } else if (document.getElementById("r3").checked) {
+        choiceLetter = document.getElementById("r3").value;
+    } else if (document.getElementById("r4").checked) {
+        choiceLetter = document.getElementById("r4").value;
+    }
+
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
-        if (choiceLetter == correctAnswer){
+        if (choiceLetter === correctAnswer) {
             score++;    
         } else if (choiceLetter !== correctAnswer) {
             alert("I am sorry, but that is the incorrect answer!");
@@ -225,6 +227,7 @@ function comparingAnswers() {
         generateQuestion();
     });
 }
+
 
 
 // function showFeedback() {
