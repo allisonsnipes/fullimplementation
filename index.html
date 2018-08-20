@@ -24,7 +24,7 @@
 
 			<button class="start" id="startquiz" type="Submit">Start</button> 
 			<button class="restartquiz" id="restartquiz" type="Submit">Restart Quiz</button>
-			<button class="exitquiz" id="exitquiz" type="Submit"> Exit Quiz </button>
+			<button class="exit" id="exitquiz" type="Submit"> Exit Quiz </button>
 		</div>
 	</div> 
 <!-- end start page -->
@@ -35,28 +35,28 @@
 			<!-- used to group like items together in a form use text.()-->
 			<fieldset class="quizquestions">
 				<legend>
-					<h1> Question: </h1> 
+					<span class= "questions"> </span>
 				</legend>
 					<div>
-						<input type="radio" id="quizquests">
-						<label for="choiceA"> </label> 
+						<input type="radio" id="r1" name="anschoice">
+						<label for="choiceA"> a: </label> 
 					</div>
 					<div>
-						<input type="radio" id="quizquests">
-						<label for="choiceB"> </label>
+						<input type="radio" id="r2" name="anschoice">
+						<label for="choiceB"> b: </label>
 					</div>
 					<div>
-						<input type="radio" id="quizquests">
-						<label for="choiceC"> </label>
+						<input type="radio" id="r3" name="anschoice">
+						<label for="choiceC"> c: </label>
 					</div>
 					<div>
-						<input type="radio" id="quizquests">
-						<label for="choiceD"> </label>
+						<input type="radio" id="r4" name="anschoice">
+						<label for="choiceD"> d: </label>
 					</div>
 			</fieldset>
-			<button class="submitquiz" type="button">Submit</button>
-        	<button class="reset"> Restart Quiz </button>
-        	<button class="exitquiz"> Exit Quiz </button>
+			<button class="submitquiz" id="sumbutbutton" type="button">Submit</button>
+        	<button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
+        	<button class="exitquiz" id="exitbutton" type="button"> Exit Quiz </button>
 		</form>
 	</div>
 <!-- end questions -->

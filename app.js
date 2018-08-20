@@ -13,9 +13,11 @@
 //ok to call functions within a function
 //dont build w/in function
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
-  console.log('running');
+  console.log("document ready function working");
   startQuiz();
-
+  resetQuiz();
+  exitQuiz();
+  generateQuestion();
 });
 
 var score = 0,
@@ -137,7 +139,7 @@ function startQuiz() {
 
 //reseting quiz on reset button click
 function resetQuiz() {
-    $('.reset').click(function() {
+    $("#resetbutton").on("click", function(event) {
         event.preventDefault();
         console.log("reset button working");
         score = 0;
@@ -146,16 +148,17 @@ function resetQuiz() {
     });
 }
 
-function exitQuizApp() {
-    $('.exitquiz').click(function() {
+//exiting the quiz on button click --not working
+function exitQuiz() {
+    $("#exitbutton").on("click", function(event) {
         event.preventDefault();
-        window.location.replace("http://thinkful.com");
+        console.log("exit button working")
+        window.location.href = 'https://thinkful.com'
     });
 }
 
 //make data store like the shopping app --> see katie's examples
-function generateQuestion(questionIndex) {
-    // if (questionIndex < questions.length) {
+function generateQuestion() {
         return`<fieldset class="quizquestions">
         <legend>
             ${questions[questionIndex].question}
@@ -177,15 +180,10 @@ function generateQuestion(questionIndex) {
                 <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
             </div>
     </fieldset>
-    <button class="submitquiz"> Submit Answer </button>
-    <button class="reset"> Restart Quiz </button>
-    <button class="exitquiz"> Exit Quiz </button>`;
+    <button class="submitquiz" id="sumbutbutton" type="button">Submit</button>
+    <button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
+    <button class="exitquiz" id="exitbutton" type="button"> Exit Quiz </button>`;
 }
-// } else {
-    // location.reload();
-    // }
-
-// generateQuestion(questionIndex);
 
 //progress the quiz
 function quizprogression() {
@@ -194,9 +192,10 @@ function quizprogression() {
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
-// and needs to compare the users ans to the correcrt ans in data stories. Remember 
+// and needs to compare the users ans to the correct ans in data stories. Remember 
 //each question is its own piece
 
+var anschoice 
 //rethink this part dont put return function with an if ******** focus on a single peice before moving on
 $(".submitquiz").on('click', function() {
     var radioButtons = document.getElementsbyId();
@@ -229,7 +228,7 @@ $(".submitquiz").on('click', function() {
 //each piece is doable break it down to simple functions and parts => will move faster most popular approach 
 //add incrementally then you can debug
 //avoid getting multiple bugs only do new stuff when working properly
-//be deliberate and method
+//be deliberate and methodic
 
 
 // for (var k = question.length - 1; k >0; k--) {
@@ -240,4 +239,3 @@ $(".submitquiz").on('click', function() {
 // function questionpopup(question) {
 //     (var i = 0; i < question.length; i++) {
 //}
-
