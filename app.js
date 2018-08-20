@@ -1,4 +1,3 @@
-'use strict';
 //Notes:
 //only use global variables sparingly throught the life cycle, not all variables should be global
 //keep functions seperate from each
@@ -12,12 +11,17 @@
 //always put function calls inside of the document ready same as preventdefault 
 //ok to call functions within a function
 //dont build w/in function
+
+'use strict';
+
 $(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
   console.log("document ready function working");
   startQuiz();
   resetQuiz();
   exitQuiz();
   generateQuestion();
+  quizProgression();
+  comparinganswers();
 });
 
 var score = 0,
@@ -186,25 +190,41 @@ function generateQuestion() {
 }
 
 //progress the quiz
-function quizprogression() {
+function quizProgression() {
     questionIndex ++;
     $(".quizquestions").text(currentQuestion+1);
-}
+};
+
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
 // and needs to compare the users ans to the correct ans in data stories. Remember 
 //each question is its own piece
 
-var anschoice 
-//rethink this part dont put return function with an if ******** focus on a single peice before moving on
-$(".submitquiz").on('click', function() {
-    var radioButtons = document.getElementsbyId();
-    for (var i = 0; i < radioButtons.length; i++) {
-        if (radioButtons[i].checked) return radioButtons[i].value;
-    }
-    return '';
-});
+var anschoice = document.getElementsByName("anschoice").value;
+var choiceLetter;
+if (document.getElementById("r1").checked) {
+    choiceLetter = document.getElementById("r1").value;
+} else if (document.getElementById("r2").checked) {
+    choiceLetter = document.getElementById("r2").value;
+} else if (document.getElementById("r3").checked) {
+    choiceLetter = document.getElementById("r3").value;
+} else if (document.getElementById("r4").checked) {
+    choiceLetter = document.getElementById("r4").value;
+}
 
+//compares user input to the correct answer
+function comparingAnswers() {
+    $(".submitQuiz").on("click", function(event) {
+        event.preventDefault();
+        if (choiceLetter == correctAnswer){
+            score++;    
+        } else if (choiceLetter !== correctAnswer) {
+            alert("I am sorry, but that is the incorrect answer!");
+        }
+        currentQuestion++;
+        generateQuestion();
+    });
+}
 
 
 // function showFeedback() {
