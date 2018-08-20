@@ -159,36 +159,36 @@ function exitQuiz() {
 
 //make data store like the shopping app --> see katie's examples
 function generateQuestion() {
-        return`<fieldset class="quizquestions">
+        $(".showQuiz").html(`<fieldset class="quizquestions">
         <legend>
-            ${questions[questionIndex].question}
+            ${questions[currentQuestion].question}
         </legend>
             <div>
-                <input type="radio" id="${questions[questionIndex].answers.a}">
-                <label for="${questions[questionIndex].answers.a}"> ${questions[questionIndex].answers.a}</label>
+                <input type="radio" id="${questions[currentQuestion].answers.a}">
+                <label for="${questions[currentQuestion].answers.a}"> ${questions[currentQuestion].answers.a}</label>
             </div>
             <div>
-                <input type="radio" id="${questions[questionIndex].answers.b}">
-                <label for="${questions[questionIndex].answers.b}"> ${questions[questionIndex].answers.b}</label>
+                <input type="radio" id="${questions[currentQuestion].answers.b}">
+                <label for="${questions[currentQuestion].answers.b}"> ${questions[currentQuestion].answers.b}</label>
             </div>
             <div>
-                <input type="radio" id="${questions[questionIndex].answers.c}">
-                <label for="${questions[questionIndex].answers.c}"> ${questions[questionIndex].answers.c}</label>
+                <input type="radio" id="${questions[currentQuestion].answers.c}">
+                <label for="${questions[currentQuestion].answers.c}"> ${questions[currentQuestion].answers.c}</label>
             </div>
             <div>
-                <input type="radio" id="${questions[questionIndex].answers.d}">
-                <label for="${questions[questionIndex].answers.d}"> ${questions[questionIndex].answers.d}</label>
+                <input type="radio" id="${questions[currentQuestion].answers.d}">
+                <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
             </div>
     </fieldset>
     <button class="submitquiz" id="sumbutbutton" type="button">Submit</button>
     <button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
-    <button class="exitquiz" id="exitbutton" type="button"> Exit Quiz </button>`;
+    <button class="exitquiz" id="exitbutton" type="button"> Exit Quiz </button>`);
 }
 
 //progress the quiz
 function quizprogression() {
     questionIndex ++;
-    $(".quizquestions").text(questionIndex+1);
+    $(".quizquestions").text(currentQuestion+1);
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
