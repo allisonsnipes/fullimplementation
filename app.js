@@ -20,7 +20,7 @@ $(document).ready(function() { //needs to be outside for global access of data o
   resetQuiz();
   exitQuiz();
   generateQuestion();
-  quizProgression();
+//   quizProgression();
   comparingAnswers();
 });
 
@@ -35,7 +35,7 @@ var score = 0,
         c: "Switzerland",
         d: "England"
         },
-        correctAnswer: "a"
+        currentAnswer: "a"
     },
     {
     question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
@@ -143,7 +143,7 @@ function startQuiz() {
 
 //reseting quiz on reset button click
 function resetQuiz() {
-    $("#resetbutton").on("click", function(event) {
+    $(".reset").on("click", function(event) {
         event.preventDefault();
         console.log("reset button working");
         score = 0;
@@ -154,7 +154,7 @@ function resetQuiz() {
 
 //exiting the quiz on button click --not working
 function exitQuiz() {
-    $("#exitbutton").on("click", function(event) {
+    $(".exitQutton").on("click", function(event) {
         event.preventDefault();
         console.log("exit button working")
         window.location.href = 'https://thinkful.com'
@@ -164,9 +164,9 @@ function exitQuiz() {
 //make data store like the shopping app --> see katie's examples
 function generateQuestion() {
         $(".showQuiz").html(`<fieldset class="quizquestions">
-        <legend>
-            ${questions[currentQuestion].question}
-        </legend>
+            <legend>
+                ${questions[currentQuestion].question}
+            </legend>
             <div>
                 <input type="radio" id="${questions[currentQuestion].answers.a}">
                 <label for="${questions[currentQuestion].answers.a}"> ${questions[currentQuestion].answers.a}</label>
@@ -183,40 +183,33 @@ function generateQuestion() {
                 <input type="radio" id="${questions[currentQuestion].answers.d}">
                 <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
             </div>
-    </fieldset>
-    <button class="submitquiz" id="sumbutbutton" type="button">Submit</button>
-    <button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
-    <button class="exitquiz" id="exitbutton" type="button"> Exit Quiz </button>`);
-}
-
-//progress the quiz
-function quizProgression() {
-    $(".submitquiz").on("click", function(event){
-        event.preventDefault();
-        currentQuestion++;
-        $(".quizquestions").text(currentQuestion+1);
-    });
+            </fieldset>
+            <button class="submitQuiz" id="sumbutbutton" type="button">Submit</button>
+        	<button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
+        	<button class="exitQuiz" id="exitbutton" type="button"> Exit Quiz </button>`);
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
 // and needs to compare the users ans to the correct ans in data stories. Remember 
 //each question is its own piece
 
-var choiceLetter;
-if (document.getElementById("r1").checked) {
-    choiceLetter = document.getElementById("r1").value;
-} else if (document.getElementById("r2").checked) {
-    choiceLetter = document.getElementById("r2").value;
-} else if (document.getElementById("r3").checked) {
-    choiceLetter = document.getElementById("r3").value;
-} else if (document.getElementById("r4").checked) {
-    choiceLetter = document.getElementById("r4").value;
-}
+// var choiceLetter;
+// if (document.getElementById("r1").checked) {
+//     choiceLetter = document.getElementById("r1").value;
+// } else if (document.getElementById("r2").checked) {
+//     choiceLetter = document.getElementById("r2").value;
+// } else if (document.getElementById("r3").checked) {
+//     choiceLetter = document.getElementById("r3").value;
+// } else if (document.getElementById("r4").checked) {
+//     choiceLetter = document.getElementById("r4").value;
+// }
 
 function comparingAnswers() {
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
-        if (choiceLetter === correctAnswer) {
+        // var x = $(`${questions[currentQuestion]}`).val('');
+        console.log(questions[currentQuestion])
+        if (choiceLetter === questions[currentQuestion].correctAnswer) {
             score++;    
         } else if (choiceLetter !== correctAnswer) {
             alert("I am sorry, but that is the incorrect answer!");
