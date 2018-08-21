@@ -78,54 +78,54 @@ var score = 0,
     correctAnswer: "a"
     },
     {
-        question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
-        answers: {
-            a: "It is online, no real harm is done.",
-            b: "No, journalists are just looking for attention, or to stir up tension for their newsfeed.",
-            c: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
-            d: "We all know trolling is a serious problem, but infringement is a too serious of a label to use."
-        },
-        correctAnswer: "c"
+    question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
+    answers: {
+        a: "It is online, no real harm is done.",
+        b: "No, journalists are just looking for attention, or to stir up tension for their newsfeed.",
+        c: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
+        d: "We all know trolling is a serious problem, but infringement is a too serious of a label to use."
+    },
+    correctAnswer: "c"
     },
     {
-        question: "Online harassment is less of a concern than physical attacks on journalists.",
-        answers: {
-            a: "True, as long as the physical person is not harmed—cyberbullying is not an issue.",
-            b: "False, online harassment is as serious of an offense as physical attacks.",
-            c: "True, press freedom is largely limited and more of a concern offline.",
-            d: "No quantifiable data exist on the subject more resources are needed."
-        },
-        correctAnswer: "b"
+    question: "Online harassment is less of a concern than physical attacks on journalists.",
+    answers: {
+        a: "True, as long as the physical person is not harmed—cyberbullying is not an issue.",
+        b: "False, online harassment is as serious of an offense as physical attacks.",
+        c: "True, press freedom is largely limited and more of a concern offline.",
+        d: "No quantifiable data exist on the subject more resources are needed."
+    },
+    correctAnswer: "b"
     },
     {
-        question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
-        answers: {
-            a: "Disinformation: journalistic content on social networks is drowned in a flood of fake new and pro-government content.",
-            b: "Amplification: the impact of pro-government content is artificially enhanced by commentators who are paid by the government to post messages on social networks or by bots (computer programs that automatically generate posts).",
-            c: "Intimidation: journalists are personally targeted, insulted and theatened, in order to discredit them and reduce them to silence.",
-            d: "All of the above are forms of attacks on journalists."
-        },
-        correctAnswer: "d"
+    question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
+    answers: {
+        a: "Disinformation: journalistic content on social networks is drowned in a flood of fake new and pro-government content.",
+        b: "Amplification: the impact of pro-government content is artificially enhanced by commentators who are paid by the government to post messages on social networks or by bots (computer programs that automatically generate posts).",
+        c: "Intimidation: journalists are personally targeted, insulted and theatened, in order to discredit them and reduce them to silence.",
+        d: "All of the above are forms of attacks on journalists."
+    },
+    correctAnswer: "d"
     },
     {
-        question: "Press suppression is a third world and/or less developed country’s problem.",
-        answers: {
-            a: "True, this is largely a less developed country problem.",
-            b: "False, it concerns countries from both developed and less developed democracies and governments.",
-            c: "True, young governments do not have the resources to enforce press freedom.",
-            d: "False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences."
-        },
-        correctAnswer: "b"
+    question: "Press suppression is a third world and/or less developed country’s problem.",
+    answers: {
+        a: "True, this is largely a less developed country problem.",
+        b: "False, it concerns countries from both developed and less developed democracies and governments.",
+        c: "True, young governments do not have the resources to enforce press freedom.",
+        d: "False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences."
+    },
+    correctAnswer: "b"
     },
     {
-        question: "This year alone, what percentage of women journalists were harassed offline?",
-        answers: {
-            a: "25%",
-            b: "No data is available to acurrately discuss tnhis problem.",
-            c: "75%",
-            d: "30%"
-        },
-        correctAnswer: "a"
+    question: "This year alone, what percentage of women journalists were harassed offline?",
+    answers: {
+        a: "25%",
+        b: "No data is available to acurrately discuss tnhis problem.",
+        c: "75%",
+        d: "30%"
+    },
+    correctAnswer: "a"
     },
 ];
 
@@ -198,24 +198,22 @@ function quizProgression() {
     });
 }
 
-
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
 // and needs to compare the users ans to the correct ans in data stories. Remember 
 //each question is its own piece
 
 var choiceLetter;
+if (document.getElementById("r1").checked) {
+    choiceLetter = document.getElementById("r1").value;
+} else if (document.getElementById("r2").checked) {
+    choiceLetter = document.getElementById("r2").value;
+} else if (document.getElementById("r3").checked) {
+    choiceLetter = document.getElementById("r3").value;
+} else if (document.getElementById("r4").checked) {
+    choiceLetter = document.getElementById("r4").value;
+}
 
 function comparingAnswers() {
-    if (document.getElementById("r1").checked) {
-        choiceLetter = document.getElementById("r1").value;
-    } else if (document.getElementById("r2").checked) {
-        choiceLetter = document.getElementById("r2").value;
-    } else if (document.getElementById("r3").checked) {
-        choiceLetter = document.getElementById("r3").value;
-    } else if (document.getElementById("r4").checked) {
-        choiceLetter = document.getElementById("r4").value;
-    }
-
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
         if (choiceLetter === correctAnswer) {
@@ -224,7 +222,7 @@ function comparingAnswers() {
             alert("I am sorry, but that is the incorrect answer!");
         }
         currentQuestion++;
-        generateQuestion();
+        generateQuestion++;
     });
 }
 
