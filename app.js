@@ -35,7 +35,7 @@ var score = 0,
         c: "Switzerland",
         d: "England"
         },
-        currentAnswer: "a"
+        correctAnswer: "a"
     },
     {
     question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
@@ -168,19 +168,19 @@ function generateQuestion() {
                 ${questions[currentQuestion].question}
             </legend>
             <div>
-                <input type="radio" id="${questions[currentQuestion].answers.a}">
+                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.a}">
                 <label for="${questions[currentQuestion].answers.a}"> ${questions[currentQuestion].answers.a}</label>
             </div>
             <div>
-                <input type="radio" id="${questions[currentQuestion].answers.b}">
+                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.b}">
                 <label for="${questions[currentQuestion].answers.b}"> ${questions[currentQuestion].answers.b}</label>
             </div>
             <div>
-                <input type="radio" id="${questions[currentQuestion].answers.c}">
+                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.c}">
                 <label for="${questions[currentQuestion].answers.c}"> ${questions[currentQuestion].answers.c}</label>
             </div>
             <div>
-                <input type="radio" id="${questions[currentQuestion].answers.d}">
+                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
                 <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
             </div>
             </fieldset>
@@ -190,36 +190,27 @@ function generateQuestion() {
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
-// and needs to compare the users ans to the correct ans in data stories. Remember 
-//each question is its own piece
-
-// var choiceLetter;
-// if (document.getElementById("r1").checked) {
-//     choiceLetter = document.getElementById("r1").value;
-// } else if (document.getElementById("r2").checked) {
-//     choiceLetter = document.getElementById("r2").value;
-// } else if (document.getElementById("r3").checked) {
-//     choiceLetter = document.getElementById("r3").value;
-// } else if (document.getElementById("r4").checked) {
-//     choiceLetter = document.getElementById("r4").value;
-// }
+// and needs to compare the users ans to the correct ans in data stories. Remember each question is its own piece
 
 function comparingAnswers() {
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
         // var x = $(`${questions[currentQuestion]}`).val('');
+        var choiceLetter = $("input[type='radio'][name='quizchoices']:checked").val('');
         console.log(questions[currentQuestion])
         if (choiceLetter === questions[currentQuestion].correctAnswer) {
             score++;    
-        } else if (choiceLetter !== correctAnswer) {
+        } else if (choiceLetter !== questions[currentQuestion].correctAnswer) {
             alert("I am sorry, but that is the incorrect answer!");
         }
         currentQuestion++;
         generateQuestion++;
     });
 }
-
-
+//thurs
+//1. generate questions only choose one radio button html validation --done
+//2. add value attributes to the inputs abcd ==> for comparisoins --done
+//then questions should start workiung and scores will work
 
 // function showFeedback() {
 //    percentage = score + 'out of' + numCount;
