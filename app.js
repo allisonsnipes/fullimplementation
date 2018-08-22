@@ -20,8 +20,8 @@ $(document).ready(function() { //needs to be outside for global access of data o
   resetQuiz();
   exitQuiz();
   generateQuestion();
-//   quizProgression();
   comparingAnswers();
+  //showFeedback();
 });
 
 var score = 0,
@@ -196,17 +196,27 @@ function comparingAnswers() {
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
         // var x = $(`${questions[currentQuestion]}`).val('');
-        var choiceLetter = $("input[type='radio'][name='quizchoices']:checked").val('');
-        console.log(questions[currentQuestion])
-        if (choiceLetter === questions[currentQuestion].correctAnswer) {
+        const choiceLetter1 = $("input[type='radio'][name='quizchoices'][value='a']:checked").val('');
+        const choiceLetter2 = $("input[type='radio'][name='quizchoices'][value='b']:checked").val('');
+        const choiceLetter3 = $("input[type='radio'][name='quizchoices'][value='c']:checked").val('');
+        const choiceLetter4 = $("input[type='radio'][name='quizchoices'][value='d']:checked").val('');
+        console.log(`choiceLetter: ${choiceLetter1}`)
+        console.log(`correctAnswer: ${questions[currentQuestion].correctAnswer}`)
+        if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
             score++;    
-        } else if (choiceLetter !== questions[currentQuestion].correctAnswer) {
-            alert("I am sorry, but that is the incorrect answer!");
+        } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
+            score++;
+        } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
+            score++;
+        } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
+            score++;
         }
         currentQuestion++;
         generateQuestion++;
+        //showFeedback();
     });
 }
+
 //thurs
 //1. generate questions only choose one radio button html validation --done
 //2. add value attributes to the inputs abcd ==> for comparisoins --done
@@ -234,13 +244,3 @@ function comparingAnswers() {
 //add incrementally then you can debug
 //avoid getting multiple bugs only do new stuff when working properly
 //be deliberate and methodic
-
-
-// for (var k = question.length - 1; k >0; k--) {
-//     event.preventDefault();
-//     $('#' + k).hide();
-// }
-
-// function questionpopup(question) {
-//     (var i = 0; i < question.length; i++) {
-//}
