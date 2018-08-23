@@ -202,17 +202,19 @@ function comparingAnswers() {
         const choiceLetter4 = $("input[type='radio'][name='quizchoices'][value='d']:checked").val('');
         console.log(`choiceLetter: ${choiceLetter1}`)
         console.log(`correctAnswer: ${questions[currentQuestion].correctAnswer}`)
-        if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
-            score++;    
-        } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
+        if (choiceLetter1.equals(questions[currentQuestion].correctAnswer)) {
             score++;
-        } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
+            generateQuestion++;
+        } else if (choiceLetter2.equals(questions[currentQuestion].correctAnswer)) {
             score++;
-        } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
+            generateQuestion++;
+        } else if (choiceLetter3.equals(questions[currentQuestion].correctAnswer)) {
             score++;
+            generateQuestion++;
+        } else if (choiceLetter4.equals(questions[currentQuestion].correctAnswer)) {
+            score++;
+            generateQuestion++;
         }
-        currentQuestion++;
-        generateQuestion++;
         //showFeedback();
     });
 }
