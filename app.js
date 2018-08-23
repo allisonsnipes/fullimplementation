@@ -196,32 +196,30 @@ function comparingAnswers() {
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
         // var x = $(`${questions[currentQuestion]}`).val('');
-        const choiceLetter1 = $("input[type='radio'][name='quizchoices'][value='a']:checked").val('');
-        const choiceLetter2 = $("input[type='radio'][name='quizchoices'][value='b']:checked").val('');
-        const choiceLetter3 = $("input[type='radio'][name='quizchoices'][value='c']:checked").val('');
-        const choiceLetter4 = $("input[type='radio'][name='quizchoices'][value='d']:checked").val('');
-        console.log(`choiceLetter: ${choiceLetter1}`)
-        console.log(`correctAnswer: ${questions[currentQuestion].correctAnswer}`)
-        if (choiceLetter1.equals(questions[currentQuestion].correctAnswer)) {
+        const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
+        const choiceLetter2 = $("input[type='radio'][name='quizchoices'][value='b']").val();
+        const choiceLetter3 = $("input[type='radio'][name='quizchoices'][value='c']:checked").val();
+        const choiceLetter4 = $("input[type='radio'][name='quizchoices'][value='d']:checked").val();
+        console.log('choiceLetter:', choiceLetter1)
+        console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
+        console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
+        if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
             score++;
-            generateQuestion++;
-        } else if (choiceLetter2.equals(questions[currentQuestion].correctAnswer)) {
+        } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
             score++;
-            generateQuestion++;
-        } else if (choiceLetter3.equals(questions[currentQuestion].correctAnswer)) {
+        } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
             score++;
-            generateQuestion++;
-        } else if (choiceLetter4.equals(questions[currentQuestion].correctAnswer)) {
+        } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
             score++;
-            generateQuestion++;
         }
+        generateQuestion++;
         //showFeedback();
     });
 }
 
-//thurs
+//goal thurs 08.23.2018
 //1. generate questions only choose one radio button html validation --done
-//2. add value attributes to the inputs abcd ==> for comparisoins --done
+//2. add value attributes to the inputs abcd ==> for comparisons --done
 //then questions should start workiung and scores will work
 
 // function showFeedback() {
