@@ -197,9 +197,9 @@ function comparingAnswers() {
         event.preventDefault();
         // var x = $(`${questions[currentQuestion]}`).val('');
         const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
-        const choiceLetter2 = $("input[type='radio'][name='quizchoices'][value='b']").val();
-        const choiceLetter3 = $("input[type='radio'][name='quizchoices'][value='c']:checked").val();
-        const choiceLetter4 = $("input[type='radio'][name='quizchoices'][value='d']:checked").val();
+        const choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
+        const choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
+        const choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
         console.log('choiceLetter:', choiceLetter1)
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
@@ -212,9 +212,9 @@ function comparingAnswers() {
         } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
             score++;
         }
-        generateQuestion++;
-        //showFeedback();
     });
+
+
 }
 
 //goal thurs 08.23.2018
