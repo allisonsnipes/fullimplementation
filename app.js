@@ -214,6 +214,9 @@ function comparingAnswers() {
         }
     });
 
+    $(".showQuiz").html(
+        currentQuestion++;
+    );
 
 }
 
