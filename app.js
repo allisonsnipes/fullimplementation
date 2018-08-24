@@ -21,7 +21,7 @@ $(document).ready(function() { //needs to be outside for global access of data o
   exitQuiz();
   generateQuestion();
   comparingAnswers();
-  //showFeedback();
+  showFeedback();
 });
 
 var score = 0,
@@ -183,7 +183,7 @@ function generateQuestion() {
                 <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
                 <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
             </div>
-            `);
+        `);
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
@@ -192,7 +192,6 @@ function generateQuestion() {
 function comparingAnswers() {
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
-        // var x = $(`${questions[currentQuestion]}`).val('');
         const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
         const choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
         const choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
@@ -209,24 +208,27 @@ function comparingAnswers() {
         } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
             score++;
         }
+    });
+}
+
+function showFeedback() {
+    $(".submitQuiz").on("click", function(event){
+        event.preventDefault();
+        console.log("show feedback working");
+        alert("The correct answer is for questions:" +`${questions[currentQuestion].correctAnswer}`);
         currentQuestion++;
         generateQuestion();
     });
 }
 
-function showFeedback() {
-    percentage = score + 'out of' + numCount;
-}
-
-// showFeedback();
+  // percentage = score + 'out of' + numCount;
+    // showFeedback();
 
 
-//goal thurs 08.23.2018
-//1. generate questions only choose one radio button html validation --done
-//2. add value attributes to the inputs abcd ==> for comparisons --done
-//then questions should start workiung and scores will work
-
-
+//goal monday 08.27.2018
+//1. generate feedback page
+//2. get user scores
+//3. show location of quiz on each page
 
 //************
 //goal 8.16.2018: counters, feedback
