@@ -163,7 +163,7 @@ function exitQuiz() {
 
 //make data store like the shopping app --> see katie's examples
 function generateQuestion() {
-        $(".showQuiz").html(`<fieldset class="quizquestions">
+        $(".quizquestions").html(`
             <legend>
                 ${questions[currentQuestion].question}
             </legend>
@@ -183,10 +183,7 @@ function generateQuestion() {
                 <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
                 <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
             </div>
-            </fieldset>
-            <button class="submitQuiz" id="sumbutbutton" type="button">Submit</button>
-        	<button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
-        	<button class="exitQuiz" id="exitbutton" type="button"> Exit Quiz </button>`);
+            `);
 }
 
 //to do: come up with a function that needs to take in a parameter that is the users ans choice,
@@ -212,34 +209,29 @@ function comparingAnswers() {
         } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
             score++;
         }
-    });
-
-    $(".showQuiz").html(
         currentQuestion++;
-    );
-
+        generateQuestion();
+    });
 }
+
+function showFeedback() {
+    percentage = score + 'out of' + numCount;
+}
+
+// showFeedback();
+
 
 //goal thurs 08.23.2018
 //1. generate questions only choose one radio button html validation --done
 //2. add value attributes to the inputs abcd ==> for comparisons --done
 //then questions should start workiung and scores will work
 
-// function showFeedback() {
-//    percentage = score + 'out of' + numCount;
-// }
-
-// showFeedback();
-
-
 
 
 //************
-//goal 8.16.2018: work on compares functions, counters, feedback
+//goal 8.16.2018: counters, feedback
 //study guide
 //whiteboarding
-//go at the data like back of hand
-//each function is its own peice
 
 //goal 8.20.2018: fix code, compares functions, counters, feedback
 //study guide
@@ -247,3 +239,8 @@ function comparingAnswers() {
 //add incrementally then you can debug
 //avoid getting multiple bugs only do new stuff when working properly
 //be deliberate and methodic
+
+//goal thurs 08.23.2018
+//1. generate questions only choose one radio button html validation --done
+//2. add value attributes to the inputs abcd ==> for comparisons --done
+//then questions should start workiung and scores will work
