@@ -12,28 +12,32 @@
 <body>
 <!-- start page: introduction of the quiz concept--> 
 	<div class="wrapper">   
-		<div class="start" id="startscreen">
+		<div class="start">
 			<header>
-				<h1 class="freedom-class"> Welcome Freedom!</h1>
+				<h1 class="freedomClass"> Welcome Freedom!</h1>
 			</header>
 			<h2> Ivory J.</h2>
 			<p> A brief overview on press freedom and activists rights worldwide. This is to your general 
 				knowledge of the plight of press and activists barriers to freedom of speech, and the 
 				publics block to free knowledge and information.</p>
-			<p> Click START to continue</p>
+				<p> Instructions: <br>
+					1. Once you start the quiz, click NEXT QUESTION to progress the quiz.<br>
+					2. To see your score at anytime, click SHOW SUMMARY.<br>
+					3. To exit the quiz, click EXIT QUIZ.<br>
+					4. To restart the quiz, click RESTART.<br>
+				</p>
+			<p> Click the START button to begin the quiz</p>
 
-			<button class="start" id="startquiz" type="Submit">Start</button> 
-			<button class="restartquiz" id="restartquiz" type="Submit">Restart Quiz</button>
-			<button class="exit" id="exitquiz" type="Submit"> Exit Quiz </button>
+			<button class="startButton" id="startQuiz" type="Submit">Start</button> 
 		</div>
 	</div> 
 <!-- end start page -->
 
 <!-- questions: quiz part design, redo the js and css files too -->
-	<div class="quiz hide" id="quizwrapper">
+	<div class="quiz hide" id="quizWrapper">
 		<form class="showQuiz">
 			<!-- used to group like items together in a form use text.()-->
-			<fieldset class="quizquestions">
+			<fieldset class="quizQuestions">
 				<legend>
 				</legend>
 					<div>
@@ -53,39 +57,36 @@
 						<label for="choiceD"> d: </label>
 					</div>
 			</fieldset>
-			<button class="submitQuiz" id="sumbitbutton" type="button">Submit</button>
-        	<button class="reset" id="resetbutton" type="button"> Restart Quiz </button>
-        	<button class="exitQuiz" id="exitbutton" type="button"> Exit Quiz </button>
+			<button class="nextButton" id="nextButton" type="button">Next Question</button>
+        	<button class="resetButton" id="resetButton" type="button"> Restart Quiz </button>
+        	<button class="exitButton" id="exitButton" type="button"> Exit Quiz </button>
 		</form>
 	</div>
 <!-- end questions -->
 
-<!-- feedback page: if their ans. is right/wrong & the correct ans  -->
-	<div class="feedbackwrapper hide" id="feedbackwrapper">
-		<form class="showFeedback" id="feedbackpart">
-			<fieldset class="feedback">
+<!-- testing scores -->
+	<div class="percentageScore hide">
+		<span class="percentageCal"> 
+			percentage = Math.((score/10)*100); 
+		</span> <!-- use this to display score look at quiz app  do  the same for location???***-->
+	</div> 
+<!--end of scores -->
+
+<!-- feedback wrapper -->
+<!-- <div class="feedback hide" id="feedBackWrapper">
+		<form class="feedbackPart">
+			<fieldset class="showFeed">
 				<legend>
 				</legend>
 					<div>
-						<h1>Here is your feedback:</h1>
-
-						<div class="progressQuiz">
-							<button class="nextQuizQuestion" id="nextButton" type="button">Next Question</button>
-						</div>
+						<p> Feedback: </p>
 					</div>
 			</fieldset>
+			<button class="nextButton" id="next" type="button">Next Question</button>
+        	<button class="reset" id="resetButton" type="button"> Restart Quiz </button>
 		</form>
 	</div>
-<!-- endfeedback page -->
-
-<!-- End page restart option -->
-	<div class="endofquiz hide">
-		<form>
-			<h1 class=""> Congrats, you're finished!</h1>
-			<!-- Insert score -->
-		</form>
-	</div>
-<!--end of restart option -->
+end questions -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./app.js"></script>

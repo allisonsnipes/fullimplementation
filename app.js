@@ -7,21 +7,22 @@
 //javascript convention **** jquery is easier it is javascript its just a library
 //event.preventDefault(); //look at event as a parameter not as a function name
 //to do list: check ans., restart quiz function, start quiz function, feedback function
-
+//dont pass function names here, its going to think its a parameter automatically runs when user clicks
 //always put function calls inside of the document ready same as preventdefault 
 //ok to call functions within a function
 //dont build w/in function
 
 'use strict';
 
-$(document).ready(function() { //needs to be outside for global access of data only in specific places to preventdefault
+//needs to be outside for global access of data only in specific places to preventdefault
+$(document).ready(function() { 
   console.log("document ready function working");
   startQuiz();
   resetQuiz();
   exitQuiz();
   generateQuestion();
   comparingAnswers();
-  showFeedback();
+  nextQuestion();
 });
 
 var score = 0,
@@ -131,19 +132,18 @@ var score = 0,
 
 //start quiz and hide start page and other components
 function startQuiz() {
-    $(".start").on("click", function(event) { //dont pass function names here, its going to think its a parameter automatically runs when user clicks
+    $(".startButton").on("click", function(event) { 
         event.preventDefault();
         console.log("start click functioning");
         $(".quiz").show();
         $(".wrapper").hide();
-        $(".feedbackwrapper").hide();
-        $(".retakewrapper").hide();
+        $(".feedback").hide();
     });
 }
 
 //reseting quiz on reset button click
 function resetQuiz() {
-    $(".reset").on("click", function(event) {
+    $(".resetButton").on("click", function(event) {
         event.preventDefault();
         console.log("reset button working");
         score = 0;
@@ -152,18 +152,39 @@ function resetQuiz() {
     });
 }
 
-//exiting the quiz on button click --not working
+//exiting the quiz on button click
 function exitQuiz() {
-    $(".exitQutton").on("click", function(event) {
+    $(".exitButton").on("click", function(event) {
         event.preventDefault();
-        console.log("exit button working")
-        window.location.href = 'https://thinkful.com'
+        console.log("exit button working");
+        window.location.href = 'https://thinkful.com';
     });
 }
 
-//make data store like the shopping app --> see katie's examples
+function nextQuestion() {
+    $(".nextButton").on("click", function(event) {
+        event.preventDefault();
+        console.log("next question button is working")
+        if (currentQuestion === questions.length) {
+            alert("Congrats, you've finished the quiz. Please click okay.");
+            showSummaryQuiz();
+        } else if (currentQuestion !== questions.length) {
+            currentQuestion++;
+            generateQuestion(); 
+        }
+        
+        console.log("show feedback working");
+        alert("The correct answer is for this question is: " +`${questions[currentQuestion].correctAnswer}`); //change
+         
+        console.log("summary function works");
+        $("percentageCal").show();
+        $(".quiz").show();
+    });
+}
+
+//make data store like the shopping app
 function generateQuestion() {
-        $(".quizquestions").html(`
+        $(".quizQuestions").html(`
             <legend>
                 ${questions[currentQuestion].question}
             </legend>
@@ -184,12 +205,10 @@ function generateQuestion() {
                 <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
             </div>
         `);
+
 }
 
-//to do: come up with a function that needs to take in a parameter that is the users ans choice,
-// and needs to compare the users ans to the correct ans in data stories. Remember each question is its own piece
-
-function comparingAnswers() {
+function comparingAnswers() { //print message here saying if right if get correct answer and alert if not
     $(".submitQuiz").on("click", function(event) {
         event.preventDefault();
         const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
@@ -211,22 +230,9 @@ function comparingAnswers() {
     });
 }
 
-function showFeedback() {
-    $(".submitQuiz").on("click", function(event){
-        event.preventDefault();
-        console.log("show feedback working");
-        alert("The correct answer is for questions:" +`${questions[currentQuestion].correctAnswer}`);
-        currentQuestion++;
-        generateQuestion();
-    });
-}
-
-  // percentage = score + 'out of' + numCount;
-    // showFeedback();
-
 
 //goal monday 08.27.2018
-//1. generate feedback page
+//1. generate feedback page--done
 //2. get user scores
 //3. show location of quiz on each page
 
