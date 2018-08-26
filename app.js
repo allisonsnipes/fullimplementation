@@ -23,10 +23,12 @@ $(document).ready(function() {
   generateQuestion();
   comparingAnswers();
   nextQuestion();
+  calculatePercentage();
 });
 
 var score = 0,
     currentQuestion = 0,
+    percentage = ((score/10)*100),
     questions = [
     {
     question: "Which country ranks number one in press freedom?",
@@ -36,7 +38,7 @@ var score = 0,
         c: "Switzerland",
         d: "England"
         },
-        correctAnswer: "a"
+        correctAnswer: "a: Norway"
     },
     {
     question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
@@ -46,7 +48,7 @@ var score = 0,
         c: "1/3",
         d: "It happens more or less developed counties, we do not have the data to back up these claims."
         },
-        correctAnswer: "a"
+        correctAnswer: "a: 2/3"
     },
     {
     question: "To date, which country has the world’s worst ranking of press freedom?",
@@ -56,7 +58,7 @@ var score = 0,
         c: "South Sudan",
         d: "North Korea"
     },
-    correctAnswer: "d"
+    correctAnswer: "d: North Korea"
     },
     {
     question: "What is the ranking of the United States on the 2018 World Press Freedom Index?",
@@ -66,7 +68,7 @@ var score = 0,
         c: "30",
         d: "40"
     },
-    correctAnswer: "d"
+    correctAnswer: "d: 40"
     },
     {
     question: "What is Russia’s ranking on the 2018 World Press Freedom Index?",
@@ -76,7 +78,7 @@ var score = 0,
         c: "100",
         d: "50"
     },
-    correctAnswer: "a"
+    correctAnswer: "a: 148"
     },
     {
     question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
@@ -86,7 +88,7 @@ var score = 0,
         c: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
         d: "We all know trolling is a serious problem, but infringement is a too serious of a label to use."
     },
-    correctAnswer: "c"
+    correctAnswer: "c: The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press."
     },
     {
     question: "Online harassment is less of a concern than physical attacks on journalists.",
@@ -96,7 +98,7 @@ var score = 0,
         c: "True, press freedom is largely limited and more of a concern offline.",
         d: "No quantifiable data exist on the subject more resources are needed."
     },
-    correctAnswer: "b"
+    correctAnswer: "b: False, online harassment is as serious of an offense as physical attacks."
     },
     {
     question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
@@ -106,7 +108,7 @@ var score = 0,
         c: "Intimidation: journalists are personally targeted, insulted and theatened, in order to discredit them and reduce them to silence.",
         d: "All of the above are forms of attacks on journalists."
     },
-    correctAnswer: "d"
+    correctAnswer: "d: All of the above are forms of attacks on journalists."
     },
     {
     question: "Press suppression is a third world and/or less developed country’s problem.",
@@ -116,7 +118,7 @@ var score = 0,
         c: "True, young governments do not have the resources to enforce press freedom.",
         d: "False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences."
     },
-    correctAnswer: "b"
+    correctAnswer: "b: False, it concerns countries from both developed and less developed democracies and governments."
     },
     {
     question: "This year alone, what percentage of women journalists were harassed offline?",
@@ -126,7 +128,7 @@ var score = 0,
         c: "75%",
         d: "30%"
     },
-    correctAnswer: "a"
+    correctAnswer: "a: 25%"
     },
 ];
 
@@ -161,24 +163,52 @@ function exitQuiz() {
     });
 }
 
+function comparingAnswers() { //print message here saying if right if get correct answer and alert if not
+    $(".nextButton").on("click", function(event) {
+        event.preventDefault();
+        const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
+        const choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
+        const choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
+        const choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
+        console.log('choiceLetter:', choiceLetter1)
+        console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
+        console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
+        if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
+            score++;
+        } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
+            score++;
+        } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
+            score++;
+        } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
+            score++;
+        }
+    });
+}
+
+function calculatePercentage() {
+    percentage = ((score/10)*100);
+}
+
+//function for progressing the quiz and showing percentage
 function nextQuestion() {
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
+        
+        console.log("percentage function working", percentage);
+        calculatePercentage();
+        $(".percentageScore").text(percentage).removeClass("hide");
+
         console.log("next question button is working")
         if (currentQuestion === questions.length) {
             alert("Congrats, you've finished the quiz. Please click okay.");
-            showSummaryQuiz();
+            resetQuiz();
         } else if (currentQuestion !== questions.length) {
             currentQuestion++;
             generateQuestion(); 
         }
         
         console.log("show feedback working");
-        alert("The correct answer is for this question is: " +`${questions[currentQuestion].correctAnswer}`); //change
-         
-        console.log("summary function works");
-        $("percentageCal").show();
-        $(".quiz").show();
+        alert("The correct answer is for this question is: " +`${questions[currentQuestion].correctAnswer}`);  
     });
 }
 
@@ -207,29 +237,6 @@ function generateQuestion() {
         `);
 
 }
-
-function comparingAnswers() { //print message here saying if right if get correct answer and alert if not
-    $(".submitQuiz").on("click", function(event) {
-        event.preventDefault();
-        const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
-        const choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
-        const choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
-        const choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
-        console.log('choiceLetter:', choiceLetter1)
-        console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
-        console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
-        if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
-            score++;
-        } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
-            score++;
-        } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
-            score++;
-        } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
-            score++;
-        }
-    });
-}
-
 
 //goal monday 08.27.2018
 //1. generate feedback page--done
