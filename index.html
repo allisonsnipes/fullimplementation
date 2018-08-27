@@ -58,15 +58,13 @@
 					</div>
 			</fieldset>
 			<button class="nextButton" id="nextButton" type="button">Next Question</button>
-        	<button class="resetButton" id="resetButton" type="button"> Restart Quiz </button>
-        	<button class="exitButton" id="exitButton" type="button"> Exit Quiz </button>
 		</form>
 	</div>
 <!-- end questions -->
 
 <!-- feedback for right ans -->
 	<div class="rightFeebackPart hide">
-		<p class="rightFeeback"> Correct answer! </p>
+		<p class="rightFeeback"> Correct answer, good job! </p>
 	</div>
 <!-- end right feedback -->
 
@@ -76,7 +74,6 @@
 	</div>
 <!-- end wrong feedback -->
 
-
 <!-- testing scores -->
 	<div class="percentageScore hide">
 		<span class="percentageCal"> 
@@ -84,6 +81,16 @@
 		</span> <!-- use this to display score look at quiz app  do  the same for location???***-->
 	</div> 
 <!--end of scores -->
+
+<!-- end of quiz options-->
+<div class="finishedQuiz hide">
+		<span class="finishedQuizOptions"> 
+			<p> Thank you for taking my quiz!</p>
+			<button class="resetButton" id="resetButton" type="button"> Restart Quiz </button>
+        	<button class="exitButton" id="exitButton" type="button"> Exit Quiz </button>
+		</span>
+	</div> 
+<!-- end of quiz-->
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./app.js"></script>
