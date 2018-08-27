@@ -192,15 +192,15 @@ function calculatePercentage() { //to calc user's score
     $(".percentageScore").text(percentage).removeClass("hide");
 }
 
-//declaring radio buttons
-var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
-var choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
-var choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
-var choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
-
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
+        
         event.preventDefault();
+        //declaring radio buttons
+        var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
+        var choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
+        var choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
+        var choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
         console.log('choiceLetter:', choiceLetter1)
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
