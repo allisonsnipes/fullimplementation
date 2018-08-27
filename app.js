@@ -204,53 +204,62 @@ function comparingAnswers() { //print message here saying if right if get correc
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
         
         if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
-            $(".rightFeeback").show(); //generate next question if right
+            $(".rightFeebackPart").show(); //generate next question if right
             score++;
             calculatePercentage();
             generateQuestion();
-            currentQuestion++; 
+            currentQuestion++;
+            console.log("choice1 works");
         } else if (choiceLetter1 !== questions[currentQuestion].correctAnswer) {
-            $(".wrongFeeback").show(); //generate current question again if wrong
+            $(".wrongFeebackPart").show(); //generate current question again if wrong
             calculatePercentage();
             currentQuestion;
+            console.log("not choice1 works");
         } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
-            $(".rightFeeback").show(); 
+            $(".rightFeebackPart").show(); 
             score++;
             calculatePercentage();
             generateQuestion();
             currentQuestion++;
+            console.log("choice2 works");
         } else if (choiceLetter2 !== questions[currentQuestion].correctAnswer) {
-            $(".wrongFeeback").show();
+            $(".wrongFeebackPart").show();
             calculatePercentage();
             currentQuestion;
+            console.log("not choice2 works");
         } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
-            $(".rightFeeback").show(); 
+            $(".rightFeebackPart").show(); 
             score++;
             calculatePercentage();
             generateQuestion();
             currentQuestion++;
+            console.log("choice3 works");
         } else if (choiceLetter3 !== questions[currentQuestion].correctAnswer) {
-            $(".wrongFeeback").show();
+            $(".wrongFeebackPart").show();
             calculatePercentage();
             currentQuestion;
+            console.log("not choice3 works");
         } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
-            $(".rightFeeback").show(); 
+            $(".rightFeebackPart").show(); 
             score++;
             calculatePercentage();
             generateQuestion();
             currentQuestion++;
+            console.log("choice4 works");
         } else if (choiceLetter4 !== questions[currentQuestion].correctAnswer) {
-            $(".wrongFeeback").show();
+            $(".wrongFeebackPart").show();
             calculatePercentage();
             currentQuestion;
+            console.log("not choice4 works");
         } else if (currentQuestion === questions.length) {
-            alert("Congrats, you've finished the quiz. Please click okay.");
+            $(".finishedQuizOptions").show();
+            console.log("end quiz funcction works");
             calculatePercentage();
             console.log("percentage function working", percentage);
-            $(".finishedQuizOptions").show();
         } else if (currentQuestion !== questions.length) {
             generateQuestion();
             currentQuestion++;
+            console.log("not end quiz works");
         }
     });
 }
