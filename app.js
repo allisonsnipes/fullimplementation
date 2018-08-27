@@ -16,14 +16,14 @@
 
 //needs to be outside for global access of data only in specific places to preventdefault
 $(document).ready(function() { 
-  console.log("document ready function working");
+  console.log("document ready function working"); //event listener methods
   startQuiz();
   resetQuiz();
   exitQuiz();
   generateQuestion();
   comparingAnswers();
-  nextQuestion();
   calculatePercentage();
+  nextQuestion();
 });
 
 var score = 0,
@@ -163,18 +163,33 @@ function exitQuiz() {
     });
 }
 
-function comparingAnswers() { //print message here saying if right if get correct answer and alert if not
+function rightFeebackShow() {
+    const choiceLetter1 = `${questions[currentQuestion].answers.a}`;
+    const choiceLetter2 = `${questions[currentQuestion].answers.b}`;
+    const choiceLetter3 = `${questions[currentQuestion].answers.c}`;
+    const choiceLetter4 = `${questions[currentQuestion].answers.d}`;
+}
+
+function wrongFeebackShow() {
+    const choiceLetter1 = `${questions[currentQuestion].answers.a}`;
+    const choiceLetter2 = `${questions[currentQuestion].answers.b}`;
+    const choiceLetter3 = `${questions[currentQuestion].answers.c}`;
+    const choiceLetter4 = `${questions[currentQuestion].answers.d}`;
+}
+
+function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        const choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
-        const choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
-        const choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
-        const choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
+        var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
+        var choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
+        var choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
+        var choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
         console.log('choiceLetter:', choiceLetter1)
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
         if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
             score++;
+            right
         } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
             score++;
         } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
@@ -182,34 +197,28 @@ function comparingAnswers() { //print message here saying if right if get correc
         } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
             score++;
         }
+
+        //         calculatePercentage();
+//         console.log("percentage function working", percentage);
+//         $(".percentageScore").text(percentage).removeClass("hide");
+
+//         console.log("show feedback working");
+//         alert("The correct answer is for this question is: " +`${questions[currentQuestion].correctAnswer}`); 
+
+//         console.log("next question button is working")
+//         if (currentQuestion === questions.length) {
+//             alert("Congrats, you've finished the quiz. Please click okay.");
+//             resetQuiz();
+//         } else if (currentQuestion !== questions.length) {
+//             currentQuestion++;
+//             generateQuestion(); 
+//         }
     });
 }
 
 function calculatePercentage() {
+    console.log("score " + score);
     percentage = ((score/10)*100);
-}
-
-//function for progressing the quiz and showing percentage
-function nextQuestion() {
-    $(".nextButton").on("click", function(event) {
-        event.preventDefault();
-        
-        console.log("percentage function working", percentage);
-        calculatePercentage();
-        $(".percentageScore").text(percentage).removeClass("hide");
-
-        console.log("next question button is working")
-        if (currentQuestion === questions.length) {
-            alert("Congrats, you've finished the quiz. Please click okay.");
-            resetQuiz();
-        } else if (currentQuestion !== questions.length) {
-            currentQuestion++;
-            generateQuestion(); 
-        }
-        
-        console.log("show feedback working");
-        alert("The correct answer is for this question is: " +`${questions[currentQuestion].correctAnswer}`);  
-    });
 }
 
 //make data store like the shopping app
