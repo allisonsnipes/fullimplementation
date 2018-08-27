@@ -22,8 +22,6 @@ $(document).ready(function() {
   exitQuiz();
   generateQuestion();
   comparingAnswers();
-  calculatePercentage();
-  nextQuestion();
 });
 
 var score = 0,
