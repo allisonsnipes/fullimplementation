@@ -188,17 +188,19 @@ function generateQuestion() {
 
 function calculatePercentage() { //to calc user's score
     console.log("score " + score);
-    percentage = ((score/10)*100);
+    var percentage = ((score/10)*100);
     $(".percentageScore").text(percentage).removeClass("hide");
 }
+
+//declaring radio buttons
+var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
+var choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
+var choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
+var choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
 
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
-        var choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']`).val();
-        var choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']`).val();
-        var choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']`).val();
         console.log('choiceLetter:', choiceLetter1)
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
@@ -207,13 +209,14 @@ function comparingAnswers() { //print message here saying if right if get correc
             $(".rightFeebackPart").show(); //generate next question if right
             score++;
             calculatePercentage();
-            generateQuestion();
             currentQuestion++;
+            generateQuestion();
             console.log("choice1 works");
         } else if (choiceLetter1 !== questions[currentQuestion].correctAnswer) {
             $(".wrongFeebackPart").show(); //generate current question again if wrong
             calculatePercentage();
             currentQuestion;
+            generateQuestion();
             console.log("not choice1 works");
         } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
             $(".rightFeebackPart").show(); 
