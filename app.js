@@ -194,7 +194,6 @@ function calculatePercentage() { //to calc user's score
 
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
-        
         event.preventDefault();
         //declaring radio buttons
         var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']`).val();
