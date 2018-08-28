@@ -36,8 +36,9 @@ var score = 0,
         c: "Switzerland",
         d: "England"
         },
-        correctAnswer: "a"
+        correctAnswer: "Norway"
     },
+
     {
     question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
     answers: {
@@ -46,8 +47,9 @@ var score = 0,
         c: "1/3",
         d: "It happens more or less developed counties, we do not have the data to back up these claims."
         },
-        correctAnswer: "a"
+        correctAnswer: "2/3"
     },
+
     {
     question: "To date, which country has the world’s worst ranking of press freedom?",
     answers: {
@@ -56,8 +58,9 @@ var score = 0,
         c: "South Sudan",
         d: "North Korea"
     },
-    correctAnswer: "d"
+    correctAnswer: "North Korea"
     },
+
     {
     question: "What is the ranking of the United States on the 2018 World Press Freedom Index?",
     answers: {
@@ -66,8 +69,9 @@ var score = 0,
         c: "30",
         d: "40"
     },
-    correctAnswer: "d"
+    correctAnswer: "40"
     },
+
     {
     question: "What is Russia’s ranking on the 2018 World Press Freedom Index?",
     answers: {
@@ -76,8 +80,9 @@ var score = 0,
         c: "100",
         d: "50"
     },
-    correctAnswer: "a"
+    correctAnswer: "148"
     },
+
     {
     question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
     answers: {
@@ -86,8 +91,9 @@ var score = 0,
         c: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
         d: "We all know trolling is a serious problem, but infringement is a too serious of a label to use."
     },
-    correctAnswer: "c"
+    correctAnswer: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press."
     },
+
     {
     question: "Online harassment is less of a concern than physical attacks on journalists.",
     answers: {
@@ -96,8 +102,9 @@ var score = 0,
         c: "True, press freedom is largely limited and more of a concern offline.",
         d: "No quantifiable data exist on the subject more resources are needed."
     },
-    correctAnswer: "b"
+    correctAnswer: "False, online harassment is as serious of an offense as physical attacks."
     },
+
     {
     question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
     answers: {
@@ -106,8 +113,9 @@ var score = 0,
         c: "Intimidation: journalists are personally targeted, insulted and theatened, in order to discredit them and reduce them to silence.",
         d: "All of the above are forms of attacks on journalists."
     },
-    correctAnswer: "d"
+    correctAnswer: "All of the above are forms of attacks on journalists."
     },
+
     {
     question: "Press suppression is a third world and/or less developed country’s problem.",
     answers: {
@@ -116,8 +124,9 @@ var score = 0,
         c: "True, young governments do not have the resources to enforce press freedom.",
         d: "False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences."
     },
-    correctAnswer: "b"
+    correctAnswer: "False, it concerns countries from both developed and less developed democracies and governments."
     },
+
     {
     question: "This year alone, what percentage of women journalists were harassed offline?",
     answers: {
@@ -126,7 +135,7 @@ var score = 0,
         c: "75%",
         d: "30%"
     },
-    correctAnswer: "a"
+    correctAnswer: "25%"
     },
 ];
 
@@ -195,24 +204,30 @@ function calculatePercentage() { //to calc user's score
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        //declaring radio buttons
         var choiceLetter1 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.a}']:checked`).val();
         var choiceLetter2 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.b}']:checked`).val();
         var choiceLetter3 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.c}']:checked`).val();
         var choiceLetter4 = $(`input[type='radio'][name='quizchoices'][value='${questions[currentQuestion].answers.d}']:checked`).val();
-        console.log('choiceLetter:', choiceLetter1)
+
+        console.log('choiceLetter1:', choiceLetter1); //its a function
+        console.log('choiceLetter2:', choiceLetter2);
+        console.log('choiceLetter3:', choiceLetter3);
+        console.log('choiceLetter4:', choiceLetter4);
+
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
         
         if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
             $(".rightFeebackPart").show(); //generate next question if right
+            $(".wrongFeebackPart").hide();
             score++;
             calculatePercentage();
             $(".listPercentage").show();
-            generateQuestion();
             currentQuestion++;
+            generateQuestion();
             console.log("choice1 works");
         } else if (choiceLetter1 !== questions[currentQuestion].correctAnswer) {
+            $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show(); //generate current question again if wrong
             calculatePercentage();
             $(".listPercentage").show();
@@ -220,14 +235,16 @@ function comparingAnswers() { //print message here saying if right if get correc
             currentQuestion;
             console.log("not choice1 works");
         } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
+            $(".wrongFeebackPart").hide();
             $(".rightFeebackPart").show(); 
             score++;
             calculatePercentage();
             $(".listPercentage").show();
-            generateQuestion();
             currentQuestion++;
+            generateQuestion();
             console.log("choice2 works");
         } else if (choiceLetter2 !== questions[currentQuestion].correctAnswer) {
+            $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show();
             calculatePercentage();
             $(".listPercentage").show();
@@ -235,14 +252,16 @@ function comparingAnswers() { //print message here saying if right if get correc
             currentQuestion;
             console.log("not choice2 works");
         } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
+            $(".wrongFeebackPart").hide();
             $(".rightFeebackPart").show(); 
             score++;
             calculatePercentage();
             $(".listPercentage").show();
-            generateQuestion();
             currentQuestion++;
+            generateQuestion();
             console.log("choice3 works");
         } else if (choiceLetter3 !== questions[currentQuestion].correctAnswer) {
+            $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show();
             calculatePercentage();
             $(".listPercentage").show();
@@ -250,14 +269,16 @@ function comparingAnswers() { //print message here saying if right if get correc
             currentQuestion;
             console.log("not choice3 works");
         } else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
+            $(".wrongFeebackPart").hide();
             $(".rightFeebackPart").show(); 
             score++;
             calculatePercentage();
             $(".listPercentage").show();
-            generateQuestion();
             currentQuestion++;
+            generateQuestion();
             console.log("choice4 works");
         } else if (choiceLetter4 !== questions[currentQuestion].correctAnswer) {
+            $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show();
             calculatePercentage();
             $(".listPercentage").show();
