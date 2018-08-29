@@ -230,7 +230,7 @@ function comparingAnswers() { //print message here saying if right if get correc
         }
         
         //quiz progression
-        if (currentQuestion === questions.length) {
+        if (questions[currentQuestion].question === questions.length) {
             $(".finishedQuizOptions").show();
             console.log("end quiz funcction works");
             calculatePercentage();
