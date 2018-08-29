@@ -21,6 +21,7 @@ $(document).ready(function() {
   resetQuiz();
   exitQuiz();
   comparingAnswers();
+  generateQuestion();
 });
 
 var score = 0,
