@@ -217,18 +217,17 @@ function comparingAnswers() { //print message here saying if right if get correc
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer)
         console.log(choiceLetter1 === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
         
-        if (choiceLetter1 === questions[currentQuestion].correctAnswer) || (choiceLetter1 !== questions[currentQuestion].correctAnswer) {
+        if ((choiceLetter1 === questions[currentQuestion].correctAnswer) || (choiceLetter1 !== questions[currentQuestion].correctAnswer)) {
             if (choiceLetter1 === questions[currentQuestion].correctAnswer) {
-            $(".rightFeebackPart").show(); //generate next question if right
-            $(".wrongFeebackPart").hide();
-            score++;
-            calculatePercentage();
-            $(".listPercentage").show();
-            currentQuestion++;
-            generateQuestion();
-            console.log("choice1 works");
-            }
-            else (choiceLetter1 !== questions[currentQuestion].correctAnswer) {
+                $(".rightFeebackPart").show(); //generate next question if right
+                $(".wrongFeebackPart").hide();
+                score++;
+                calculatePercentage();
+                $(".listPercentage").show();
+                currentQuestion++;
+                generateQuestion();
+                console.log("choice1 works");
+            } else {
                 $(".rightFeebackPart").hide();
                 $(".wrongFeebackPart").show(); //generate current question again if wrong
                 calculatePercentage();
@@ -237,85 +236,82 @@ function comparingAnswers() { //print message here saying if right if get correc
                 currentQuestion;
                 console.log("not choice1 works");
             }
-        }
-         
-            else if (choiceLetter2 === questions[currentQuestion].correctAnswer) || (choiceLetter2 !== questions[currentQuestion].correctAnswer) {
-                if (choiceLetter2 === questions[currentQuestion].correctAnswer) { 
-                    $(".wrongFeebackPart").hide();
-                    $(".rightFeebackPart").show(); 
-                    score++;
-                    calculatePercentage();
-                    $(".listPercentage").show();
-                    currentQuestion++;
-                    generateQuestion();
-                    console.log("choice2 works");
-                }
-                else (choiceLetter2 !== questions[currentQuestion].correctAnswer) {
-                    $(".rightFeebackPart").hide();
-                    $(".wrongFeebackPart").show();
-                    calculatePercentage();
-                    $(".listPercentage").show();
-                    generateQuestion();
-                    currentQuestion;
-                    console.log("not choice2 works");
-                } 
-            }  
-            else if (choiceLetter3 === questions[currentQuestion].correctAnswer) || (choiceLetter3 !== questions[currentQuestion].correctAnswer) {
-                if (choiceLetter3 === questions[currentQuestion].correctAnswer)  {
-                    $(".wrongFeebackPart").hide();
-                    $(".rightFeebackPart").show(); 
-                    score++;
-                    calculatePercentage();
-                    $(".listPercentage").show();
-                    currentQuestion++;
-                    generateQuestion();
-                    console.log("choice3 works");
-                } else (choiceLetter3 !== questions[currentQuestion].correctAnswer) {
-                    $(".rightFeebackPart").hide();
-                    $(".wrongFeebackPart").show();
-                    calculatePercentage();
-                    $(".listPercentage").show();
-                    generateQuestion();
-                    currentQuestion;
-                    console.log("not choice3 works");
-                }
-            } 
-            else {
-                if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
-                    $(".wrongFeebackPart").hide();
-                    $(".rightFeebackPart").show(); 
-                    score++;
-                    calculatePercentage();
-                    $(".listPercentage").show();
-                    currentQuestion++;
-                    generateQuestion();
-                    console.log("choice4 works");
-                } else {
-                    $(".rightFeebackPart").hide();
-                    $(".wrongFeebackPart").show();
-                    calculatePercentage();
-                    $(".listPercentage").show();
-                    generateQuestion();
-                    currentQuestion;
-                    console.log("not choice4 works");
-                }
-            }
-        
-            
-            
-            if (currentQuestion === questions.length) {
-                $(".finishedQuizOptions").show();
-                console.log("end quiz funcction works");
+        } 
+        else if ((choiceLetter2 === questions[currentQuestion].correctAnswer) || (choiceLetter2 !== questions[currentQuestion].correctAnswer)) {
+            if (choiceLetter2 === questions[currentQuestion].correctAnswer) { 
+                $(".wrongFeebackPart").hide();
+                $(".rightFeebackPart").show(); 
+                score++;
                 calculatePercentage();
                 $(".listPercentage").show();
-                console.log("percentage function working", percentage);
-            } else {
-                generateQuestion();
                 currentQuestion++;
-                console.log("not end quiz works");
+                generateQuestion();
+                console.log("choice2 works");
+            } else {
+                $(".rightFeebackPart").hide();
+                $(".wrongFeebackPart").show();
+                calculatePercentage();
+                $(".listPercentage").show();
+                generateQuestion();
+                currentQuestion;
+                console.log("not choice2 works");
+            } 
+        }  
+        else if ((choiceLetter3 === questions[currentQuestion].correctAnswer) || (choiceLetter3 !== questions[currentQuestion].correctAnswer)) {
+            if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
+                $(".wrongFeebackPart").hide();
+                $(".rightFeebackPart").show(); 
+                score++;
+                calculatePercentage();
+                $(".listPercentage").show();
+                currentQuestion++;
+                generateQuestion();
+                console.log("choice3 works");
+            } else {
+                $(".rightFeebackPart").hide();
+                $(".wrongFeebackPart").show();
+                calculatePercentage();
+                $(".listPercentage").show();
+                generateQuestion();
+                currentQuestion;
+                console.log("not choice3 works");
             }
-        });
-    }
+        } 
+        else {
+            if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
+                $(".wrongFeebackPart").hide();
+                $(".rightFeebackPart").show(); 
+                score++;
+                calculatePercentage();
+                $(".listPercentage").show();
+                currentQuestion++;
+                generateQuestion();
+                console.log("choice4 works");
+            } else {
+                $(".rightFeebackPart").hide();
+                $(".wrongFeebackPart").show();
+                calculatePercentage();
+                $(".listPercentage").show();
+                generateQuestion();
+                currentQuestion;
+                console.log("not choice4 works");
+            }
+        }
+        
+        //quiz progression
+        if (currentQuestion === questions.length) {
+            $(".finishedQuizOptions").show();
+            console.log("end quiz funcction works");
+            calculatePercentage();
+            $(".listPercentage").show();
+            console.log("percentage function working", percentage);
+        } else {
+            generateQuestion();
+            currentQuestion++;
+            console.log("not end quiz works");
+        }
+    });
+}
 
 //goal monday 08.27.2018
 //1. generate feedback page--done
