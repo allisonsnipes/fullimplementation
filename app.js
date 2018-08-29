@@ -234,7 +234,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             currentQuestion;
             console.log("not choice1 works");
-        } if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
+        } else if (choiceLetter2 === questions[currentQuestion].correctAnswer) {
             $(".wrongFeebackPart").hide();
             $(".rightFeebackPart").show(); 
             score++;
@@ -251,7 +251,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             currentQuestion;
             console.log("not choice2 works");
-        } if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
+        } else if (choiceLetter3 === questions[currentQuestion].correctAnswer) {
             $(".wrongFeebackPart").hide();
             $(".rightFeebackPart").show(); 
             score++;
@@ -268,7 +268,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             currentQuestion;
             console.log("not choice3 works");
-        } if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
+        }else if (choiceLetter4 === questions[currentQuestion].correctAnswer) {
             $(".wrongFeebackPart").hide();
             $(".rightFeebackPart").show(); 
             score++;
@@ -277,7 +277,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             currentQuestion++;
             generateQuestion();
             console.log("choice4 works");
-        } else if (choiceLetter4 !== questions[currentQuestion].correctAnswer) {
+        } else (choiceLetter4 !== questions[currentQuestion].correctAnswer) {
             $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show();
             calculatePercentage();
@@ -285,13 +285,15 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             currentQuestion;
             console.log("not choice4 works");
-        } if (currentQuestion === questions.length) {
+        }
+        
+        if (currentQuestion === questions.length) {
             $(".finishedQuizOptions").show();
             console.log("end quiz funcction works");
             calculatePercentage();
             $(".listPercentage").show();
             console.log("percentage function working", percentage);
-        } else if (currentQuestion !== questions.length) {
+        } else (currentQuestion !== questions.length) {
             generateQuestion();
             currentQuestion++;
             console.log("not end quiz works");
