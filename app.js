@@ -20,7 +20,6 @@ $(document).ready(function() {
   startQuiz();
   resetQuiz();
   exitQuiz();
-  generateQuestion();
   comparingAnswers();
 });
 
@@ -197,7 +196,7 @@ function generateQuestion() {
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
     var percentage = ((score/10)*100);
-    $(".percentageScore").text(percentage).removeClass("hide");
+    $(".percentPart").text(percentage).removeClass("hide");
 }
 
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
@@ -206,7 +205,7 @@ function comparingAnswers() { //print message here saying if right if get correc
         var choiceLetter = $(`input[name='quizchoices']:checked`).val();
 
         console.log('choiceLetter:', choiceLetter); //its a function
-
+        console.log('question', questions[currentQuestion].question);
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
         console.log(choiceLetter === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
         
@@ -217,29 +216,31 @@ function comparingAnswers() { //print message here saying if right if get correc
             calculatePercentage();
             $(".listPercentage").show();
             // currentQuestion++;
-            // generateQuestion();
-            console.log("choice1 works");
+            console.log("correct choice works");
+            generateQuestion(); //gerate question here?
+            console.log("generating new choice works");
         } else {
             $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show(); //generate current question again if wrong
             calculatePercentage();
             $(".listPercentage").show();
             // generateQuestion();
-            // currentQuestion;
-            console.log("not choice1 works");
+            console.log("incorrect choice works");
+            currentQuestion;
+            console.log("staying put to select correct answer");
         }
         
         //quiz progression
-        if (questions[currentQuestion].question === questions.length) {
-            $(".finishedQuizOptions").show();
-            console.log("end quiz funcction works");
-            calculatePercentage();
-            $(".listPercentage").show();
-            console.log("percentage function working", percentage);
-        } else {
+        if (questions[currentQuestion].question !== questions.length) {
             currentQuestion++;
             generateQuestion();
             console.log("not end quiz works");
+        } else {
+            $(".finishedQuizOptions").show();
+            console.log("end quiz function works");
+            calculatePercentage();
+            $(".listPercentage").show();
+            console.log("end function percentage function working", percentage);
         }
     });
 }
@@ -248,6 +249,12 @@ function comparingAnswers() { //print message here saying if right if get correc
 //1. generate feedback page--done
 //2. get user scores --done
 //3. show location of quiz on each page
+
+//goal monday 08.30.2018
+//1. show location of quiz on each page
+//2. study guide
+//3. whiteboarding
+
 
 //************
 //goal 8.16.2018: counters, feedback
