@@ -197,7 +197,7 @@ function generateQuestion() {
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
     var percentage = ((score/10)*100);
-    $(".percentPart").text(percentage).removeClass("hide");
+    $(".percentPart").text(percentage + "%").removeClass("hide");
 }
 
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
@@ -232,12 +232,12 @@ function comparingAnswers() { //print message here saying if right if get correc
         }
         
         //quiz progression
-        if (questions[currentQuestion].question !== questions.length) {
+        if (questions !== questions.length) {
             currentQuestion++;
             generateQuestion();
             console.log("not end quiz works");
         } else {
-            $(".finishedQuizOptions").show();
+            $(".finishedQuizOptions").show().removeClass("hide");;
             console.log("end quiz function works");
             calculatePercentage();
             $(".listPercentage").show();
