@@ -237,10 +237,10 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             console.log("not end quiz works");
         } else {
-            $(".finishedQuizOptions").show().removeClass("hide");;
+            $(".finishedQuiz").show().removeClass("hide");
             console.log("end quiz function works");
             calculatePercentage();
-            $(".listPercentage").show();
+            $(".percentPart").show().removeClass("hide");
             console.log("end function percentage function working", percentage);
         }
     });

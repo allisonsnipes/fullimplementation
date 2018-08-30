@@ -25,9 +25,9 @@ fieldset {
 
 button {
     display: block;
-	width: 35%;
-	margin-left: auto;
-	margin-right: auto;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
     float: center;	
     background-color: #fff;
 }
@@ -41,4 +41,3 @@ legend {
 	color: #fff;
 	padding: 10px 10px;
 }
-
