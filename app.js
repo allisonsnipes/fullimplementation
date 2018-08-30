@@ -229,7 +229,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion(); //gerate question here?
             console.log("generating new choice works");
             questionDisplay();
-            console.log("question number = " + currentQuestion);
+            console.log("question number = " + (currentQuestion + 1));
         } else {
             $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show(); //generate current question again if wrong
@@ -240,15 +240,11 @@ function comparingAnswers() { //print message here saying if right if get correc
             currentQuestion;
             console.log("staying put to select correct answer");
             questionDisplay();
-            console.log("question number = " + currentQuestion);
+            console.log("question number = " + (currentQuestion + 1));
         }
         
         //quiz progression
-        if (questions <= questions.length) {
-            currentQuestion++;
-            generateQuestion();
-            console.log("not end quiz works");
-        } else {
+        if ((questions === questions.length) || (questions >= questions.length)) {
             $(".finishedQuiz").removeClass("hide");
             console.log("end quiz function works");
             currentQuestion;
@@ -257,6 +253,13 @@ function comparingAnswers() { //print message here saying if right if get correc
             console.log("end function percentage function working", percentage);
             resetQuiz();
             exitQuiz();
+        } else {
+            currentQuestion++;
+            generateQuestion();
+            console.log("not end quiz works");
+            calculatePercentage();
+            $(".percentPart").removeClass("hide");
+            console.log("not end function percentage function working", percentage);
         }
     });
 }
