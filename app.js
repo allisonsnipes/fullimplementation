@@ -244,30 +244,32 @@ function comparingAnswers() { //print message here saying if right if get correc
         }
         
         //quiz progression
-        if (questions !== questions.length) {
+        if (questions <= questions.length) {
             currentQuestion++;
             generateQuestion();
             console.log("not end quiz works");
         } else {
             $(".finishedQuiz").removeClass("hide");
             console.log("end quiz function works");
+            currentQuestion;
             calculatePercentage();
-            $(".percentPart").show().removeClass("hide");
+            $(".percentPart").removeClass("hide");
             console.log("end function percentage function working", percentage);
+            resetQuiz();
+            exitQuiz();
         }
     });
 }
 
-//goal monday 08.27.2018
-//1. generate feedback page--done
-//2. get user scores --done
-//3. show location of quiz on each page
-
-//goal monday 08.30.2018
-//1. show location of quiz on each page
+//goal thurs 08.30.2018
+//1. show location of quiz on each page --done
 //2. study guide
 //3. whiteboarding
 
+//goal mon 08.27.2018
+//1. generate feedback page--done
+//2. get user scores --done
+//3. show location of quiz on each page
 
 //************
 //goal 8.16.2018: counters, feedback
