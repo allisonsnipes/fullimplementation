@@ -237,7 +237,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             console.log("not end quiz works");
         } else {
-            $(".finishedQuiz").show().removeClass("hide");
+            $(".finishedQuiz").removeClass("hide");
             console.log("end quiz function works");
             calculatePercentage();
             $(".percentPart").show().removeClass("hide");
