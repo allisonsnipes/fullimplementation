@@ -22,6 +22,7 @@ $(document).ready(function() {
   exitQuiz();
   comparingAnswers();
   generateQuestion();
+  questionDisplay();
 });
 
 let score = 0,
@@ -200,6 +201,13 @@ function calculatePercentage() { //to calc user's score
     $(".percentPart").text(percentage + "%").removeClass("hide");
 }
 
+function questionDisplay() {
+    $(".quizLocation").html(`
+        <p class="quizLocation"> You are on question: ${currentQuestion}</p>
+    `);
+    console.log("question number = " + currentQuestion);
+}
+
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
@@ -220,6 +228,8 @@ function comparingAnswers() { //print message here saying if right if get correc
             console.log("correct choice works");
             generateQuestion(); //gerate question here?
             console.log("generating new choice works");
+            questionDisplay();
+            console.log("question number = " + currentQuestion);
         } else {
             $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show(); //generate current question again if wrong
@@ -229,6 +239,8 @@ function comparingAnswers() { //print message here saying if right if get correc
             console.log("incorrect choice works");
             currentQuestion;
             console.log("staying put to select correct answer");
+            questionDisplay();
+            console.log("question number = " + currentQuestion);
         }
         
         //quiz progression
