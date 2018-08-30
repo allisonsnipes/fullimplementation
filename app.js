@@ -83,8 +83,8 @@ var score = 0,
     },
 
     {
-    question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
-    answers: {
+        question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
+        answers: {
             a: "It is online, no real harm is done.",
             b: "No, journalists are just looking for attention, or to stir up tension for their newsfeed.",
             c: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
