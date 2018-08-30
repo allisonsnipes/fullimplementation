@@ -208,7 +208,7 @@ function comparingAnswers() { //print message here saying if right if get correc
         console.log('choiceLetter:', choiceLetter); //its a function
         console.log('question', questions[currentQuestion].question);
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
-        console.log(choiceLetter === questions[currentQuestion].answers[ questions[currentQuestion].correctAnswer]);
+        console.log(choiceLetter === questions[currentQuestion].answers[questions[currentQuestion].correctAnswer]);
         
         if (choiceLetter === questions[currentQuestion].correctAnswer) {
             $(".rightFeebackPart").show(); //generate next question if right
