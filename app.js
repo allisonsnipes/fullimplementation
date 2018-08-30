@@ -24,7 +24,7 @@ $(document).ready(function() {
   generateQuestion();
 });
 
-var score = 0,
+let score = 0,
     currentQuestion = 0,
     questions = [
     {
@@ -196,14 +196,14 @@ function generateQuestion() {
 
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
-    var percentage = ((score/10)*100);
+    const percentage = ((score/10)*100);
     $(".percentPart").text(percentage + "%").removeClass("hide");
 }
 
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        var choiceLetter = $(`input[name='quizchoices']:checked`).val();
+        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
 
         console.log('choiceLetter:', choiceLetter); //its a function
         console.log('question', questions[currentQuestion].question);
