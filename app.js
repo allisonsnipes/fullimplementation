@@ -94,7 +94,7 @@ var score = 0,
     },
 
     {
-    question: "Online harassment is less of a concern than physical attacks on journalists.",
+        question: "Online harassment is less of a concern than physical attacks on journalists.",
         answers: {
             a: "True, as long as the physical person is not harmed—cyberbullying is not an issue.",
             b: "False, online harassment is as serious of an offense as physical attacks.",
