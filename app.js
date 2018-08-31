@@ -25,7 +25,8 @@ $(document).ready(function() {
   questionDisplay();
 });
 
-let score = 0,
+const score = 0,
+    percentage = ((score/10)*100),
     currentQuestion = 0,
     questions = [
     {
@@ -34,108 +35,99 @@ let score = 0,
             a: "Norway",
             b: "USA",
             c: "Switzerland",
-            d: "England"
+            d: "England",
             },
-            correctAnswer: "Norway"
+            correctAnswer: "Norway",
     },
-
     {
         question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
         answers: {
             a: "2/3",
             b: "Internationally, we do not have the figures to back up these claims.",
             c: "1/3",
-            d: "It happens more or less developed counties, we do not have the data to back up these claims."
+            d: "It happens more or less developed counties, we do not have the data to back up these claims.",
             },
-            correctAnswer: "2/3"
+            correctAnswer: "2/3",
     },
-
     {
         question: "To date, which country has the world’s worst ranking of press freedom?",
         answers: {
             a: "Mexico",
             b: "Russia",
             c: "South Sudan",
-            d: "North Korea"
+            d: "North Korea",
         },
-        correctAnswer: "North Korea"
+        correctAnswer: "North Korea",
     },
-
     {
         question: "What is the ranking of the United States on the 2018 World Press Freedom Index?",
         answers: {
             a: "80",
             b: "1",
             c: "30",
-            d: "40"
+            d: "40",
         },
-        correctAnswer: "40"
+        correctAnswer: "40",
     },
-
     {
         question: "What is Russia’s ranking on the 2018 World Press Freedom Index?",
         answers: {
             a: "148",
             b: "80",
             c: "100",
-            d: "50"
+            d: "50",
         },
-        correctAnswer: "148"
+        correctAnswer: "148",
     },
-
     {
         question: "Cyberbullying and/or online bullying is not an infringement on journalists’ freedom.",
         answers: {
             a: "It is online, no real harm is done.",
             b: "No, journalists are just looking for attention, or to stir up tension for their newsfeed.",
             c: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
-            d: "We all know trolling is a serious problem, but infringement is a too serious of a label to use."
+            d: "We all know trolling is a serious problem, but infringement is a too serious of a label to use.",
         },
-        correctAnswer: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press."
+        correctAnswer: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
     },
-
     {
         question: "Online harassment is less of a concern than physical attacks on journalists.",
         answers: {
             a: "True, as long as the physical person is not harmed—cyberbullying is not an issue.",
             b: "False, online harassment is as serious of an offense as physical attacks.",
             c: "True, press freedom is largely limited and more of a concern offline.",
-            d: "No quantifiable data exist on the subject more resources are needed."
+            d: "No quantifiable data exist on the subject more resources are needed.",
         },
-        correctAnswer: "False, online harassment is as serious of an offense as physical attacks."
+        correctAnswer: "False, online harassment is as serious of an offense as physical attacks.",
     },
-
     {
         question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
         answers: {
             a: "Disinformation: journalistic content on social networks is drowned in a flood of fake new and pro-government content.",
             b: "Amplification: the impact of pro-government content is artificially enhanced by commentators who are paid by the government to post messages on social networks or by bots (computer programs that automatically generate posts).",
             c: "Intimidation: journalists are personally targeted, insulted and theatened, in order to discredit them and reduce them to silence.",
-            d: "All of the above are forms of attacks on journalists."
+            d: "All of the above are forms of attacks on journalists.",
         },
-        correctAnswer: "All of the above are forms of attacks on journalists."
+        correctAnswer: "All of the above are forms of attacks on journalists.",
     },
-
     {
         question: "Press suppression is a third world and/or less developed country’s problem.",
         answers: {
             a: "True, this is largely a less developed country problem.",
             b: "False, it concerns countries from both developed and less developed democracies and governments.",
             c: "True, young governments do not have the resources to enforce press freedom.",
-            d: "False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences."
+            d: "False, because of fake news and cyberbullying of journalist governments have imposed sanctions on media to stop unintended consequences.",
         },
-        correctAnswer: "False, it concerns countries from both developed and less developed democracies and governments."
+        correctAnswer: "False, it concerns countries from both developed and less developed democracies and governments.",
     },
-
     {
         question: "This year alone, what percentage of women journalists were harassed offline?",
         answers: {
             a: "25%",
             b: "No data is available to acurrately discuss tnhis problem.",
             c: "75%",
-            d: "30%"
+            d: "30%",
         },
-        correctAnswer: "25%"
+        correctAnswer: "25%",
     },
 ];
 
@@ -197,72 +189,87 @@ function generateQuestion() {
 
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
-    const percentage = ((score/10)*100);
-    $(".percentPart").text(percentage + "%").removeClass("hide");
+    $(".percentPart").text("Your score so far is" + percentage + "%").removeClass("hide");
 }
 
 function questionDisplay() {
     $(".quizLocation").html(`
-        <p class="quizLocation"> You are on question: ${currentQuestion}</p>
+        <p class="quizLocation"> You are on question: " ${currentQuestion})</p>
     `);
     console.log("question number = " + currentQuestion);
+}
+
+// pull out progressive function out and call it in click function 
+function quizProgression() {
+    currentQuestion++;
 }
 
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
+        
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
-
+        currentQuestion();
+        //put incremental here think about what is condition based or not
+        console.log("quiz progression function working");
+        quizProgression();
         console.log('choiceLetter:', choiceLetter); //its a function
+        console.log('currentQuestion:', currentQuestion);
         console.log('question', questions[currentQuestion].question);
         console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
         console.log(choiceLetter === questions[currentQuestion].answers[questions[currentQuestion].correctAnswer]);
-        
+
+               
         if (choiceLetter === questions[currentQuestion].correctAnswer) {
             $(".rightFeebackPart").show(); //generate next question if right
             $(".wrongFeebackPart").hide();
             score++;
             calculatePercentage();
             $(".listPercentage").show();
-            // currentQuestion++;
             console.log("correct choice works");
-            generateQuestion(); //gerate question here?
+            console.log("current question line 230 ", currentQuestion);
+            generateQuestion(); 
             console.log("generating new choice works");
             questionDisplay();
-            console.log("question number = " + (currentQuestion + 1));
+            console.log("question number = " + currentQuestion);
         } else {
             $(".rightFeebackPart").hide();
             $(".wrongFeebackPart").show(); //generate current question again if wrong
             calculatePercentage();
             $(".listPercentage").show();
-            // generateQuestion();
             console.log("incorrect choice works");
             currentQuestion;
             console.log("staying put to select correct answer");
             questionDisplay();
-            console.log("question number = " + (currentQuestion + 1));
+            console.log("question number = " + currentQuestion);
         }
         
-        //quiz progression
-        if ((questions === questions.length) || (questions >= questions.length)) {
+        //if else for checking right answer
+        if (currentQuestion === questions.length) {
             $(".finishedQuiz").removeClass("hide");
             console.log("end quiz function works");
-            currentQuestion;
             calculatePercentage();
             $(".percentPart").removeClass("hide");
             console.log("end function percentage function working", percentage);
             resetQuiz();
             exitQuiz();
         } else {
-            currentQuestion++;
+            console.log("else");
+            console.log("current question line 261 ", currentQuestion);
             generateQuestion();
             console.log("not end quiz works");
             calculatePercentage();
             $(".percentPart").removeClass("hide");
             console.log("not end function percentage function working", percentage);
+            console.log("quiz progression for if else working")
+            quizProgression();
         }
     });
 }
+
+//goal mon 9.30.2018
+//1. study guide
+//2. whiteboarding
 
 //goal thurs 08.30.2018
 //1. show location of quiz on each page --done
