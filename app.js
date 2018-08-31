@@ -25,7 +25,7 @@ $(document).ready(function() {
   questionDisplay();
 });
 
-const score = 0,
+let score = 0,
     percentage = ((score/10)*100),
     currentQuestion = 0,
     questions = [
@@ -189,12 +189,13 @@ function generateQuestion() {
 
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
-    $(".percentPart").text("Your score so far is" + percentage + "%").removeClass("hide");
+    let percentage = ((score/10)*100);
+    $(".percentPart").text("Your score so far is " + percentage + "%").removeClass("hide");
 }
 
 function questionDisplay() {
     $(".quizLocation").html(`
-        <p class="quizLocation"> You are on question: " ${currentQuestion})</p>
+        <p class="quizLocation"> You are on question: ${currentQuestion}</p>
     `);
     console.log("question number = " + currentQuestion);
 }
@@ -209,41 +210,14 @@ function comparingAnswers() { //print message here saying if right if get correc
         event.preventDefault();
         
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
-        currentQuestion();
-        //put incremental here think about what is condition based or not
-        console.log("quiz progression function working");
-        quizProgression();
-        console.log('choiceLetter:', choiceLetter); //its a function
-        console.log('currentQuestion:', currentQuestion);
-        console.log('question', questions[currentQuestion].question);
-        console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
-        console.log(choiceLetter === questions[currentQuestion].answers[questions[currentQuestion].correctAnswer]);
-
-               
-        if (choiceLetter === questions[currentQuestion].correctAnswer) {
-            $(".rightFeebackPart").show(); //generate next question if right
-            $(".wrongFeebackPart").hide();
-            score++;
-            calculatePercentage();
-            $(".listPercentage").show();
-            console.log("correct choice works");
-            console.log("current question line 230 ", currentQuestion);
-            generateQuestion(); 
-            console.log("generating new choice works");
-            questionDisplay();
-            console.log("question number = " + currentQuestion);
-        } else {
-            $(".rightFeebackPart").hide();
-            $(".wrongFeebackPart").show(); //generate current question again if wrong
-            calculatePercentage();
-            $(".listPercentage").show();
-            console.log("incorrect choice works");
-            currentQuestion;
-            console.log("staying put to select correct answer");
-            questionDisplay();
-            console.log("question number = " + currentQuestion);
-        }
         
+        
+        // console.log("quiz progression function working");
+        // console.log('choiceLetter:', choiceLetter); //its a function
+        // console.log('currentQuestion:', currentQuestion);
+        // console.log('question', questions[currentQuestion].question);
+        // console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
+
         //if else for checking right answer
         if (currentQuestion === questions.length) {
             $(".finishedQuiz").removeClass("hide");
@@ -254,16 +228,47 @@ function comparingAnswers() { //print message here saying if right if get correc
             resetQuiz();
             exitQuiz();
         } else {
-            console.log("else");
-            console.log("current question line 261 ", currentQuestion);
-            generateQuestion();
-            console.log("not end quiz works");
-            calculatePercentage();
-            $(".percentPart").removeClass("hide");
-            console.log("not end function percentage function working", percentage);
-            console.log("quiz progression for if else working")
-            quizProgression();
+            if (choiceLetter === questions[currentQuestion].correctAnswer) {
+                console.log("the choice ans is the correct choice");
+                $(".rightFeebackPart").show(); //generate next question if right
+                $(".wrongFeebackPart").hide();
+                score++;
+                calculatePercentage();
+                $(".listPercentage").show();
+                console.log("correct choice works");
+                console.log("current question line 230 ", currentQuestion);
+                quizProgression();
+                generateQuestion(); 
+                console.log("generating new choice works");
+                questionDisplay();
+                console.log("question number = " + currentQuestion);
+                //put incremental here think about what is condition based or notquizProgression();
+            } else {
+                console.log("the else choice ans is the incorrect choice");
+                $(".rightFeebackPart").hide();
+                $(".wrongFeebackPart").show(); //generate current question again if wrong
+                calculatePercentage();
+                $(".listPercentage").show();
+                console.log("incorrect choice works");
+                // currentQuestion();
+                // console.log("staying put to select correct answer");
+                questionDisplay();
+                console.log("question number = " + currentQuestion);
+            }
         }
+
+        
+        // } else {
+        //     console.log("else");
+        //     console.log("current question line 261 ", currentQuestion);
+        //     generateQuestion();
+        //     console.log("not end quiz works");
+        //     calculatePercentage();
+        //     $(".percentPart").removeClass("hide");
+        //     console.log("not end function percentage function working", percentage);
+        //     console.log("quiz progression for if else working")
+        //     quizProgression();
+        // }
     });
 }
 
