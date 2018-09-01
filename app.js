@@ -1,17 +1,3 @@
-//Notes:
-//only use global variables sparingly throught the life cycle, not all variables should be global
-//keep functions seperate from each
-//start on hardcode 1st to see it is it the same
-//dont nest functions within functions
-//review dot and bracket notation --> think about top down console.log(z[0].car) for nested data
-//javascript convention **** jquery is easier it is javascript its just a library
-//event.preventDefault(); //look at event as a parameter not as a function name
-//to do list: check ans., restart quiz function, start quiz function, feedback function
-//dont pass function names here, its going to think its a parameter automatically runs when user clicks
-//always put function calls inside of the document ready same as preventdefault 
-//ok to call functions within a function
-//dont build w/in function
-
 'use strict';
 
 //needs to be outside for global access of data only in specific places to preventdefault
@@ -200,11 +186,6 @@ function questionDisplay() {
     console.log("question number = " + currentQuestion);
 }
 
-// pull out progressive function out and call it in click function 
-function quizProgression() {
-    currentQuestion++;
-}
-
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
@@ -221,10 +202,10 @@ function comparingAnswers() { //print message here saying if right if get correc
         //if else for checking right answer
         if (currentQuestion === questions.length) {
             $(".finishedQuiz").removeClass("hide");
-            console.log("end quiz function works");
+            // console.log("end quiz function works");
             calculatePercentage();
             $(".percentPart").removeClass("hide");
-            console.log("end function percentage function working", percentage);
+            // console.log("end function percentage function working", percentage);
             resetQuiz();
             exitQuiz();
         } else {
@@ -237,68 +218,26 @@ function comparingAnswers() { //print message here saying if right if get correc
                 $(".listPercentage").show();
                 console.log("correct choice works");
                 console.log("current question line 230 ", currentQuestion);
-                quizProgression();
+                currentQuestion++;
                 generateQuestion(); 
                 console.log("generating new choice works");
                 questionDisplay();
                 console.log("question number = " + currentQuestion);
                 //put incremental here think about what is condition based or notquizProgression();
             } else {
-                console.log("the else choice ans is the incorrect choice");
+                // console.log("the else choice ans is the incorrect choice");
                 $(".rightFeebackPart").hide();
                 $(".wrongFeebackPart").show(); //generate current question again if wrong
+                score;
                 calculatePercentage();
                 $(".listPercentage").show();
-                console.log("incorrect choice works");
-                // currentQuestion();
+                // console.log("incorrect choice works");
+                currentQuestion();
                 // console.log("staying put to select correct answer");
                 questionDisplay();
-                console.log("question number = " + currentQuestion);
+                generateQuestion();
+                // console.log("question number = " + currentQuestion);
             }
         }
-
-        
-        // } else {
-        //     console.log("else");
-        //     console.log("current question line 261 ", currentQuestion);
-        //     generateQuestion();
-        //     console.log("not end quiz works");
-        //     calculatePercentage();
-        //     $(".percentPart").removeClass("hide");
-        //     console.log("not end function percentage function working", percentage);
-        //     console.log("quiz progression for if else working")
-        //     quizProgression();
-        // }
     });
 }
-
-//goal mon 9.30.2018
-//1. study guide
-//2. whiteboarding
-
-//goal thurs 08.30.2018
-//1. show location of quiz on each page --done
-//2. study guide
-//3. whiteboarding
-
-//goal mon 08.27.2018
-//1. generate feedback page--done
-//2. get user scores --done
-//3. show location of quiz on each page
-
-//************
-//goal 8.16.2018: counters, feedback
-//study guide
-//whiteboarding
-
-//goal 8.20.2018: fix code, compares functions, counters, feedback
-//study guide
-//each piece is doable break it down to simple functions and parts => will move faster most popular approach 
-//add incrementally then you can debug
-//avoid getting multiple bugs only do new stuff when working properly
-//be deliberate and methodic
-
-//goal thurs 08.23.2018
-//1. generate questions only choose one radio button html validation --done
-//2. add value attributes to the inputs abcd ==> for comparisons --done
-//then questions should start workiung and scores will work
