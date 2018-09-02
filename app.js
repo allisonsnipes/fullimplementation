@@ -136,6 +136,9 @@ function resetQuiz() {
         score = 0;
         $(".wrapper").show();
         $(".quiz").hide();
+        $(".percentPart").text().hide();
+        $(".rightFeebackPart").hide();
+        $(".wrongFeebackPart").hide();
     });
 }
 
@@ -201,13 +204,16 @@ function comparingAnswers() { //print message here saying if right if get correc
 
         //if else for checking right answer
         if (currentQuestion === questions.length) {
-            $(".finishedQuiz").removeClass("hide");
-            // console.log("end quiz function works");
-            calculatePercentage();
-            $(".percentPart").removeClass("hide");
-            // console.log("end function percentage function working", percentage);
-            resetQuiz();
-            exitQuiz();
+            $(".nextButton").on("click", function(event) {
+                event.preventDefault();
+                $(".finishedQuiz").removeClass("hide");
+                // console.log("end quiz function works");
+                calculatePercentage();
+                $(".percentPart").removeClass("hide");
+                // console.log("end function percentage function working", percentage);
+                resetQuiz();
+                exitQuiz();
+            });
         } else {
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
                 console.log("the choice ans is the correct choice");
