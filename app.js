@@ -128,8 +128,14 @@ function startQuiz() {
 
         $(".wrapper").hide();
         $(".quiz").show();
-        $(".quizLocation").html().show();
+        $(".quizLocation").show();
         $(".calculatePercentage").show();
+        $(".feedbackPartSelection").hide();
+        $(".finishedQuizOptions").hide();
+        $(".quizLocation").text("Your on question: " + currentQuestion).hide();
+
+        // generateQuestion();
+        // questionDisplay();
     });
 }
 
@@ -139,13 +145,18 @@ function resetQuiz() {
         event.preventDefault();
         console.log("reset button working");
        
+        let score = 0,
+            currentQuestion = 0
+        ;
+
         $(".wrapper").show();
         $(".quiz").hide();
         $(".percentPart").hide();
-        $(".quizLocation").html().hide();
-        $(".feedbackPartSelection").hide();
-       
-        let score = 0;
+        $(".quizLocation").text("Your on question: " + currentQuestion).hide();
+        
+        // startQuiz();
+        // generateQuestion();
+        
     });
 }
 
@@ -221,24 +232,27 @@ function comparingAnswers() { //print message here saying if right if get correc
                 calculatePercentage();
                 $(".percentPart").removeClass("hide");
                 // console.log("end function percentage function working", percentage);
+                $(".quizLocation").text("Your on question: " + currentQuestion).show();
                 resetQuiz();
                 exitQuiz();
             });
         } else {
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
-                console.log("the choice ans is the correct choice");
+                // console.log("the choice ans is the correct choice");
                 $(".rightFeebackPart").show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
                 score++;
                 calculatePercentage();
                 $(".listPercentage").show();
-                console.log("correct choice works");
-                console.log("current question line 230 ", currentQuestion);
+                // console.log("correct choice works");
+                // console.log("current question line 230 ", currentQuestion);
                 currentQuestion++;
                 generateQuestion(); 
-                console.log("generating new choice works");
+                // console.log("generating new choice works");
+                console.log("question location");
+                $(".quizLocation").text("Your on question: " + currentQuestion).show();
                 questionDisplay();
-                console.log("question number = " + currentQuestion);
+                // console.log("question number = " + currentQuestion);
                 //put incremental here think about what is condition based or notquizProgression();
             } else {
                 // console.log("the else choice ans is the incorrect choice");
@@ -250,6 +264,8 @@ function comparingAnswers() { //print message here saying if right if get correc
                 // console.log("incorrect choice works");
                 currentQuestion();
                 // console.log("staying put to select correct answer");
+                console.log("question location");
+                $(".quizLocation").text("Your on question: " + currentQuestion).show();
                 questionDisplay();
                 generateQuestion();
                 // console.log("question number = " + currentQuestion);
