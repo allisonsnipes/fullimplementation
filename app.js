@@ -122,9 +122,14 @@ function startQuiz() {
     $(".startButton").on("click", function(event) { 
         event.preventDefault();
         console.log("start click functioning");
-        $(".quiz").show();
+        
+        score = 0;
+        generateQuestion[0];
+
         $(".wrapper").hide();
-        $(".feedback").hide();
+        $(".quiz").show();
+        $(".quizLocation").html().show();
+        $(".calculatePercentage").show();
     });
 }
 
@@ -133,12 +138,15 @@ function resetQuiz() {
     $(".resetButton").on("click", function(event) {
         event.preventDefault();
         console.log("reset button working");
-        score = 0;
+       
         $(".wrapper").show();
         $(".quiz").hide();
         $(".percentPart").text().hide();
+        $(".quizLocation").html().hide();
         $(".rightFeebackPart").hide();
         $(".wrongFeebackPart").hide();
+       
+        let score = 0;
     });
 }
 
@@ -194,7 +202,6 @@ function comparingAnswers() { //print message here saying if right if get correc
         event.preventDefault();
         
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
-        
         
         // console.log("quiz progression function working");
         // console.log('choiceLetter:', choiceLetter); //its a function
