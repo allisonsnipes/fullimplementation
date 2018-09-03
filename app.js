@@ -141,10 +141,9 @@ function resetQuiz() {
        
         $(".wrapper").show();
         $(".quiz").hide();
-        $(".percentPart").text().hide();
+        $(".percentPart").hide();
         $(".quizLocation").html().hide();
-        $(".rightFeebackPart").hide();
-        $(".wrongFeebackPart").hide();
+        $(".feedbackPartSelection").hide();
        
         let score = 0;
     });
@@ -215,6 +214,10 @@ function comparingAnswers() { //print message here saying if right if get correc
                 event.preventDefault();
                 $(".finishedQuiz").removeClass("hide");
                 // console.log("end quiz function works");
+
+                $(".wrapper").hide();
+                $(".quiz").hide();
+
                 calculatePercentage();
                 $(".percentPart").removeClass("hide");
                 // console.log("end function percentage function working", percentage);
