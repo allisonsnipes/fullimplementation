@@ -153,9 +153,8 @@ function resetQuiz() {
         $(".quizLocation").text("Your on question: " + currentQuestion).hide();
         $(".finishedQuiz").hide();
 
-        // startQuiz();
-        // generateQuestion();
-        
+        startQuiz();
+        generateQuestion();
     });
 }
 
@@ -214,7 +213,7 @@ function comparingAnswers() { //print message here saying if right if get correc
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
        
-        console.log("currentquestion is: " + currentQuestion); //watch clickevent here dont take out ANY code console.log out everything here
+        console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
         currentQuestion++;
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         
