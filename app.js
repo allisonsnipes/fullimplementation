@@ -9,9 +9,10 @@ $(document).ready(function() {
   comparingAnswers();
   generateQuestion();
   questionDisplay();
+  nextIncrementQuestion();
 });
 
-let score = 0,
+let score = 0, //becareful
     percentage = ((score/10)*100),
     currentQuestion = 0,
     questions = [
@@ -124,14 +125,12 @@ function startQuiz() {
         console.log("start click functioning");
         
         score = 0;
-        generateQuestion[0];
+        currentQuestion = 0;
 
         $(".wrapper").hide();
         $(".quiz").show();
         $(".quizLocation").show();
         $(".calculatePercentage").show();
-        $(".feedbackPartSelection").hide();
-        $(".finishedQuizOptions").hide();
         $(".quizLocation").text("Your on question: " + currentQuestion).hide();
 
         // generateQuestion();
@@ -145,15 +144,15 @@ function resetQuiz() {
         event.preventDefault();
         console.log("reset button working");
        
-        let score = 0,
-            currentQuestion = 0
-        ;
+        score = 0;
+        currentQuestion = 0;
 
         $(".wrapper").show();
         $(".quiz").hide();
         $(".percentPart").hide();
         $(".quizLocation").text("Your on question: " + currentQuestion).hide();
-        
+        $(".finishedQuiz").hide();
+
         // startQuiz();
         // generateQuestion();
         
@@ -194,6 +193,10 @@ function generateQuestion() {
         `);
 }
 
+function nextIncrementQuestion() {
+    const incremental = currentQuestion++;
+}
+
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
     let percentage = ((score/10)*100);
@@ -210,7 +213,9 @@ function questionDisplay() {
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        
+       
+        console.log("currentquestion is: " + currentQuestion); //watch clickevent here dont take out ANY code console.log out everything here
+        currentQuestion++;
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         
         // console.log("quiz progression function working");
@@ -221,11 +226,9 @@ function comparingAnswers() { //print message here saying if right if get correc
 
         //if else for checking right answer
         if (currentQuestion === questions.length) {
-            $(".nextButton").on("click", function(event) {
-                event.preventDefault();
-                $(".finishedQuiz").removeClass("hide");
-                // console.log("end quiz function works");
-
+                console.log("end quiz function works");
+                $(".finishedQuiz").show();
+ 
                 $(".wrapper").hide();
                 $(".quiz").hide();
 
@@ -234,10 +237,12 @@ function comparingAnswers() { //print message here saying if right if get correc
                 // console.log("end function percentage function working", percentage);
                 $(".quizLocation").text("Your on question: " + currentQuestion).show();
                 resetQuiz();
-                exitQuiz();
-            });
+                exitQuiz();    
         } else {
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
+                console.log("this what correctAnswer displays: " + correctAnswer);
+                console.log("this is what choice answers displays: " + choiceLetter);
+
                 // console.log("the choice ans is the correct choice");
                 $(".rightFeebackPart").show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
@@ -262,7 +267,6 @@ function comparingAnswers() { //print message here saying if right if get correc
                 calculatePercentage();
                 $(".listPercentage").show();
                 // console.log("incorrect choice works");
-                currentQuestion();
                 // console.log("staying put to select correct answer");
                 console.log("question location");
                 $(".quizLocation").text("Your on question: " + currentQuestion).show();
