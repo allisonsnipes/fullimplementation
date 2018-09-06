@@ -212,19 +212,6 @@ function questionDisplay() {
 function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-       
-        
-        console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
-        currentQuestion++;
-        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
-        
-        $(".percentPart").removeClass("hide");
-        console.log("end function percentage function working", percentage);
-        $(".quizLocation").text("Your on question: " + currentQuestion).show();
-
-        console.log("question location");
-        $(".quizLocation").text("You're on question: " + (currentQuestion+1)).show();
-        questionDisplay();
         
         // console.log("quiz progression function working");
         // console.log('choiceLetter:', choiceLetter); //its a function
@@ -292,5 +279,17 @@ function comparingAnswers() { //print message here saying if right if get correc
             generateQuestion();
             questionDisplay();
         }
+
+        console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
+        currentQuestion++;
+        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
+        
+        $(".percentPart").removeClass("hide");
+        console.log("end function percentage function working", percentage);
+        $(".quizLocation").text("Your on question: " + currentQuestion).show();
+
+        console.log("question location");
+        $(".quizLocation").text("You're on question: " + (currentQuestion+1)).show();
+        questionDisplay();
     });
 }
