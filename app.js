@@ -215,7 +215,7 @@ function comparingAnswers() { //print message here saying if right if get correc
        
         
         console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
-        // currentQuestion++;
+        currentQuestion++;
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         
         $(".percentPart").removeClass("hide");
@@ -247,7 +247,7 @@ function comparingAnswers() { //print message here saying if right if get correc
             questionDisplay();
 
             console.log("current question line 249 ", currentQuestion);
-            currentQuestion++;
+            nextIncrementQuestion();
             console.log("generating new choice works");
             generateQuestion(); 
 
@@ -265,7 +265,7 @@ function comparingAnswers() { //print message here saying if right if get correc
 
             generateQuestion();
             // console.log("question number = " + currentQuestion);
-        } if (currentQuestion === questions.length) {
+        } else if (currentQuestion === questions.length) {
             console.log("end quiz function works");
             $(".finishedQuiz").show();
 
@@ -278,6 +278,19 @@ function comparingAnswers() { //print message here saying if right if get correc
             $(".quizLocation").text("Your on question: " + currentQuestion).show();
             resetQuiz();
             exitQuiz();    
+        } else { //keep going if not finished
+            console.log("continue quiz function works");
+            $(".quiz").removeClass("hide");
+
+            calculatePercentage();
+            // console.log("end function percentage function working", percentage);
+            $(".percentPart").removeClass("hide");
+            
+            console.log("question location");
+            $(".quizLocation").text("Your on question: " + currentQuestion).show();
+ 
+            generateQuestion();
+            questionDisplay();
         }
     });
 }
