@@ -169,27 +169,27 @@ function exitQuiz() {
 
 //make data store like the shopping app
 function generateQuestion() {
-        $(".quizQuestions").html(`
-            <legend>
-                ${questions[currentQuestion].question}
-            </legend>
-            <div>
-                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.a}">
-                <label for="${questions[currentQuestion].answers.a}"> ${questions[currentQuestion].answers.a}</label>
-            </div>
-            <div>
-                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.b}">
-                <label for="${questions[currentQuestion].answers.b}"> ${questions[currentQuestion].answers.b}</label>
-            </div>
-            <div>
-                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.c}">
-                <label for="${questions[currentQuestion].answers.c}"> ${questions[currentQuestion].answers.c}</label>
-            </div>
-            <div>
-                <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
-                <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
-            </div>
-        `);
+    $(".quizQuestions").html(`
+        <legend>
+            ${questions[currentQuestion].question}
+        </legend>
+        <div>
+            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.a}">
+            <label for="${questions[currentQuestion].answers.a}"> ${questions[currentQuestion].answers.a}</label>
+        </div>
+        <div>
+            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.b}">
+            <label for="${questions[currentQuestion].answers.b}"> ${questions[currentQuestion].answers.b}</label>
+        </div>
+        <div>
+            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.c}">
+            <label for="${questions[currentQuestion].answers.c}"> ${questions[currentQuestion].answers.c}</label>
+        </div>
+        <div>
+            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
+            <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
+        </div>
+    `);
 }
 
 function nextIncrementQuestion() {
@@ -215,7 +215,7 @@ function comparingAnswers() { //print message here saying if right if get correc
        
         
         console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
-        currentQuestion++;
+        // currentQuestion++;
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         
         $(".percentPart").removeClass("hide");
@@ -233,53 +233,51 @@ function comparingAnswers() { //print message here saying if right if get correc
         // console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
 
         //if else for checking right answer
-        if (choiceLetter === questions[currentQuestion].correctAnswer) {
-            // console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
-            // console.log("this is what choice answers displays: " + choiceLetter);
+        if (choiceLetter === questions[currentQuestion].correctAnswer) {// console.log("the choice ans is the correct choice");
+            console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
+            console.log("this is what choice answers displays: " + choiceLetter);
 
-            // console.log("the choice ans is the correct choice");
-            $(".rightFeebackPart").show(); //generate next question if right
-            $(".wrongFeebackPart").hide();
+            $(".rightFeebackPart").removeClass("hide"); //generate next question if right
             score++;
             calculatePercentage();
             $(".listPercentage").show();
-            // console.log("correct choice works");
-            // console.log("current question line 230 ", currentQuestion);
+
+            console.log("question location");
+            $(".quizLocation").text("You're on question: " + (currentQuestion+1)).show();
+            questionDisplay();
+
+            console.log("current question line 249 ", currentQuestion);
             currentQuestion++;
+            console.log("generating new choice works");
             generateQuestion(); 
-            // console.log("generating new choice works");
-            // console.log("question location");
-            // $(".quizLocation").text("You're on question: " + (currentQuestion+1)).show();
-            // questionDisplay();
-            // console.log("question number = " + currentQuestion);
-            //put incremental here think about what is condition based or notquizProgression();
-        } else {
-            // console.log("the else choice ans is the incorrect choice");
-            $(".rightFeebackPart").hide();
-            $(".wrongFeebackPart").show(); //generate current question again if wrong
+
+        } else if (choiceLetter !== questions[currentQuestion].correctAnswer) {// console.log("the else choice ans is the incorrect choice");
+            console.log("incorrect choice works");
+            $(".wrongFeebackPart").removeClass("hide"); //generate current question again if wrong
             score;
             calculatePercentage();
             $(".listPercentage").show();
-            // console.log("incorrect choice works");
-            // console.log("staying put to select correct answer");
-            // console.log("question location");
-            // $(".quizLocation").text("Your on question: " + currentQuestion).show();
-            // questionDisplay();
+            
+            
+            console.log("question location");
+            $(".quizLocation").text("Your on question: " + currentQuestion).show();
+            questionDisplay();
+
             generateQuestion();
             // console.log("question number = " + currentQuestion);
         } if (currentQuestion === questions.length) {
-                console.log("end quiz function works");
-                $(".finishedQuiz").show();
- 
-                $(".wrapper").hide();
-                $(".quiz").hide();
+            console.log("end quiz function works");
+            $(".finishedQuiz").show();
 
-                calculatePercentage();
-                $(".percentPart").removeClass("hide");
-                // console.log("end function percentage function working", percentage);
-                $(".quizLocation").text("Your on question: " + currentQuestion).show();
-                resetQuiz();
-                exitQuiz();    
+            $(".wrapper").hide();
+            $(".quiz").hide();
+
+            calculatePercentage();
+            $(".percentPart").removeClass("hide");
+            // console.log("end function percentage function working", percentage);
+            $(".quizLocation").text("Your on question: " + currentQuestion).show();
+            resetQuiz();
+            exitQuiz();    
         }
     });
 }
