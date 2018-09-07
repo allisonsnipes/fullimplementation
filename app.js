@@ -9,12 +9,11 @@ $(document).ready(function() {
   comparingAnswers();
   generateQuestion();
   questionDisplay();
-  nextIncrementQuestion();
 });
 
-let score = 0, //becareful
+let score = 0, 
     percentage = ((score/10)*100),
-    currentQuestion = 0,
+    currentQuestion = 1,
     questions = [
     {
         question: "Which country ranks number one in press freedom?",
@@ -129,9 +128,7 @@ function startQuiz() {
 
         $(".wrapper").hide();
         $(".quiz").show();
-        $(".quizLocation").show();
         $(".calculatePercentage").show();
-        $(".quizLocation").text("Your on question: " + currentQuestion).hide();
 
         generateQuestion();
         questionDisplay();
@@ -150,7 +147,6 @@ function resetQuiz() {
         $(".wrapper").show();
         $(".quiz").hide();
         $(".percentPart").hide();
-        $(".quizLocation").text("Your on question: " + currentQuestion).hide();
         $(".finishedQuiz").hide();
 
         startQuiz();
@@ -192,67 +188,27 @@ function generateQuestion() {
     `);
 }
 
-function nextIncrementQuestion() {
-    const incremental = currentQuestion++;
-}
-
 function calculatePercentage() { //to calc user's score
     console.log("score = " + score);
     let percentage = ((score/10)*100);
     $(".percentPart").text("Your score so far is " + percentage + "%").removeClass("hide");
 }
 
-function questionDisplay() {
+function questionDisplay() { //displays location of quiz question
     $(".quizLocation").html(`
         <p class="quizLocation"> You are on question: ${currentQuestion}</p>
     `);
     console.log("question number = " + currentQuestion);
 }
 
-function comparingAnswers() { //print message here saying if right if get correct answer and alert if not submit here then html right/wrong
+function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
+
+        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
+        console.log("length is ", questions.length);
         
-        // console.log("quiz progression function working");
-        // console.log('choiceLetter:', choiceLetter); //its a function
-        // console.log('currentQuestion:', currentQuestion);
-        // console.log('question', questions[currentQuestion].question);
-        // console.log('correctAnswer:', questions[currentQuestion].correctAnswer);
-
-        //if else for checking right answer
-        if (choiceLetter === questions[currentQuestion].correctAnswer) {// console.log("the choice ans is the correct choice");
-            console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
-            console.log("this is what choice answers displays: " + choiceLetter);
-
-            $(".rightFeebackPart").removeClass("hide"); //generate next question if right
-            score++;
-            calculatePercentage();
-            $(".listPercentage").show();
-
-            console.log("question location");
-            $(".quizLocation").text("You're on question: " + (currentQuestion+1)).show();
-            questionDisplay();
-
-            console.log("current question line 249 ", currentQuestion);
-            nextIncrementQuestion();
-            console.log("generating new choice works");
-            generateQuestion(); 
-
-        } else if (choiceLetter !== questions[currentQuestion].correctAnswer) {// console.log("the else choice ans is the incorrect choice");
-            console.log("incorrect choice works");
-            $(".wrongFeebackPart").removeClass("hide"); //generate current question again if wrong
-            score;
-            calculatePercentage();
-            $(".listPercentage").show();
-            
-            
-            console.log("question location");
-            $(".quizLocation").text("Your on question: " + currentQuestion).show();
-            questionDisplay();
-
-            generateQuestion();
-            // console.log("question number = " + currentQuestion);
-        } else if (currentQuestion === questions.length) {
+        if (currentQuestion === questions.length) { //if get to the last question stop the quiz
             console.log("end quiz function works");
             $(".finishedQuiz").show();
 
@@ -261,35 +217,30 @@ function comparingAnswers() { //print message here saying if right if get correc
 
             calculatePercentage();
             $(".percentPart").removeClass("hide");
-            // console.log("end function percentage function working", percentage);
-            $(".quizLocation").text("Your on question: " + currentQuestion).show();
             resetQuiz();
-            exitQuiz();    
-        } else { //keep going if not finished
-            console.log("continue quiz function works");
-            $(".quiz").removeClass("hide");
+            exitQuiz();
+        } else {//if else for checking right answer
+            // console.log("line 244 choiceLetter", choiceLetter);
+            // console.log("questions[currentQuestion].correctAnswer", questions[currentQuestion].correctAnswer);
+            if (choiceLetter === questions[currentQuestion].correctAnswer) {// console.log("the choice ans is the correct choice");
+                // console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
+                // console.log("this is what choice answers displays: " + choiceLetter);
 
+                $(".rightFeebackPart").removeClass("hide"); //generate next question if right
+                $(".wrongFeebackPart").hide();
+                score++;
+                
+            } else {// console.log("the else choice ans is the incorrect choice");
+                // console.log("incorrect choice works");
+                $(".wrongFeebackPart").removeClass("hide"); //inform user if wrong but progress to next question
+                $(".rightFeebackPart").hide();
+            }
             calculatePercentage();
-            // console.log("end function percentage function working", percentage);
-            $(".percentPart").removeClass("hide");
-            
-            console.log("question location");
-            $(".quizLocation").text("Your on question: " + currentQuestion).show();
- 
-            generateQuestion();
+            $(".listPercentage").show();
+            currentQuestion++;
+            // console.log("question location");
             questionDisplay();
+            generateQuestion();
         }
-
-        console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
-        currentQuestion++;
-        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
-        
-        $(".percentPart").removeClass("hide");
-        console.log("end function percentage function working", percentage);
-        $(".quizLocation").text("Your on question: " + currentQuestion).show();
-
-        console.log("question location");
-        $(".quizLocation").text("You're on question: " + (currentQuestion+1)).show();
-        questionDisplay();
     });
 }

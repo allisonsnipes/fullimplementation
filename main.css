@@ -12,7 +12,7 @@ hr {
     border: 1px solid #000;
 }
 
-h1, h2, p, form, .quizquests {
+h1, h2, p, form, .quizQuestions, .feedbackPartSelection, .percentPart {
     text-align: center;
     width: 50%;
     margin-left: auto;
