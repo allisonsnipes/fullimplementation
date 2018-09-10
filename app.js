@@ -143,6 +143,7 @@ function startQuiz() {
 
         generateQuestion();
         questionDisplay();
+        calculatePercentage();
     });
 }
 
@@ -157,7 +158,6 @@ function resetQuiz() {
 
         $(".wrapper").show();
         $(".quiz").hide();
-        $(".percentPart").hide();
         $(".finishedQuiz").hide();
 
         startQuiz();
