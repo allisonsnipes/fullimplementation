@@ -207,7 +207,7 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         console.log("length is ", questions.length); 
 
-        if (currentQuestion === questions.length) { //if get to the last question stop the quiz
+        if (currentQuestion === questions[currentQuestion].question(9)) { //if get to the last question stop the quiz
             console.log("end quiz function works");
             $(".finishedQuiz").show();
             $(".wrapper").hide();
