@@ -6,9 +6,9 @@ $(document).ready(function() {
   startQuiz();
   resetQuiz();
   exitQuiz();
-  comparingAnswers();
   generateQuestion();
-  questionDisplay();
+  questionDisplay(); 
+  comparingAnswers();
 });
 
 let score = 0, 
@@ -204,43 +204,45 @@ function questionDisplay() { //displays location of quiz question
 function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
-        console.log("length is ", questions.length);
-        
+        console.log("length is ", questions.length); 
+
         if (currentQuestion === questions.length) { //if get to the last question stop the quiz
             console.log("end quiz function works");
             $(".finishedQuiz").show();
-
             $(".wrapper").hide();
             $(".quiz").hide();
-
-            calculatePercentage();
-            $(".percentPart").removeClass("hide");
             resetQuiz();
             exitQuiz();
-        } else {//if else for checking right answer
-            // console.log("line 244 choiceLetter", choiceLetter);
-            // console.log("questions[currentQuestion].correctAnswer", questions[currentQuestion].correctAnswer);
+        } else { //if else for checking right answer
+            console.log("line 244 choiceLetter", choiceLetter);
+            console.log("questions[currentQuestion].correctAnswer", questions[currentQuestion].correctAnswer);
             if (choiceLetter === questions[currentQuestion].correctAnswer) {// console.log("the choice ans is the correct choice");
-                // console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
-                // console.log("this is what choice answers displays: " + choiceLetter);
-
+                console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
+                console.log("this is what choice answers displays: " + choiceLetter);
                 $(".rightFeebackPart").removeClass("hide"); //generate next question if right
                 $(".wrongFeebackPart").hide();
-                score++;
                 
-            } else {// console.log("the else choice ans is the incorrect choice");
-                // console.log("incorrect choice works");
+                console.log("score = " + score);
+                score++;
+            } else { // console.log("the else choice ans is the incorrect choice");
+                console.log("incorrect choice works");
                 $(".wrongFeebackPart").removeClass("hide"); //inform user if wrong but progress to next question
                 $(".rightFeebackPart").hide();
+                console.log("score = " + score);
             }
+            console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
+            console.log("end function percentage function working", percentage);
             calculatePercentage();
+            $(".percentPart").removeClass("hide");
             $(".listPercentage").show();
+            console.log("question location");
+            $(".quizLocation").text("Your on question: " + currentQuestion).show(); 
             currentQuestion++;
-            // console.log("question location");
             questionDisplay();
             generateQuestion();
+            
+
         }
     });
 }
