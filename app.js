@@ -115,6 +115,17 @@ let score = 0,
         },
         correctAnswer: "25%",
     },
+
+    {
+        question: "Social media is the best approach for journalist and activists to reach their audience, without having to worry about censorship.",
+        answers: {
+            a: "Yes, social media by far is the best way for journalist and activists to reach their audience",
+            b: "No, drawing too much publicity to their cause could be detrimental--thus they shy away from their use.",
+            c: "Possibly, but what other choice do they have to spread their views.",
+            d: "No, social media platforms often use imbalanced moderation policies via artificial intelligence that do not allow activists and journals to appeal of removal of their content",
+        },
+        correctAnswer: "No, social media platforms often use imbalanced moderation policies via artificial intelligence that do not allow activists and journals to appeal of removal of their content",
+    },
 ];
 
 //start quiz and hide start page and other components
@@ -207,7 +218,7 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         console.log("length is ", questions.length); 
 
-        if (currentQuestion === questions[currentQuestion].question(9)) { //if get to the last question stop the quiz
+        if ((currentQuestion + 1) === questions.length) { //if get to the last question stop the quiz
             console.log("end quiz function works");
             $(".finishedQuiz").show();
             $(".wrapper").hide();
