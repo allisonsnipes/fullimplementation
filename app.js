@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 let score = 0, 
     percentage = ((score/10)*100),
-    currentQuestion = 1,
+    currentQuestion = 0,
     questions = [
     {
         question: "Which country ranks number one in press freedom?",
@@ -76,16 +76,6 @@ let score = 0,
         correctAnswer: "The right to communicate online freely, without barriers, is a fundamental right to everyone: including the press.",
     },
     {
-        question: "Online harassment is less of a concern than physical attacks on journalists.",
-        answers: {
-            a: "True, as long as the physical person is not harmed—cyberbullying is not an issue.",
-            b: "False, online harassment is as serious of an offense as physical attacks.",
-            c: "True, press freedom is largely limited and more of a concern offline.",
-            d: "No quantifiable data exist on the subject more resources are needed.",
-        },
-        correctAnswer: "False, online harassment is as serious of an offense as physical attacks.",
-    },
-    {
         question: "Which is not an online attack method on journalists that authoritarian regimes in an attempt to silence journalists.",
         answers: {
             a: "Disinformation: journalistic content on social networks is drowned in a flood of fake new and pro-government content.",
@@ -140,6 +130,8 @@ function startQuiz() {
         $(".wrapper").hide();
         $(".quiz").show();
         $(".calculatePercentage").show();
+        $(".percentPart").text("Your score so far is " + percentage + "%").removeClass("hide");
+        
 
         generateQuestion();
         questionDisplay();
@@ -156,12 +148,16 @@ function resetQuiz() {
         score = 0;
         currentQuestion = 0;
 
-        $(".wrapper").show();
-        $(".quiz").hide();
+        $(".wrapper").hide();
+        $(".quiz").show();
+        $(".calculatePercentage").show();
+        $(".wrongFeebackPart").hide();
+        $(".rightFeebackPart").hide();
         $(".finishedQuiz").hide();
 
-        startQuiz();
         generateQuestion();
+        questionDisplay();
+        calculatePercentage();
     });
 }
 
@@ -206,10 +202,8 @@ function calculatePercentage() { //to calc user's score
 }
 
 function questionDisplay() { //displays location of quiz question
-    $(".quizLocation").html(`
-        <p class="quizLocation"> You are on question: ${currentQuestion}</p>
-    `);
-    console.log("question number = " + currentQuestion);
+    $(".quizLocation").html(`<p class="quizLocation"> You are on question: ${currentQuestion + 1}</p>`);
+    console.log("question number for line number 210 = " + currentQuestion);
 }
 
 function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
@@ -252,8 +246,6 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
             currentQuestion++;
             questionDisplay();
             generateQuestion();
-            
-
         }
     });
 }
