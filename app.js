@@ -131,11 +131,12 @@ function startQuiz() {
         $(".quiz").show();
         $(".calculatePercentage").show();
         $(".percentPart").text("Your score so far is " + percentage + "%").removeClass("hide");
-        
+        //put quiz counter here
 
         generateQuestion();
         questionDisplay();
         calculatePercentage();
+        //call quiz function
     });
 }
 
@@ -154,7 +155,7 @@ function resetQuiz() {
         $(".wrongFeebackPart").hide();
         $(".rightFeebackPart").hide();
         $(".finishedQuiz").hide();
-
+        //should i put quiz here?
         generateQuestion();
         questionDisplay();
         calculatePercentage();
@@ -202,7 +203,7 @@ function calculatePercentage() { //to calc user's score
 }
 
 function questionDisplay() { //displays location of quiz question
-    $(".quizLocation").html(`<p class="quizLocation"> You are on question: ${currentQuestion + 1}</p>`);
+    $(".quizLocation").html(`<p class="textForQuestionDisplay"> You are on question: ${currentQuestion + 1} of 10.</p>`);
     console.log("question number for line number 210 = " + currentQuestion);
 }
 

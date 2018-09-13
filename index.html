@@ -20,13 +20,8 @@
 			<p> A brief overview on press freedom and activists rights worldwide. This is to test your general 
 				knowledge of the plight of the press, activists' barriers to freedom of speech, and various governments' 
 				tactics to block access to information.</p>
-				<p> Instructions: <br>
-					1. Once you start the quiz, click NEXT QUESTION to progress the quiz.<br>
-					2. To exit the quiz, click EXIT QUIZ.<br>
-					3. To restart the quiz, click RESTART.<br>
-				</p>
+			<p> Instructions:</p>
 			<p> Click the START button to begin the quiz</p>
-
 			<button class="startButton" id="startQuiz" type="Submit">Start</button> 
 		</div>
 	</div> 
@@ -61,37 +56,40 @@
 	</div>
 <!-- end questions -->
 
-<!-- feedback for right ans -->
+<!-- feedback for right and wrong ans -->
 	<div class="feedbackPartSelection">
 		<div class="rightFeebackPart hide">
 			<p class="rightFeeback"> Correct answer, good job! </p>
-			<p class="quizLocation"> You are on question:</p>
 		</div>
-		<!-- end right feedback -->
 
-		<!-- feedback for wrong answer -->
 		<div class="wrongFeebackPart hide">
 			<p class="wrongFeeback" > I'm sorry, that was the incorrect answer.</p>
-			<p class="quizLocation"> You are on question:</p>
 		</div>
 	</div>
-	<!-- end wrong feedback -->
+	<!-- end feedback -->
 
 <!-- testing scores -->
 	<div class="percentPart hide">
 		<form class="percentageScore">
-			<div class="percentageCal"> 
-				<p class="listPercentage"> Quiz percentage:</p>
-			</div> <!-- use this to display score look at quiz app  do  the same for location???***-->
+			<div class="percentageCal"> </div> 
 		</form>
 	</div> 
 <!--end of scores -->
+
+<!-- quiz location display should change with each question -->
+	<div class="quizLocation">
+		<form class="quizLocationQuestion">
+			<div class="locationQuiz">
+				<p class="textForQuestionDisplay"> </p>
+			</div>
+		</form>
+<!-- end of quiz location display -->
 
 <!-- end of quiz options-->
 	<div class="finishedQuiz hide">
 		<form class="finishedQuizOptions">
 			<span class="finishedQuizOptions"> 
-				<p> Thank you for taking my quiz!</p>
+				<p> Thank you for taking my quiz! You can choose to either take the quiz again, or quit.</p>
 				<button class="resetButton" id="resetButton" type="button"> Restart Quiz </button>
 				<button class="exitButton" id="exitButton" type="button"> Exit Quiz </button>
 			</span>
