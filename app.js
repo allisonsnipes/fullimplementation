@@ -155,14 +155,14 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
             if (choiceLetter === questions[currentQuestion].correctAnswer) {// console.log("the choice ans is the correct choice");
                 console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
                 console.log("this is what choice answers displays: " + choiceLetter);
-                $(".rightFeebackPart").removeClass("hide"); //generate next question if right
+                $(".rightFeebackPart").show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
                 
                 console.log("score = " + score);
                 score++;
             } else { // console.log("the else choice ans is the incorrect choice");
                 console.log("incorrect choice works");
-                $(".wrongFeebackPart").removeClass("hide"); //inform user if wrong but progress to next question
+                $(".wrongFeebackPart").show(); //inform user if wrong but progress to next question
                 $(".rightFeebackPart").hide();
                 console.log("score = " + score);
             }
