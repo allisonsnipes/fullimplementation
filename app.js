@@ -162,9 +162,10 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
                 score++;
             } else { // console.log("the else choice ans is the incorrect choice");
                 console.log("incorrect choice works");
-                $(".wrongFeebackPart").show(); //inform user if wrong but progress to next question
+                $(".wrongFeebackPart").show().text("I'm sorry, that was the incorrect answer. The correct answer is: " + questions[currentQuestion].correctAnswer);
                 $(".rightFeebackPart").hide();
                 console.log("score = " + score);
+                console.log("showing the right ans if user gets question wrong" + questions[currentQuestion].correctAnswer);
             }
             console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
             console.log("end function percentage function working", percentage);
