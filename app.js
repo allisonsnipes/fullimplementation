@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 //needs to be outside for global access of data only in specific places to preventdefault
 $(document).ready(function() { 
@@ -131,11 +131,6 @@ function startQuiz() {
     });
 }
 
-//pull out same steps to make own function to call repeatedly in other functions like katie said
-
-function quizProgression() {
-}
-
 function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
@@ -212,7 +207,7 @@ function exitQuiz() {
     $(".exitButton").on("click", function(event) {
         event.preventDefault();
         console.log("exit button working");
-        window.location.href = 'https://thinkful.com';
+        window.location.href = "https://thinkful.com";
     });
 }
 
