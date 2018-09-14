@@ -11,9 +11,7 @@ $(document).ready(function() {
   comparingAnswers();
 });
 
-let score = 0, 
-    percentage = ((score/10)*100),
-    currentQuestion = 0,
+let currentQuestion = 0,
     questions = [
     {
         question: "Which country ranks number one in press freedom?",
@@ -142,6 +140,11 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
             $(".finishedQuiz").show();
             $(".wrapper").hide();
             $(".quiz").hide();
+            
+            if (choiceLetter === questions[currentQuestion].correctAnswer) {
+                score++;
+            } 
+            console.log("final run through score" + score);
             $(".percentPart").removeClass("hide").text("You're final score is: " + percentage + "%");
             resetQuiz();
             exitQuiz();
