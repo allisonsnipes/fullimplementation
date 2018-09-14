@@ -1,104 +1,92 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<html lang="en"></html>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Welcome Freedom: Ivory J</title>
+		<link href="./main.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	</head>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>Welcome Freedom: Ivory J</title>
-	<link href="./main.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-</head>
-
-<body>
-<!-- start page: introduction of the quiz concept--> 
-	<div class="wrapper">   
-		<div class="start">
-			<header>
-				<h1 class="freedomClass"> Welcome Freedom!</h1>
-			</header>
-			<h2> Ivory J.</h2>
-			<p> A brief overview on press freedom and activists rights worldwide. This is to test your general 
-				knowledge of the plight of the press, activists' barriers to freedom of speech, and various governments' 
-				tactics to block access to information.</p>
-			<p> Instructions:</p>
-			<p> Click the START button to begin the quiz</p>
-			<button class="startButton" id="startQuiz" type="Submit">Start</button> 
-		</div>
-	</div> 
-<!-- end start page -->
-
-<!-- questions: quiz part design, redo the js and css files too -->
-	<div class="quiz hide" id="quizWrapper">
-		<form class="showQuiz">
-			<!-- used to group like items together in a form use text.()-->
-			<fieldset class="quizQuestions">
-				<legend>
-				</legend>
-					<div>
-						<input type="radio" id="r1" name="quizchoices" value="a">
-						<label for="choiceA"> a: </label> 
-					</div>
-					<div>
-						<input type="radio" id="r2" name="quizchoices" value="b">
-						<label for="choiceB"> b: </label>
-					</div>
-					<div>
-						<input type="radio" id="r3" name="quizchoices" value="c">
-						<label for="choiceC"> c: </label>
-					</div>
-					<div>
-						<input type="radio" id="r4" name="quizchoices" value="d">
-						<label for="choiceD"> d: </label>
-					</div>
-			</fieldset>
-			<button class="nextButton" id="nextButton" type="submit">Next Question</button>
-		</form>
-	</div>
-<!-- end questions -->
-
-<!-- feedback for right and wrong ans -->
-	<div class="feedbackPartSelection">
-		<div class="rightFeebackPart hide">
-			<p class="rightFeeback"> Correct answer, good job! </p>
-		</div>
-
-		<div class="wrongFeebackPart hide">
-			<p class="wrongFeeback" > </p>
-		</div>
-	</div>
-	<!-- end feedback -->
-
-<!-- testing scores -->
-	<div class="percentPart hide">
-		<form class="percentageScore">
-			<div class="percentageCal"> </div> 
-		</form>
-	</div> 
-<!--end of scores -->
-
-<!-- quiz location display should change with each question -->
-	<div class="quizLocation hide">
-		<form class="quizLocationQuestion">
-			<div class="locationQuiz">
-				<p class="textForQuestionDisplay"> </p>
+	<body> <!-- start page: introduction of the quiz concept--> 
+		<div class="wrapper">   
+			<div class="start">
+				<header>
+					<h1 class="freedomClass"> Welcome Freedom!</h1>
+				</header>
+				<h2> Ivory J.</h2>
+				<p> A brief overview on press freedom and activists rights worldwide. This is to test your general 
+					knowledge of the plight of the press, activists' barriers to freedom of speech, and various governments' 
+					tactics to block access to information.</p>
+				<p> Instructions:</p>
+				<p> Click the START button to begin the quiz</p>
+				<button class="startButton" id="startQuiz" type="Submit">Start</button> 
 			</div>
-		</form>
-	</div>
-<!-- end of quiz location display -->
+		</div> <!-- end start page -->
 
-<!-- end of quiz options-->
-	<div class="finishedQuiz hide">
-		<form class="finishedQuizOptions">
-			<span class="finishedQuizOptions"> 
-				<p> Thank you for taking my quiz! You can choose to either take the quiz again, or quit.</p>
-				<button class="resetButton" id="resetButton" type="button"> Restart Quiz </button>
-				<button class="exitButton" id="exitButton" type="button"> Exit Quiz </button>
-			</span>
-		</form>
-	</div> 
-<!-- end of quiz-->
+		<div class="quiz hide" id="quizWrapper"> <!-- questions: quiz part design -->
+			<form class="showQuiz"> <!-- used to group like items together in a form use text.()-->
+				<fieldset class="quizQuestions">
+					<legend>
+					</legend>
+						<div>
+							<input type="radio" id="r1" name="quizchoices" value="a">
+							<label for="choiceA"> a: </label> 
+						</div>
+						<div>
+							<input type="radio" id="r2" name="quizchoices" value="b">
+							<label for="choiceB"> b: </label>
+						</div>
+						<div>
+							<input type="radio" id="r3" name="quizchoices" value="c">
+							<label for="choiceC"> c: </label>
+						</div>
+						<div>
+							<input type="radio" id="r4" name="quizchoices" value="d">
+							<label for="choiceD"> d: </label>
+						</div>
+				</fieldset>
+				<button class="nextButton" id="nextButton" type="submit">Next Question</button>
+			</form>
+		</div><!-- end questions -->
+	
+		<div class="feedbackPartSelection"> <!-- feedback for right and wrong ans -->
+			<div class="rightFeebackPart hide">
+				<p class="rightFeeback"> Correct answer, good job! </p>
+			</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script language="javascript" type="text/javascript" src="./app.js"></script>
-</body>
+			<div class="wrongFeebackPart hide">
+				<p class="wrongFeeback" > </p>
+			</div>
+		</div> <!-- end feedback -->
+	
+		<div class="percentPart hide"> <!-- testing scores -->
+			<form class="percentageScore">
+				<div class="percentageCal"> 
+				</div> 
+			</form>
+		</div> <!--end of scores -->
+	
+		<div class="quizLocation hide"> <!-- quiz location display should change with each question -->
+			<form class="quizLocationQuestion">
+				<div class="locationQuiz">
+					<p class="textForQuestionDisplay"> </p>
+				</div>
+			</form>
+		</div> <!-- end of quiz location display -->
+	
+		<div class="finishedQuiz hide"> <!-- end of quiz options-->
+			<form class="finishedQuizOptions">
+				<span class="finishedQuizOptions"> 
+					<p> Thank you for taking my quiz! You can choose to either take the quiz again, or quit.</p>
+					<button class="resetButton" id="resetButton" type="button"> Restart Quiz </button>
+					<button class="exitButton" id="exitButton" type="button"> Exit Quiz </button>
+				</span>
+			</form>
+		</div> <!-- end of quiz-->
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script language="javascript" type="text/javascript" src="./app.js"></script>
+	</body>
 </html>
