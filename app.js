@@ -12,6 +12,7 @@ $(document).ready(function() {
 });
 
 let currentQuestion = 0,
+    score = 0,
     questions = [
     {
         question: "Which country ranks number one in press freedom?",
@@ -135,6 +136,8 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
         const choiceLetter = ($(`input[name='quizchoices']:checked`) || {}).val();
         console.log("length is ", questions.length); 
 
+        let percentage = ((score/10)*100);
+
         if ((currentQuestion + 1) === questions.length) { //if get to the last question stop the quiz
             console.log("end quiz function works");
             $(".finishedQuiz").show();
@@ -161,7 +164,7 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
                 score++;
                 currentQuestion++;
             } else if ($(`input[name='quizchoices']:checked`).length<=0) {
-                alert ("Please make an answer selection")
+                alert ("Please make an answer selection.")
                 currentQuestion;    
             } else { // console.log("the else choice ans is the incorrect choice");
                 console.log("incorrect choice works");
