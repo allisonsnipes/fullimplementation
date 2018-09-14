@@ -147,6 +147,7 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
             $(".finishedQuiz").show();
             $(".wrapper").hide();
             $(".quiz").hide();
+            $(".percentPart").removeClass("hide").text("You're final score is: " + percentage + "%");
             resetQuiz();
             exitQuiz();
         } else { //if else for checking right answer
@@ -157,14 +158,13 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
                 console.log("this is what choice answers displays: " + choiceLetter);
                 $(".rightFeebackPart").show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
-                
+                $(".percentPart").removeClass("hide");
                 console.log("score = " + score);
                 score++;
                 currentQuestion++;
             } else if ($(`input[name='quizchoices']:checked`).length<=0) {
                 alert ("Please make an answer selection")
-                currentQuestion;
-                
+                currentQuestion;    
             } else { // console.log("the else choice ans is the incorrect choice");
                 console.log("incorrect choice works");
                 $(".wrongFeebackPart").show().text("I'm sorry, that was the incorrect answer. The correct answer is: " + questions[currentQuestion].correctAnswer);
@@ -172,12 +172,11 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
                 console.log("score = " + score);
                 console.log("showing the right ans if user gets question wrong" + questions[currentQuestion].correctAnswer);
                 currentQuestion++;
+                $(".percentPart").removeClass("hide");
             }
             console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
             console.log("end function percentage function working", percentage);
             calculatePercentage();
-            $(".percentPart").removeClass("hide");
-            $(".listPercentage").show();
             console.log("question location");
             $(".quizLocation").text("Your on question: " + currentQuestion).show(); 
             questionDisplay();
@@ -185,17 +184,6 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
         }
     });
 }
-
-        // score = 0;
-        // currentQuestion = 0;
-        // $(".quizLocation").hide();
-        // $(".calculatePercentage").show();
-        // $(".percentPart").text("Your score so far is " + percentage + "%").removeClass("hide");
-
-        // generateQuestion();
-        // questionDisplay();
-        // calculatePercentage();
-
 
 //reseting quiz on reset button click
 function resetQuiz() {
