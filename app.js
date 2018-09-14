@@ -139,7 +139,7 @@ function quizProgression() {
 function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
+        const choiceLetter = ($(`input[name='quizchoices']:checked`) || {}).val();
         console.log("length is ", questions.length); 
 
         if ((currentQuestion + 1) === questions.length) { //if get to the last question stop the quiz
@@ -160,12 +160,18 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
                 
                 console.log("score = " + score);
                 score++;
+                currentQuestion++;
+            } else if ($(`input[name='quizchoices']:checked`).length<=0) {
+                alert ("Please make an answer selection")
+                currentQuestion;
+                
             } else { // console.log("the else choice ans is the incorrect choice");
                 console.log("incorrect choice works");
                 $(".wrongFeebackPart").show().text("I'm sorry, that was the incorrect answer. The correct answer is: " + questions[currentQuestion].correctAnswer);
                 $(".rightFeebackPart").hide();
                 console.log("score = " + score);
                 console.log("showing the right ans if user gets question wrong" + questions[currentQuestion].correctAnswer);
+                currentQuestion++;
             }
             console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
             console.log("end function percentage function working", percentage);
@@ -174,7 +180,6 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
             $(".listPercentage").show();
             console.log("question location");
             $(".quizLocation").text("Your on question: " + currentQuestion).show(); 
-            currentQuestion++;
             questionDisplay();
             generateQuestion();
         }
