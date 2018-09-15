@@ -1,14 +1,16 @@
 "use strict";
 
-//needs to be outside for global access of data only in specific places to preventdefault
-$(document).ready(function() { 
-  console.log("document ready function working"); //event listener methods
-  startQuiz();
-  resetQuiz();
-  exitQuiz();
-  generateQuestion();
-  questionDisplay(); 
-  comparingAnswers();
+$(document).ready(function() {
+    $(".quiz").hide();
+    $(".feedbackPartSelection").hide();
+    $(".finishedQuiz").hide();
+    $(".quizLocation").hide();
+    startQuiz();
+    resetQuiz();
+    exitQuiz();
+    generateQuestion();
+    questionDisplay(); 
+    comparingAnswers();
 });
 
 let currentQuestion = 0,
@@ -21,8 +23,8 @@ let currentQuestion = 0,
             b: "USA",
             c: "Switzerland",
             d: "England",
-            },
-            correctAnswer: "Norway",
+        },
+        correctAnswer: "Norway",
     },
     {
         question: "In this year alone, what percentage of women journalists receive harassment for the stories they cover?",
@@ -31,8 +33,8 @@ let currentQuestion = 0,
             b: "Internationally, we do not have the figures to back up these claims.",
             c: "1/3",
             d: "It happens more or less developed counties, we do not have the data to back up these claims.",
-            },
-            correctAnswer: "2/3",
+        },
+        correctAnswer: "2/3",
     },
     {
         question: "To date, which country has the world’s worst ranking of press freedom?",
@@ -121,11 +123,11 @@ let currentQuestion = 0,
 function startQuiz() {
     $(".startButton").on("click", function(event) { 
         event.preventDefault();
-        console.log("start click functioning");
-
         $(".wrapper").hide();
         $(".quiz").show();
-
+        $(".feedbackPartSelection").show();
+        $(".finishedQuiz").hide();
+        $(".quizLocation").html(`You're on question: ${currentQuestion}`).show(); 
         questionDisplay(); 
     });
 }
@@ -133,53 +135,42 @@ function startQuiz() {
 function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
-        const choiceLetter = ($(`input[name='quizchoices']:checked`) || {}).val();
-        console.log("length is ", questions.length); 
-
-        let percentage = ((score/10)*100);
+        const choiceLetter = $(`input[name='quizchoices']:checked`).val();
+        const wrongAnswerText = `I'm sorry, that was the incorrect answer. The correct answer is: ${questions[currentQuestion].correctAnswer}`;
+        const rightAnswerText = "Good job! Right answer.";
 
         if ((currentQuestion + 1) === questions.length) { //if get to the last question stop the quiz
-            console.log("end quiz function works");
             $(".finishedQuiz").show();
             $(".wrapper").hide();
             $(".quiz").hide();
-            
+
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
+                $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if right
+                $(".wrongFeebackPart").hide();
                 score++;
-            } 
-            console.log("final run through score" + score);
-            $(".percentPart").removeClass("hide").text("You're final score is: " + percentage + "%");
+            } else{
+                $(".wrongFeebackPart").show().text(wrongAnswerText);
+                $(".rightFeebackPart").hide();
+            }
+            calculatePercentage("You're final score is: ");
             resetQuiz();
             exitQuiz();
         } else { //if else for checking right answer
-            console.log("line 244 choiceLetter", choiceLetter);
-            console.log("questions[currentQuestion].correctAnswer", questions[currentQuestion].correctAnswer);
-            if (choiceLetter === questions[currentQuestion].correctAnswer) {// console.log("the choice ans is the correct choice");
-                console.log("this what correctAnswer displays: " + questions[currentQuestion].correctAnswer);
-                console.log("this is what choice answers displays: " + choiceLetter);
-                $(".rightFeebackPart").show(); //generate next question if right
+            if (choiceLetter === questions[currentQuestion].correctAnswer) {
+                $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
-                $(".percentPart").removeClass("hide");
-                console.log("score = " + score);
+        
                 score++;
                 currentQuestion++;
-            } else if ($(`input[name='quizchoices']:checked`).length<=0) {
-                alert ("Please make an answer selection.")
-                currentQuestion;    
-            } else { // console.log("the else choice ans is the incorrect choice");
-                console.log("incorrect choice works");
-                $(".wrongFeebackPart").show().text("I'm sorry, that was the incorrect answer. The correct answer is: " + questions[currentQuestion].correctAnswer);
+            } else if ($(`input[name='quizchoices']:checked`).length <= 0) {
+                alert ("Please make an answer selection.");    
+            } else { 
+                $(".wrongFeebackPart").show().text(wrongAnswerText);
                 $(".rightFeebackPart").hide();
-                console.log("score = " + score);
-                console.log("showing the right ans if user gets question wrong" + questions[currentQuestion].correctAnswer);
                 currentQuestion++;
-                $(".percentPart").removeClass("hide");
             }
-            console.log("currentquestion is: " + currentQuestion); //watch clickevent here... dont take out ANY code... console.log out everything here
-            console.log("end function percentage function working", percentage);
-            calculatePercentage();
-            console.log("question location");
-            $(".quizLocation").text("Your on question: " + currentQuestion).show(); 
+            calculatePercentage("You're current score is: ");
+            $(".quizLocation").html(`You're on question: ${currentQuestion}`); 
             questionDisplay();
             generateQuestion();
         }
@@ -190,8 +181,6 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
 function resetQuiz() {
     $(".resetButton").on("click", function(event) {
         event.preventDefault();
-        console.log("reset button working");
-       
         score = 0;
         currentQuestion = 0;
 
@@ -201,10 +190,9 @@ function resetQuiz() {
         $(".wrongFeebackPart").hide();
         $(".rightFeebackPart").hide();
         $(".finishedQuiz").hide();
-        //should i put quiz here?
         generateQuestion();
         questionDisplay();
-        calculatePercentage();
+        calculatePercentage("You're current score is: ");
     });
 }
 
@@ -212,14 +200,13 @@ function resetQuiz() {
 function exitQuiz() {
     $(".exitButton").on("click", function(event) {
         event.preventDefault();
-        console.log("exit button working");
         window.location.href = "https://thinkful.com";
     });
 }
 
-//make data store like the shopping app
+//make data store like the shopping app, look up the .html code again
 function generateQuestion() {
-    $(".quizQuestions").html(`
+    $(".quizQuestions").html(` 
         <legend>
             ${questions[currentQuestion].question}
         </legend>
@@ -242,14 +229,11 @@ function generateQuestion() {
     `);
 }
 
-function calculatePercentage() { //to calc user's score
-    console.log("score = " + score);
-    let percentage = ((score/10)*100);
-    $(".percentPart").text("Your score so far is " + percentage + "%").removeClass("hide");
+function calculatePercentage(percentageText) { //to calc user's score
+    const percentage = ((score/10) * 100);
+    $(".percentPart").text(`${percentageText} ${percentage} %`);
 }
 
 function questionDisplay() { //displays location of quiz question
     $(".quizLocation").html(`<p class="textForQuestionDisplay"> You are on question: ${currentQuestion + 1} of 10.</p>`);
-    // console.log("question number for line number 210 = " + currentQuestion);
 }
-

@@ -4,10 +4,6 @@
     font-family: 'Permanent Marker', cursive;
 }
 
-.hide {
-    display: none;
-}
-
 hr {
     border: 1px solid #000;
 }
@@ -39,5 +35,5 @@ button {
 legend {
     background-color: #000;
     color: #fff;
-    padding: 10px 10px;
+    padding: 10px;
 }
