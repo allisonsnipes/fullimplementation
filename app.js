@@ -156,14 +156,14 @@ function comparingAnswers() { //code to compare the users answers to the correct
             exitQuiz();
         } else { //if else statement for the user to continue the quiz until the reach the last question
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
-                $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if right
+                $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if the user gets the question right
                 $(".wrongFeebackPart").hide();
                 score++;//increase the users' score if the get the question right
                 currentQuestion++;//show the next question if the user gets the previous question correct
-            } else if ($(`input[name='quizchoices']:checked`).length <= 0) {//prevents the user from skipping the question without providing answers
-                alert ("Please make an answer selection.");//display an error message to let the user know they have to select an answer before moving on
+            } else if ($(`input[name='quizchoices']:checked`).length <= 0) {//prevents the user from skipping the question without providing an answer choice
+                alert ("Please make an answer selection.");//displays an error message to let the user know they have to select an answer before moving on
             } else { 
-                $(".wrongFeebackPart").show().text(wrongAnswerText);//informs the user that they selected the wrong answer for the question, shows the correct answer
+                $(".wrongFeebackPart").show().text(wrongAnswerText);//informs the user that they selected the wrong answer and shows the correct answer instead
                 $(".rightFeebackPart").hide();
                 currentQuestion++;//moves on to the next question
             }
