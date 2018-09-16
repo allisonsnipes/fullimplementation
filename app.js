@@ -158,29 +158,28 @@ function comparingAnswers() { //code to compare the users answers to the correct
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
                 $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
-        
-                score++;
-                currentQuestion++;
+                score++;//increase the users' score if the get the question right
+                currentQuestion++;//show the next question if the user gets the previous question correct
             } else if ($(`input[name='quizchoices']:checked`).length <= 0) {//prevents the user from skipping the question without providing answers
-                alert ("Please make an answer selection.");    
+                alert ("Please make an answer selection.");//display an error message to let the user know they have to select an answer before moving on
             } else { 
-                $(".wrongFeebackPart").show().text(wrongAnswerText);
+                $(".wrongFeebackPart").show().text(wrongAnswerText);//informs the user that they selected the wrong answer for the question, shows the correct answer
                 $(".rightFeebackPart").hide();
-                currentQuestion++;
+                currentQuestion++;//moves on to the next question
             }
-            calculatePercentage("You're current score is: ");
-            $(".quizLocation").html(`You're on question: ${currentQuestion}`); 
+            calculatePercentage("You're current score is: ");//informs the user of their current score
+            $(".quizLocation").html(`You're on question: ${currentQuestion}`);//informs the user of their location in the quiz
             questionDisplay();
             generateQuestion();
         }
     });
 }
 
-function resetQuiz() {//reseting quiz on reset button click
+function resetQuiz() {//resets the quiz on click
     $(".resetButton").on("click", function(event) {
         event.preventDefault();
-        score = 0;
-        currentQuestion = 0;
+        score = 0;//resets the current quiz score
+        currentQuestion = 0;//sets the quiz to display the 1st quiz question
 
         $(".wrapper").hide();
         $(".quiz").show();
@@ -190,18 +189,18 @@ function resetQuiz() {//reseting quiz on reset button click
         $(".finishedQuiz").hide();
         generateQuestion();
         questionDisplay();
-        calculatePercentage("You're current score is: ");
+        calculatePercentage("You're current score is: ");//informs user of their starting score
     });
 }
 
-function exitQuiz() {//exiting the quiz on button click
+function exitQuiz() {//exits the quiz on click
     $(".exitButton").on("click", function(event) {
         event.preventDefault();
         window.location.href = "https://thinkful.com";
     });
 }
 
-function generateQuestion() {
+function generateQuestion() {//generates the various quiz questions and answer choices
     $(".quizQuestions").html(` 
         <legend>
             ${questions[currentQuestion].question}
@@ -225,7 +224,7 @@ function generateQuestion() {
     `);
 }
 
-function calculatePercentage(percentageText) { //to calc user's score
+function calculatePercentage(percentageText) { //calculates the user's score
     const percentage = ((score/10) * 100);
     $(".percentPart").text(`${percentageText} ${percentage} %`);
 }
