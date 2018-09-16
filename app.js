@@ -1,6 +1,6 @@
 "use strict";
 
-$(document).ready(function() {
+$(document).ready(function() {//document ready function
     $(".quiz").hide();
     $(".feedbackPartSelection").hide();
     $(".finishedQuiz").hide();
@@ -119,8 +119,7 @@ let currentQuestion = 0,
     },
 ];
 
-//start quiz and hide start page and other components
-function startQuiz() {
+function startQuiz() {//start quiz and hide other components of the quiz not needed at the time
     $(".startButton").on("click", function(event) { 
         event.preventDefault();
         $(".wrapper").hide();
@@ -132,37 +131,37 @@ function startQuiz() {
     });
 }
 
-function comparingAnswers() { //if else statements to set scenerios of when the quiz should end, and if the user provides the right/wrong ans choice
+function comparingAnswers() { //code to compare the users answers to the correct answer
     $(".nextButton").on("click", function(event) {
         event.preventDefault();
         const choiceLetter = $(`input[name='quizchoices']:checked`).val();
         const wrongAnswerText = `I'm sorry, that was the incorrect answer. The correct answer is: ${questions[currentQuestion].correctAnswer}`;
         const rightAnswerText = "Good job! Right answer.";
 
-        if ((currentQuestion + 1) === questions.length) { //if get to the last question stop the quiz
+        if ((currentQuestion + 1) === questions.length) { //if the user gets to the last question stop the quiz
             $(".finishedQuiz").show();
             $(".wrapper").hide();
             $(".quiz").hide();
 
-            if (choiceLetter === questions[currentQuestion].correctAnswer) {
-                $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if right
+            if (choiceLetter === questions[currentQuestion].correctAnswer) {//code to generate next question if the user provides right answer
+                $(".rightFeebackPart").text(rightAnswerText).show(); 
                 $(".wrongFeebackPart").hide();
                 score++;
             } else{
-                $(".wrongFeebackPart").show().text(wrongAnswerText);
+                $(".wrongFeebackPart").show().text(wrongAnswerText);//code to let the user know they did not get the correct answer, and provide the correct answer
                 $(".rightFeebackPart").hide();
             }
-            calculatePercentage("You're final score is: ");
+            calculatePercentage("You're final score is: ");//informs the user of their final score
             resetQuiz();
             exitQuiz();
-        } else { //if else for checking right answer
+        } else { //if else statement for the user to continue the quiz until the reach the last question
             if (choiceLetter === questions[currentQuestion].correctAnswer) {
                 $(".rightFeebackPart").text(rightAnswerText).show(); //generate next question if right
                 $(".wrongFeebackPart").hide();
         
                 score++;
                 currentQuestion++;
-            } else if ($(`input[name='quizchoices']:checked`).length <= 0) {
+            } else if ($(`input[name='quizchoices']:checked`).length <= 0) {//prevents the user from skipping the question without providing answers
                 alert ("Please make an answer selection.");    
             } else { 
                 $(".wrongFeebackPart").show().text(wrongAnswerText);
@@ -177,8 +176,7 @@ function comparingAnswers() { //if else statements to set scenerios of when the 
     });
 }
 
-//reseting quiz on reset button click
-function resetQuiz() {
+function resetQuiz() {//reseting quiz on reset button click
     $(".resetButton").on("click", function(event) {
         event.preventDefault();
         score = 0;
@@ -196,15 +194,13 @@ function resetQuiz() {
     });
 }
 
-//exiting the quiz on button click
-function exitQuiz() {
+function exitQuiz() {//exiting the quiz on button click
     $(".exitButton").on("click", function(event) {
         event.preventDefault();
         window.location.href = "https://thinkful.com";
     });
 }
 
-//make data store like the shopping app, look up the .html code again
 function generateQuestion() {
     $(".quizQuestions").html(` 
         <legend>
