@@ -206,19 +206,19 @@ function generateQuestion() {//generates the various quiz questions and answer c
             ${questions[currentQuestion].question}
         </legend>
         <div>
-            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.a}">
+            <input id="${questions[currentQuestion].answers.a}" type="radio" name="quizchoices" value="${questions[currentQuestion].answers.a}" checked>
             <label for="${questions[currentQuestion].answers.a}"> ${questions[currentQuestion].answers.a}</label>
         </div>
         <div>
-            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.b}">
+            <input id="${questions[currentQuestion].answers.b}" type="radio" name="quizchoices" value="${questions[currentQuestion].answers.b}">
             <label for="${questions[currentQuestion].answers.b}"> ${questions[currentQuestion].answers.b}</label>
         </div>
         <div>
-            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.c}">
+            <input id="${questions[currentQuestion].answers.c}" type="radio" name="quizchoices" value="${questions[currentQuestion].answers.c}">
             <label for="${questions[currentQuestion].answers.c}"> ${questions[currentQuestion].answers.c}</label>
         </div>
         <div>
-            <input type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
+            <input id="${questions[currentQuestion].answers.d}" type="radio" name="quizchoices" value="${questions[currentQuestion].answers.d}">
             <label for="${questions[currentQuestion].answers.d}"> ${questions[currentQuestion].answers.d}</label>
         </div>
     `);

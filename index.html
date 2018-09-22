@@ -6,12 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Welcome Freedom: Ivory J</title>
 		<link href="./main.css" rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	</head>
 
 	<body> <!-- start page: introduction of the quiz concept--> 
-		<div class="wrapper">   
-			<div class="start">
+		<main role="main">   
+			<section class="wrapper">
 				<header>
 					<h1 class="freedomClass"> Welcome Freedom!</h1>
 				</header>
@@ -22,36 +22,39 @@
 				<p>Instructions:</p>
 				<p>Click the START button to begin the quiz</p>
 				<button class="startButton" id="startQuiz" type="Submit">Start</button> 
-			</div>
-		</div> <!-- end start page -->
+			</section><!-- end start page -->
 
-		<div class="quiz" id="quizWrapper"> <!-- questions: quiz part design -->
-			<form class="showQuiz">
-				<fieldset class="quizQuestions"></fieldset>
-				<button class="nextButton" id="nextButton" type="submit">Next Question</button>
-			</form>
-		</div><!-- end questions -->
+			<section class="quiz" id="quizWrapper"> <!-- questions: quiz part design -->
+				<form class="showQuiz">
+					<fieldset class="quizQuestions"></fieldset>
+					<button class="nextButton" id="nextButton" type="submit">Next Question</button>
+				</form>
+			</section><!-- end questions -->
 	
-		<div class="feedbackPartSelection"> <!-- feedback for right and wrong ans -->
-			<div class="rightFeebackPart">
-				<p class="rightFeeback"></p>
-			</div>
+			<section class="feedbackPartSelection"> <!-- feedback for right and wrong ans -->
+				<div class="rightFeebackPart">
+					<p class="rightFeeback"></p>
+				</div>
 
-			<div class="wrongFeebackPart">
-				<p class="wrongFeeback"></p>
-			</div>
-		</div> <!-- end feedback -->
-	
-		<p class="percentPart"></p>
-	
-		<div class="quizLocation"></div> <!-- end of quiz location display -->
-	
-		<div class="finishedQuiz"><!-- end of quiz options--> 
-			<p> Thank you for taking my quiz! You can choose to either take the quiz again, or quit.</p>
-			<button class="resetButton" id="resetButton" type="button">Restart Quiz </button>
-			<button class="exitButton" id="exitButton" type="button">Exit Quiz </button>
-		</div> <!-- end of quiz-->
+				<div class="wrongFeebackPart">
+					<p class="wrongFeeback"></p>
+				</div>
+			</section> <!-- end feedback -->
+		
+			<section>
+				<p class="percentPart"></p>
+			</section>
+		
+			<section>
+				<div class="quizLocation"></div> <!-- end of quiz location display -->
+			</section>
 
+			<section class="finishedQuiz"><!-- end of quiz options--> 
+				<p> Thank you for taking my quiz! You can choose to either take the quiz again, or quit.</p>
+				<button class="resetButton" id="resetButton" type="button">Restart Quiz </button>
+				<button class="exitButton" id="exitButton" type="button">Exit Quiz </button>
+			</section> <!-- end of quiz-->
+		</main> 
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script language="javascript" type="text/javascript" src="./app.js"></script>
 	</body>
